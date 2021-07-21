@@ -1,0 +1,30 @@
+
+
+SET(WINDOW_SRC
+    ${CMAKE_CURRENT_SOURCE_DIR}/window.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/surface/angle_surface_manager.cpp
+    )
+
+IF(WIN32)
+    SET(WINDOW_SRC ${WINDOW_SRC}
+        platform/windows/window_win32.cpp)
+ENDIF()
+
+IF(BUILDING_SHARED)
+    ADD_LIBRARY(window SHARED ${WINDOW_SRC})
+    TARGET_COMPILE_DEFINITIONS(window PRIVATE BUILDING_SHARED=1)
+ELSE()
+    ADD_LIBRARY(window STATIC ${WINDOW_SRC})
+ENDIF()
+
+if (WIN32)
+    TARGET_COMPILE_DEFINITIONS(window PRIVATE OS_WIN=1)
+endif()
+
+TARGET_INCLUDE_DIRECTORIES(window PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+TARGET_INCLUDE_DIRECTORIES(window PRIVATE
+    ${PROJECT_ROOT_PATH}/third-party/logging/include
+    ${PROJECT_ROOT_PATH}/third-party/angle/include)
+
+TARGET_LINK_DIRECTORIES(window PUBLIC ${PROJECT_ROOT_PATH}/third-party/angle/libs)
+TARGET_LINK_LIBRARIES(window PRIVATE libEGL.dll.lib libGLESv2.dll.lib)
