@@ -18,6 +18,9 @@ public:
 
     virtual bool Attach() = 0;
     virtual void Show() = 0;
+
+    void PushLayer(Layer* layer);
+
     void Detach();
 
     void OnPaint();

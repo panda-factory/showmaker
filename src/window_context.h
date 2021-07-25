@@ -25,6 +25,9 @@ public:
 
     const DisplayParams& GetDisplayParams() { return display_params_; }
 
+    inline int width() const { return width_; }
+    inline int height() const { return height_; }
+
     WindowContext(const DisplayParams&);
 
     virtual ~WindowContext();

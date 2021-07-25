@@ -5,15 +5,19 @@
 #include <memory>
 
 #include "window.h"
-
+#include "component/editor/editor.h"
 #include <windows.h>
 namespace {
 
 int main_win32(int argc, char **argv, HINSTANCE hInstance, int show)
 {
     std::unique_ptr<wtf::Window> window(wtf::Window::CreateNativeWindow(hInstance));
-
+    wtf::Editor editor;
     window->Attach();
+
+    window->PushLayer(&editor);
+
+    editor.OnResize(window->width(), window->height());
 
     window->Show();
 

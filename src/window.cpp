@@ -36,12 +36,31 @@ void Window::OnPaint() {
 
 }
 
+void Window::PushLayer(Layer* layer) {
+    layer->OnAttach(this);
+    layers_.push_back(layer);
+}
+
 void Window::VisitLayers(std::function<void(Layer*)> visitor) {
     for (int i = 0; i < layers_.count(); ++i) {
         if (layers_[i]->active_) {
             visitor(layers_[i]);
         }
     }
+}
+
+int Window::width() const {
+    if (!window_context_) {
+        return 0;
+    }
+    return window_context_->width();
+}
+
+int Window::height() const {
+    if (!window_context_) {
+        return 0;
+    }
+    return window_context_->height();
 }
 
 } // namespace wtf
