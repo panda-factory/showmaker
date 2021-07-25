@@ -6,6 +6,8 @@
 
 #include <tchar.h>
 
+#include "angle_gl_window_context.h"
+
 namespace wtf {
 
 namespace {
@@ -27,7 +29,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     switch (message) {
         case WM_PAINT:
             hdc = BeginPaint(hWnd, &ps);
-            //window->onPaint();
+            window->OnPaint();
             EndPaint(hWnd, &ps);
             eventHandled = true;
             break;
@@ -65,12 +67,11 @@ Window *Window::CreateNativeWindow(void *platformData)
 
 WindowWin32::WindowWin32()
 {
-    surface_manager_ = AngleSurfaceManager::Create();
 }
 
 bool WindowWin32::Attach()
 {
-
+    window_context_ = MakeAngleContextForWin(hWnd_, {});
     return 0;
 }
 

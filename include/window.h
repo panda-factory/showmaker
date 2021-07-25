@@ -5,7 +5,13 @@
 #ifndef WTF_WINDOW_H
 #define WTF_WINDOW_H
 
+#include <memory>
+#include "window_context.h"
+#include "layer.h"
+
 namespace wtf {
+
+
 class Window {
 public:
     static Window* CreateNativeWindow(void* platformData);
@@ -22,8 +28,16 @@ public:
     virtual ~Window();
 
 protected:
+    friend WindowContext;
+
+    void VisitLayers(std::function<void(Layer*)> visitor);
+
     Window();
 
+
+    SkTDArray<Layer*> layers_;
+    bool is_active = true;
+    std::unique_ptr<WindowContext> window_context_;
 
 };
 } // namespace wtf

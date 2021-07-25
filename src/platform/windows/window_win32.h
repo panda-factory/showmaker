@@ -5,10 +5,10 @@
 #ifndef WTF_WINDOW_WIN32_H
 #define WTF_WINDOW_WIN32_H
 
+#include "window.h"
+
 #include <windows.h>
 
-#include "window.h"
-#include "surface/angle_surface_manager.h"
 namespace wtf {
 class WindowWin32 : public Window {
 public:
@@ -23,10 +23,8 @@ private:
     bool Init(HINSTANCE instance);
 
     HINSTANCE   hInstance_;
-
     HWND        hWnd_;
 
-    std::unique_ptr<AngleSurfaceManager> surface_manager_;
 };
 } // namespace wtf
 

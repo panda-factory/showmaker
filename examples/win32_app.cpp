@@ -2,18 +2,20 @@
 // Created by guozhenxiong on 2021-07-21.
 //
 
-#include <windows.h>
 #include <memory>
 
 #include "window.h"
 
+#include <windows.h>
 namespace {
 
 int main_win32(int argc, char **argv, HINSTANCE hInstance, int show)
 {
-    std::unique_ptr<wtf::Window> win(wtf::Window::CreateNativeWindow(hInstance));
+    std::unique_ptr<wtf::Window> window(wtf::Window::CreateNativeWindow(hInstance));
 
-    win->Show();
+    window->Attach();
+
+    window->Show();
 
     MSG msg;
     memset(&msg, 0, sizeof(msg));
