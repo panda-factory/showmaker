@@ -69,7 +69,9 @@ sk_sp<SkSurface> GLWindowContext::GetBackbufferSurface() {
 void GLWindowContext::InitializeContext() {
     SkASSERT(!context_);
 
-    backend_context_ = this->OnInitializeContext();
+    this->OnInitializeContext();
+
+    backend_context_ = this->CreateGLInterface();
 
     context_ = GrDirectContext::MakeGL(backend_context_, display_params_.fGrContextOptions);
     if (!context_ && display_params_.fMSAASampleCount > 1) {

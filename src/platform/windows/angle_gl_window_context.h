@@ -20,25 +20,27 @@ std::unique_ptr<WindowContext> MakeAngleContextForWin(HWND wnd, const DisplayPar
 
 class AngleGLWindowContext : public GLWindowContext {
 public:
-    bool CreateSurface(HWND hWnd, EGLint width, EGLint height);
 
     AngleGLWindowContext(HWND wnd, const DisplayParams &params);
 
 protected:
 
-    sk_sp<SkSurface> CreateRenderSurface() override;
+    int CreateSurface() override;
 
-    sk_sp<const GrGLInterface> OnInitializeContext() override;
+    sk_sp<const GrGLInterface> CreateGLInterface() override;
+
+    void OnInitializeContext() override;
 
     void OnDestroyContext() override;
 
     void OnSwapBuffers() override;
 
 private:
+    int MakeCurrent();
+    EGLDisplay InitializeEGLDisplay(HDC hdc);
     bool InitializeEGL(
             PFNEGLGETPLATFORMDISPLAYEXTPROC egl_get_platform_display_EXT,
-            const EGLint *config,
-            bool should_log);
+            const EGLint *config);
 
     HWND hWND_;
     EGLDisplay egl_display_ = EGL_NO_DISPLAY;

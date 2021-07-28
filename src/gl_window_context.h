@@ -21,11 +21,13 @@ public:
     bool IsValid() override;
 
 protected:
-    virtual sk_sp<SkSurface> CreateRenderSurface() = 0;
+    virtual int CreateSurface() = 0;
 
     void InitializeContext();
 
-    virtual sk_sp<const GrGLInterface> OnInitializeContext() = 0;
+    virtual sk_sp<const GrGLInterface> CreateGLInterface() = 0;
+
+    virtual void OnInitializeContext() = 0;
 
     void DestroyContext();
     virtual void OnDestroyContext() = 0;
