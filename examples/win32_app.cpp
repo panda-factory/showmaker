@@ -5,19 +5,35 @@
 #include <memory>
 
 #include "window.h"
-#include "component/editor/editor.h"
+#include "component/editor/editor_layer.h"
 #include <windows.h>
 namespace {
 
+double fNextTime = -DBL_MAX;
+wtf::EditorLayer editor_layer;
+std::unique_ptr<wtf::Window> window;
+
+void OnIdle()
+{
+    double now = SkTime::GetNSecs();
+    if (now >= fNextTime) {
+        constexpr double kHalfPeriodNanoSeconds = 0.5 * 1e9;
+        fNextTime = now + kHalfPeriodNanoSeconds;
+        editor_layer.blink() = !editor_layer.blink();
+        window->Invalid();
+    }
+}
+
 int main_win32(int argc, char **argv, HINSTANCE hInstance, int show)
 {
-    std::unique_ptr<wtf::Window> window(wtf::Window::CreateNativeWindow(hInstance));
-    wtf::Editor editor;
+    bool idled = false;
+    window.reset(wtf::Window::CreateNativeWindow(hInstance));
     window->Attach();
+    editor_layer.SetFont();
 
-    window->PushLayer(&editor);
+    window->PushLayer(&editor_layer);
 
-    editor.OnResize(window->width(), window->height());
+    editor_layer.OnResize(window->width(), window->height());
 
     window->Show();
 
@@ -30,9 +46,15 @@ int main_win32(int argc, char **argv, HINSTANCE hInstance, int show)
             TranslateMessage(&msg);
 
             if (WM_PAINT == msg.message) {
+                if (!idled) {
+                    OnIdle();
+                }
+                idled = false;
             }
             DispatchMessage(&msg);
         } else {
+            OnIdle();
+            idled = true;
         }
     }
 

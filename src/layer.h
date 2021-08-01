@@ -24,6 +24,7 @@ public:
     // return value of 'true' means 'I have handled this event'
     virtual void OnBackendCreated() {}
     virtual void OnAttach(Window* window) {}
+    virtual bool OnChar(const std::string& utf8) {return false;};
     virtual void OnUIStateChanged(const SkString& stateName, const SkString& stateValue) {}
     virtual void OnPrePaint() {}
     virtual void OnPaint(SkSurface*) {}

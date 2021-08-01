@@ -3,7 +3,9 @@
 SET(WINDOW_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/component/editor/editor.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/component/editor/editor_layer.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/component/editor/shape.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/component/editor/string_slice.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/component/editor/word_boundaries.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/gl_window_context.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/window_context.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/window.cpp
@@ -40,4 +42,4 @@ TARGET_INCLUDE_DIRECTORIES(window PUBLIC
 
 TARGET_LINK_DIRECTORIES(window PUBLIC ${PROJECT_ROOT_PATH}/third-party/angle/libs)
 TARGET_LINK_DIRECTORIES(window PUBLIC ${PROJECT_ROOT_PATH}/third-party/skia/libs)
-TARGET_LINK_LIBRARIES(window PRIVATE libEGL.dll.lib libGLESv2.dll.lib skia.dll.lib)
+TARGET_LINK_LIBRARIES(window PRIVATE libEGL.dll.lib libGLESv2.dll.lib skia.dll.lib skshaper.dll.lib ext_convertUTF)

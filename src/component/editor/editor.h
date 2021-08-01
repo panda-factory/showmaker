@@ -9,13 +9,13 @@
 #include "include/core/SkFont.h"
 #include "include/core/SkString.h"
 #include "include/core/SkTextBlob.h"
+#include "third-party/skia/include/core/SkCanvas.h"
 
 #include "string_slice.h"
-#include "editor_layer.h"
 
 #include <climits>
 namespace wtf {
-class Editor : public EditorLayer {
+class Editor {
 public:
     enum class Movement {
         kNowhere,
@@ -29,20 +29,36 @@ public:
         kWordRight,
     };
     struct TextPosition {
+        bool operator ==(const TextPosition& that) const;
+        bool operator!=(const TextPosition& that) const;
+        bool operator<(const TextPosition& that) const;
+
         size_t fTextByteIndex = SIZE_MAX;   // index into UTF-8 representation of line.
         size_t fParagraphIndex = SIZE_MAX;  // logical line, based on hard newline characters.
+    };
+    struct PaintOpts {
+
+        SkColor4f fBackgroundColor = {1, 1, 1, 1};
+        SkColor4f fForegroundColor = {0, 0, 0, 1};
+        // TODO: maybe have multiple selections and cursors, each with separate colors.
+        SkColor4f fSelectionColor = {0.729f, 0.827f, 0.988f, 1};
+        SkColor4f fCursorColor = {1, 0, 0, 1};
+        TextPosition fSelectionBegin;
+        TextPosition fSelectionEnd;
+        TextPosition fCursor;
     };
 
     // get/set current font (used for shaping and displaying text)
     const SkFont& font() const { return font_; }
     void SetFont(SkFont font);
 
-    SkRect GetLocation(EditorLayer::TextPosition cursor);
+    SkRect GetLocation(TextPosition cursor);
 
-    EditorLayer::TextPosition Move(Editor::Movement move, EditorLayer::TextPosition pos) const;
+    TextPosition Insert(TextPosition, const char* utf8Text, size_t byteLen);
 
-protected:
-    void Paint(SkCanvas* c, PaintOpts options) override;
+    TextPosition Move(Editor::Movement move, TextPosition pos) const;
+
+    void Paint(SkCanvas* c, PaintOpts options);
 
 private:
 
@@ -60,15 +76,16 @@ private:
         TextLine(StringSlice t) : text_(std::move(t)) {}
         TextLine() {}
     };
+
+    void MarkDirty(TextLine*);
+    void ReshapeAll();
+
     std::vector<TextLine> lines_;
     int width_ = 0;
     int height_ = 0;
     SkFont font_;
     bool needs_reshape_ = false;
     const char* locale_ = "en";  // TODO: make this setable
-
-    void MarkDirty(TextLine*);
-    void ReshapeAll();
 };
 } // namespace wtf
 

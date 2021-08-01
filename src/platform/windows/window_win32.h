@@ -18,6 +18,10 @@ public:
     void Show() override;
 
     WindowWin32();
+
+protected:
+    void OnInvalid() override;
+
 private:
     friend Window;
     bool Init(HINSTANCE instance);

@@ -7,7 +7,7 @@
 #include <tchar.h>
 
 #include "angle_gl_window_context.h"
-
+#include <third-party/ConvertUTF/UTF8.h>
 namespace wtf {
 
 namespace {
@@ -17,7 +17,7 @@ static int gWindowY = 0;
 static int gWindowWidth = CW_USEDEFAULT;
 static int gWindowHeight = 0;
 
-LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wparam, LPARAM lparam)
 {
     PAINTSTRUCT ps;
     HDC hdc;
@@ -43,8 +43,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             // disable/enable rendering here, depending on wParam != WA_INACTIVE
             break;
 
+        case WM_CHAR: {
+            wchar_t character = static_cast<wchar_t>(wparam);
+            std::u16string text({character});
+            std::string utf8;
+            UTF::UTF16ToUTF8(text, utf8);
+
+            eventHandled = window->OnChar(utf8);
+            break;
+        }
         default:
-            return DefWindowProc(hWnd, message, wParam, lParam);
+            return DefWindowProc(hWnd, message, wparam, lparam);
     }
 
     return eventHandled ? 0 : 1;
@@ -116,6 +125,11 @@ bool WindowWin32::Init(HINSTANCE hInstance)
     RegisterTouchWindow(hWnd_, 0);
 
     return true;
+}
+
+void WindowWin32::OnInvalid()
+{
+    InvalidateRect(hWnd_, nullptr, false);
 }
 
 void WindowWin32::Show()

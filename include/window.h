@@ -19,9 +19,15 @@ public:
     virtual bool Attach() = 0;
     virtual void Show() = 0;
 
+    void Invalid();
+
     void PushLayer(Layer* layer);
 
+    bool SignalLayers(std::function<bool (Layer*)> visitor);
+
     void Detach();
+
+    bool OnChar(const std::string& utf8);
 
     void OnPaint();
 
@@ -35,13 +41,17 @@ protected:
 
     void VisitLayers(std::function<void(Layer*)> visitor);
 
+    virtual void OnInvalid() = 0;
+
     Window();
 
-
+    bool is_content_invalidated = false;  // use this to avoid duplicate invalidate events
     SkTDArray<Layer*> layers_;
     bool is_active = true;
     std::unique_ptr<WindowContext> window_context_;
 
+private:
+    void MarkInvalidProcessed();
 };
 } // namespace wtf
 
