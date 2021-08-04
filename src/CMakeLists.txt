@@ -1,11 +1,11 @@
 
 
 SET(WINDOW_SRC
-    ${CMAKE_CURRENT_SOURCE_DIR}/component/editor/editor.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/component/editor/editor_layer.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/component/editor/shape.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/component/editor/string_slice.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/component/editor/word_boundaries.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/render/elements/label.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/render/drawable.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/render/element.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/render/layout.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/render/shape.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/gl_window_context.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/window_context.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/window.cpp

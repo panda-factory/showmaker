@@ -5,23 +5,16 @@
 #include <memory>
 
 #include "window.h"
-#include "component/editor/editor_layer.h"
+#include "render/elements/label.h"
+#include "render/layout/column.h"
 #include <windows.h>
 namespace {
 
 double fNextTime = -DBL_MAX;
-wtf::EditorLayer editor_layer;
 std::unique_ptr<wtf::Window> window;
 
 void OnIdle()
 {
-    double now = SkTime::GetNSecs();
-    if (now >= fNextTime) {
-        constexpr double kHalfPeriodNanoSeconds = 0.5 * 1e9;
-        fNextTime = now + kHalfPeriodNanoSeconds;
-        editor_layer.blink() = !editor_layer.blink();
-        window->Invalid();
-    }
 }
 
 int main_win32(int argc, char **argv, HINSTANCE hInstance, int show)
@@ -29,11 +22,10 @@ int main_win32(int argc, char **argv, HINSTANCE hInstance, int show)
     bool idled = false;
     window.reset(wtf::Window::CreateNativeWindow(hInstance));
     window->Attach();
-    editor_layer.SetFont();
 
-    window->PushLayer(&editor_layer);
-
-    editor_layer.OnResize(window->width(), window->height());
+    auto column = std::make_unique<Column>();
+    column->AddElement(std::make_unique<Label>());
+    window->element_ = std::move(column);
 
     window->Show();
 

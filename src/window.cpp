@@ -5,12 +5,13 @@
 #include "window.h"
 
 #include "include/core/SkSurface.h"
-
+#include "render/element.h"
 namespace wtf {
 
 Window::Window() = default;
 
-Window::~Window() = default;
+Window::~Window()
+{ };
 
 void Window::Invalid() {
     if (!window_context_) {
@@ -48,8 +49,12 @@ void Window::OnPaint() {
     MarkInvalidProcessed();
 
     // draw into the canvas of this surface
-    this->VisitLayers([](Layer* layer) { layer->OnPrePaint(); });
-    this->VisitLayers([=](Layer* layer) { layer->OnPaint(backbuffer.get()); });
+    //this->VisitLayers([](Layer* layer) { layer->OnPrePaint(); });
+    //this->VisitLayers([=](Layer* layer) { layer->OnPaint(backbuffer.get()); });
+
+    this->VisitRootElement([=](Element* element) {
+        element->Draw(backbuffer.get());
+    });
 
     backbuffer->flushAndSubmit();
 
@@ -78,6 +83,11 @@ void Window::VisitLayers(std::function<void(Layer*)> visitor) {
             visitor(layers_[i]);
         }
     }
+}
+
+void Window::VisitRootElement(std::function<void (Element*)> visitor)
+{
+    visitor(element_.get());
 }
 
 int Window::width() const {

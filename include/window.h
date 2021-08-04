@@ -5,12 +5,13 @@
 #ifndef WTF_WINDOW_H
 #define WTF_WINDOW_H
 
-#include <memory>
+#include <vector>
 #include "window_context.h"
 #include "layer.h"
 
-namespace wtf {
 
+class Element;
+namespace wtf {
 
 class Window {
 public:
@@ -36,6 +37,8 @@ public:
 
     virtual ~Window();
 
+    std::unique_ptr<Element> element_;
+
 protected:
     friend WindowContext;
 
@@ -52,6 +55,8 @@ protected:
 
 private:
     void MarkInvalidProcessed();
+
+    void VisitRootElement(std::function<void (Element*)> visitor);
 };
 } // namespace wtf
 
