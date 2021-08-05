@@ -8,13 +8,17 @@
 #include "include/core/SkFont.h"
 #include "include/core/SkGraphics.h"
 #include "include/core/SkSurface.h"
-#include "include/effects/SkGradientShader.h"
+#include "render/shape/rectangle.h"
+
 void Label::Draw(SkSurface *surface) const
 {
     auto canvas = surface->getCanvas();
 
     // Clear background
     canvas->clear(SK_ColorWHITE);
+
+    Rectangle rectangle;
+    rectangle.Draw(canvas);
 
     SkPaint paint;
 

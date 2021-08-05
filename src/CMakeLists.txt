@@ -6,6 +6,7 @@ SET(WINDOW_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/render/element.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/layout.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/shape.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/render/shape/rectangle.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/gl_window_context.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/window_context.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/window.cpp
