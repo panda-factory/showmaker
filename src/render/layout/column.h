@@ -7,7 +7,11 @@
 
 #include "render/layout.h"
 class Column : public Layout {
+protected:
+    Size2D MeasureSize(SkCanvas* canvas) override;
 
+private:
+    std::vector<Position2D> CalculateChildOffsets(SkCanvas* canvas) const override;
 };
 
 

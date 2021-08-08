@@ -24,7 +24,9 @@ int main_win32(int argc, char **argv, HINSTANCE hInstance, int show)
     window->Attach();
 
     auto column = std::make_unique<Column>();
-    column->AddElement(std::make_unique<Label>());
+    column->AddElement(std::make_unique<Label>("HelloWorld!"));
+    column->AddElement(std::make_unique<Label>("Hello!"));
+    column->AddElement(std::make_unique<Label>("World!"));
     window->element_ = std::move(column);
 
     window->Show();

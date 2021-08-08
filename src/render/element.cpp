@@ -3,3 +3,8 @@
 //
 
 #include "element.h"
+
+void Element::Draw(SkCanvas *canvas, Drawable* drawable, const Position2D& position)
+{
+    drawable->Draw(canvas, position);
+}

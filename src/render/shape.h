@@ -6,8 +6,14 @@
 #define XXX_SHAPE_H
 
 #include "drawable.h"
-class Shape : public Drawable {
+#include "style/border.h"
 
+class Shape : public Drawable {
+public:
+    Shape();
+
+protected:
+    Border border_;
 };
 
 
