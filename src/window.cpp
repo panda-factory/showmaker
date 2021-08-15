@@ -4,14 +4,20 @@
 
 #include "window.h"
 
-#include "include/core/SkSurface.h"
+#include <include/core/SkSurface.h>
+#include <third-party/taskrunner/include/task_runner/task_runner.h>
 #include "render/element.h"
 namespace wtf {
+
+//auto ui_runner = TaskRunner::Create("ui.thread");
 
 Window::Window() = default;
 
 Window::~Window()
-{ };
+{ }
+
+void Window::DispatchTask()
+{}
 
 void Window::Invalid() {
     if (!window_context_) {

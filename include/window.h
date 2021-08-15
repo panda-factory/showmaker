@@ -20,6 +20,8 @@ public:
     virtual bool Attach() = 0;
     virtual void Show() = 0;
 
+    void DispatchTask();
+
     void Invalid();
 
     void PushLayer(Layer* layer);
