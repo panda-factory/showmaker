@@ -15,9 +15,8 @@ Label::Label(const std::string& text)
 
 }
 
-void Label::Draw(SkSurface *surface)
+void Label::Draw(SkCanvas* canvas)
 {
-    auto canvas = surface->getCanvas();
 
     auto rect = std::make_unique<Rectangle>(text_.MeasureSize());
 

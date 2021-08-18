@@ -5,9 +5,8 @@
 #include "layout.h"
 
 
-void Layout::Draw(SkSurface* surface)
+void Layout::Draw(SkCanvas* canvas)
 {
-    auto canvas = surface->getCanvas();
     // Clear background
     canvas->clear(SK_ColorWHITE);
     auto child_offsets = CalculateChildOffsets(canvas);
@@ -15,6 +14,6 @@ void Layout::Draw(SkSurface* surface)
     for(std::size_t i = 0; i < children_.size(); ++i)
     {
         children_[i]->SetPosition(child_offsets[i]);
-        children_[i]->Draw(surface);
+        children_[i]->Draw(canvas);
     }
 }

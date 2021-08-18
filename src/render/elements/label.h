@@ -10,7 +10,7 @@
 
 class Label : public Element {
 public:
-    void Draw(SkSurface* surface) override;
+    void Draw(SkCanvas* canvas) override;
 
     Size2D MeasureSize(SkCanvas* canvas) override;
 

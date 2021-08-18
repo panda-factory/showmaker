@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-07-24.
 //
 
-#ifndef XXX_LAYER_H
-#define XXX_LAYER_H
+#ifndef XXX_WTF_LAYER_H
+#define XXX_WTF_LAYER_H
 
 #include "third-party/skia/include/core/SkSurface.h"
 #include "third-party/skia/include/core/SkRect.h"

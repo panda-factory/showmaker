@@ -16,7 +16,7 @@
 
 class Element {
 public:
-    virtual void Draw(SkSurface* surface) = 0;
+    virtual void Draw(SkCanvas* canvas) = 0;
 
     inline void SetPosition(const Position2D& position) {position_ = position;}
 

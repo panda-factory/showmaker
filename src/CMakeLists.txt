@@ -1,9 +1,17 @@
 
 
 SET(WINDOW_SRC
+    ${CMAKE_CURRENT_SOURCE_DIR}/render/compositing/scene.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/render/compositing/scene_builder.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/canvas_scope.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/elements/label.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/render/layer/container_layer.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/render/layer/layer.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/render/layer/picture_layer.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/render/layer/transform_layer.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/layout/column.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/render/painting/picture.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/render/painting/picture_recorder.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/drawable.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/element.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/layout.cpp

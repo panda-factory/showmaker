@@ -4,9 +4,12 @@
 
 #include "window.h"
 
+#include "render/element.h"
+#include "render/compositing/scene_builder.h"
+#include "render/painting/picture_recorder.h"
+
 #include <include/core/SkSurface.h>
 #include <third-party/taskrunner/include/task_runner/task_runner.h>
-#include "render/element.h"
 namespace wtf {
 
 //auto ui_runner = TaskRunner::Create("ui.thread");
@@ -57,10 +60,22 @@ void Window::OnPaint() {
     // draw into the canvas of this surface
     //this->VisitLayers([](Layer* layer) { layer->OnPrePaint(); });
     //this->VisitLayers([=](Layer* layer) { layer->OnPaint(backbuffer.get()); });
+    SceneBuilder builder;
+    PictureRecorder recorder;
 
+    auto canvas = recorder.BeginRecording({500, 500});
     this->VisitRootElement([=](Element* element) {
-        element->Draw(backbuffer.get());
+        element->Draw(canvas);
     });
+    auto picture = recorder.FinishRecording();
+
+    builder.PushOffset(0.0f, 0.0f);
+    builder.AddPicture(0.0f, 0.0f, picture.get(), 0);
+    builder.Pop();
+
+    auto scene = builder.Build();
+
+    scene->root_layer()->Paint(backbuffer.get()->getCanvas());
 
     backbuffer->flushAndSubmit();
 

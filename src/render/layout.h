@@ -10,7 +10,7 @@
 #include "element.h"
 class Layout : public Element {
 public:
-    void Draw(SkSurface* surface) override final;
+    void Draw(SkCanvas* canvas) override final;
 
     inline void AddElement(std::unique_ptr<Element> element) {
         children_.push_back(std::move(element));
