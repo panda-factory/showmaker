@@ -14,17 +14,10 @@ public:
 
     void PerformLayout() override;
 
-    inline void AddElement(std::unique_ptr<Element> element) {
-        children_.push_back(std::move(element));
-    }
-
 protected:
-    std::vector<std::unique_ptr<Element>> children_;
-
     SkScalar spacing_;
-private:
-    void CompositeChild(Element* element, SkCanvas* canvas);
 
+private:
     virtual std::vector<Position2D> CalculateChildOffsets() const = 0;
 };
 

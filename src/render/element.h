@@ -30,6 +30,10 @@ public:
     // | Node |
     void Detach() override;
 
+    inline void AddElement(std::unique_ptr<Element> element) {
+        children_.push_back(std::move(element));
+    }
+
     virtual void Draw(SkCanvas* canvas) = 0;
 
     virtual void PerformLayout() {};
@@ -45,6 +49,12 @@ public:
     virtual ~Element();
 protected:
     void Draw(SkCanvas* canvas, Drawable* drawable, const Position2D& position);
+
+    void PaintChild(Element* element, SkCanvas* canvas);
+
+    void CompositeChild(Element* element, SkCanvas* canvas);
+
+    std::vector<std::unique_ptr<Element>> children_;
 
     std::shared_ptr<ContainerLayer> layer_;
 

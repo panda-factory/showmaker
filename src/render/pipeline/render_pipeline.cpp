@@ -18,10 +18,8 @@ void RenderPipeline::FlushPaint(Element* element)
     SceneBuilder builder;
     PictureRecorder recorder;
 
-    auto canvas = recorder.BeginRecording({500, 500});
-    element->Draw(canvas);
+    element->Draw(nullptr);
 
-    auto picture = recorder.FinishRecording();
 }
 
 std::unique_ptr<Scene> RenderPipeline::CompositeFrame(Element *element)

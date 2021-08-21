@@ -32,7 +32,8 @@ int main_win32(int argc, char **argv, HINSTANCE hInstance, int show)
 
     auto view = std::make_unique<View>();
     view->Adopt(column.get());
-    window->element_ = std::move(column);
+    view->AddElement(std::move(column));
+    window->element_ = std::move(view);
 
     window->Show();
 

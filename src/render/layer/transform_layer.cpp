@@ -26,4 +26,5 @@ void TransformLayer::AddToScene(SceneBuilder* builder, Position2D offset)
 {
     builder->PushOffset(0, 0);
     AddChildrenToScene(builder, offset);
+    builder->Pop();
 }

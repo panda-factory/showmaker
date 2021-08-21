@@ -11,7 +11,6 @@ void ContainerLayer::Add(std::shared_ptr<Layer> layer)
 
 void ContainerLayer::Paint(SkCanvas *canvas) const
 {
-
     PaintChildren(canvas);
 }
 

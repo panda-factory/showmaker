@@ -20,8 +20,6 @@ public:
     virtual ~Node();
 
 protected:
-    std::vector<Node *> children_;
-
     Node *parent_;
 
 private:

@@ -16,6 +16,18 @@ void Element::Draw(SkCanvas *canvas, Drawable* drawable, const Position2D& posit
     drawable->Draw(canvas, position);
 }
 
+void Element::PaintChild(Element* element, SkCanvas* canvas)
+{
+    CompositeChild(element, canvas);
+}
+
+void Element::CompositeChild(Element* element, SkCanvas* canvas)
+{
+    element->Draw(canvas);
+
+    layer_->Add(element->layer());
+}
+
 void Element::Adopt(Node *child)
 {
     Node::Adopt(child);
