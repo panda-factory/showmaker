@@ -4,12 +4,12 @@
 
 #include "column.h"
 
-Size2D Column::MeasureSize(SkCanvas* canvas)
+Size2D Column::MeasureSize()
 {
     return {0, 0};
 }
 
-std::vector<Position2D> Column::CalculateChildOffsets(SkCanvas* canvas) const
+std::vector<Position2D> Column::CalculateChildOffsets() const
 {
     std::vector<Position2D> offsets;
     offsets.reserve(children_.size());
@@ -18,8 +18,9 @@ std::vector<Position2D> Column::CalculateChildOffsets(SkCanvas* canvas) const
     for(const auto& child : children_)
     {
         offsets.push_back(offset);
+        child->SetPosition(offset);
 
-        offset.y += child->MeasureSize(canvas).height + spacing_;
+        offset.y += child->MeasureSize().height + spacing_;
     }
 
     return offsets;

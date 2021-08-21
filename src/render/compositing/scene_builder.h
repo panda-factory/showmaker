@@ -17,7 +17,7 @@ public:
 
     std::unique_ptr<Scene> Build();
 
-    void AddPicture(double dx, double dy, Picture* picture, int hints);
+    void AddPicture(double dx, double dy, std::unique_ptr<Picture> picture);
 
     void PushOffset(double dx, double dy);
 

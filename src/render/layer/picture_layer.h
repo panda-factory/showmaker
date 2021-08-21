@@ -7,18 +7,23 @@
 
 #include "render/layer/layer.h"
 
+class Picture;
+
 class PictureLayer : public Layer {
 public:
     void Paint(SkCanvas* canvas) const override;
 
-    inline SkPicture* picture() const { return picture_.get(); }
+    void AddToScene(SceneBuilder* builder, Position2D offset) override;
 
-    PictureLayer(const SkPoint& offset, sk_sp<SkPicture> picture);
+    inline Picture* picture() const { return picture_.get(); }
 
+    PictureLayer(const SkPoint& offset, std::unique_ptr<Picture> picture);
+
+    ~PictureLayer();
 private:
     SkPoint offset_;
 
-    sk_sp<SkPicture> picture_;
+    std::unique_ptr<Picture> picture_;
 };
 
 

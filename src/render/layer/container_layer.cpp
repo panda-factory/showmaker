@@ -21,3 +21,15 @@ void ContainerLayer::PaintChildren(SkCanvas *canvas) const
         layer->Paint(canvas);
     }
 }
+
+void ContainerLayer::AddToScene(SceneBuilder* builder, Position2D offset)
+{
+    AddChildrenToScene(builder, offset);
+}
+
+void ContainerLayer::AddChildrenToScene(SceneBuilder* builder, Position2D offset)
+{
+    for (auto &layer : layers_) {
+        layer->AddToScene(builder);
+    }
+}

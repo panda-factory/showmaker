@@ -7,6 +7,7 @@
 #include "render/element.h"
 #include "render/compositing/scene_builder.h"
 #include "render/painting/picture_recorder.h"
+#include "render/pipeline/render_pipeline.h"
 
 #include <include/core/SkSurface.h>
 #include <third-party/taskrunner/include/task_runner/task_runner.h>
@@ -58,6 +59,7 @@ void Window::OnPaint() {
     MarkInvalidProcessed();
 
     // draw into the canvas of this surface
+#if 0
     //this->VisitLayers([](Layer* layer) { layer->OnPrePaint(); });
     //this->VisitLayers([=](Layer* layer) { layer->OnPaint(backbuffer.get()); });
     SceneBuilder builder;
@@ -70,10 +72,14 @@ void Window::OnPaint() {
     auto picture = recorder.FinishRecording();
 
     builder.PushOffset(0.0f, 0.0f);
-    builder.AddPicture(0.0f, 0.0f, picture.get(), 0);
+    builder.AddPicture(0.0f, 0.0f, std::move(picture));
     builder.Pop();
 
     auto scene = builder.Build();
+#endif
+    RenderPipeline::FlushLayout(element_.get());
+    RenderPipeline::FlushPaint(element_.get());
+    auto scene = RenderPipeline::CompositeFrame(element_.get());
 
     scene->root_layer()->Paint(backbuffer.get()->getCanvas());
 

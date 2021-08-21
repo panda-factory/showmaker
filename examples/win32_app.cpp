@@ -6,8 +6,10 @@
 
 #include "window.h"
 #include "render/elements/label.h"
+#include "render/elements/view.h"
 #include "render/layout/column.h"
 #include <windows.h>
+
 namespace {
 
 double fNextTime = -DBL_MAX;
@@ -27,6 +29,9 @@ int main_win32(int argc, char **argv, HINSTANCE hInstance, int show)
     column->AddElement(std::make_unique<Label>("HelloWorld!"));
     column->AddElement(std::make_unique<Label>("Hello!"));
     column->AddElement(std::make_unique<Label>("World!"));
+
+    auto view = std::make_unique<View>();
+    view->Adopt(column.get());
     window->element_ = std::move(column);
 
     window->Show();

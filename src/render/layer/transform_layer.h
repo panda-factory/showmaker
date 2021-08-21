@@ -11,6 +11,8 @@ class TransformLayer : public ContainerLayer {
 public:
     void Paint(SkCanvas* canvas) const override;
 
+    void AddToScene(SceneBuilder *,Position2D) override;
+
     TransformLayer(const SkMatrix& transform);
 
 private:

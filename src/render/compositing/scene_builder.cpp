@@ -26,9 +26,8 @@ std::unique_ptr<Scene> SceneBuilder::Build() {
 
 void SceneBuilder::AddPicture(double dx,
                               double dy,
-                              Picture* picture,
-                              int hints) {
-    auto layer = std::make_unique<PictureLayer>(SkPoint::Make(dx, dy), picture->picture());
+                              std::unique_ptr<Picture> picture) {
+    auto layer = std::make_unique<PictureLayer>(SkPoint::Make(dx, dy), std::move(picture));
     AddLayer(std::move(layer));
 }
 

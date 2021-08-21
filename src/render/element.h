@@ -7,24 +7,46 @@
 
 #include <vector>
 
+#include "node/node.h"
 #include "render/position2d.h"
 #include "render/drawable.h"
 #include "render/size.h"
+#include "render/layer/container_layer.h"
 
 #include "include/core/SkSurface.h"
 #include "include/core/SkCanvas.h"
 
-class Element {
+class Element : public Node {
 public:
+    // | Node |
+    void Adopt(Node *child) override;
+
+    // | Node |
+    void Drop(Node *child) override;
+
+    // | Node |
+    void Attach(Node *parent) override;
+
+    // | Node |
+    void Detach() override;
+
     virtual void Draw(SkCanvas* canvas) = 0;
+
+    virtual void PerformLayout() {};
 
     inline void SetPosition(const Position2D& position) {position_ = position;}
 
-    virtual Size2D MeasureSize(SkCanvas* canvas) = 0;
+    virtual Size2D MeasureSize() = 0;
 
-    virtual ~Element() = default;
+    inline std::shared_ptr<ContainerLayer> layer() {return layer_;}
+
+    Element();
+
+    virtual ~Element();
 protected:
     void Draw(SkCanvas* canvas, Drawable* drawable, const Position2D& position);
+
+    std::shared_ptr<ContainerLayer> layer_;
 
     Position2D position_;
 private:

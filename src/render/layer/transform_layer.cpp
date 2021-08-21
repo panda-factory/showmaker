@@ -4,6 +4,8 @@
 
 #include "transform_layer.h"
 
+#include "render/compositing/scene_builder.h"
+
 TransformLayer::TransformLayer(const SkMatrix &transform)
         : transform_(transform)
 {
@@ -18,4 +20,10 @@ void TransformLayer::Paint(SkCanvas *canvas) const
     canvas->concat(transform_);
 
     PaintChildren(canvas);
+}
+
+void TransformLayer::AddToScene(SceneBuilder* builder, Position2D offset)
+{
+    builder->PushOffset(0, 0);
+    AddChildrenToScene(builder, offset);
 }
