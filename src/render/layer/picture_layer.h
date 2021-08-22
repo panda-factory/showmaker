@@ -17,6 +17,8 @@ public:
 
     inline Picture* picture() const { return picture_.get(); }
 
+    void ResetPicture(std::unique_ptr<Picture> picture);
+
     PictureLayer(const SkPoint& offset, std::unique_ptr<Picture> picture);
 
     ~PictureLayer();

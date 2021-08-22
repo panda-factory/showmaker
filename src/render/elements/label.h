@@ -5,12 +5,12 @@
 #ifndef XXX_LABEL_H
 #define XXX_LABEL_H
 
-#include "render/element.h"
+#include "element.h"
 #include "render/shape/text.h"
 
 class Label : public Element {
 public:
-    void Draw(SkCanvas* canvas) override;
+    void Paint(PaintContext* context) override;
 
     Size2D MeasureSize() override;
 

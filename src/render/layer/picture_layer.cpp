@@ -25,3 +25,9 @@ void PictureLayer::AddToScene(SceneBuilder* builder, Position2D offset)
 {
     builder->AddPicture(offset.x, offset.y, std::move(picture_));
 }
+
+void PictureLayer::ResetPicture(std::unique_ptr<Picture> picture)
+{
+    picture_.reset();
+    picture_ = std::move(picture);
+}

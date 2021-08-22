@@ -5,11 +5,11 @@
 #ifndef XXX_VIEW_H
 #define XXX_VIEW_H
 
-#include "render/element.h"
+#include "element.h"
 
 class View : public Element {
 public:
-    void Draw(SkCanvas* canvas) override;
+    void Paint(PaintContext* context) override;
 
     void PerformLayout() override;
 

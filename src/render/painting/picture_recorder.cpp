@@ -11,6 +11,5 @@ SkCanvas *PictureRecorder::BeginRecording(SkRect bounds)
 
 std::unique_ptr<Picture> PictureRecorder::FinishRecording()
 {
-
     return Picture::Create(picture_recorder_.finishRecordingAsPicture());
 }

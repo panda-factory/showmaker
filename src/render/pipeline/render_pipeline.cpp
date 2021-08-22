@@ -4,7 +4,7 @@
 
 #include "render_pipeline.h"
 
-#include "render/element.h"
+#include "render/elements/element.h"
 #include "render/painting/picture_recorder.h"
 #include "render/compositing/scene_builder.h"
 
@@ -18,7 +18,7 @@ void RenderPipeline::FlushPaint(Element* element)
     SceneBuilder builder;
     PictureRecorder recorder;
 
-    element->Draw(nullptr);
+    element->OnPaint();
 
 }
 

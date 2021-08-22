@@ -12,6 +12,7 @@
 #include "render/drawable.h"
 #include "render/size.h"
 #include "render/layer/container_layer.h"
+#include "render/painting/paint_context.h"
 
 #include "include/core/SkSurface.h"
 #include "include/core/SkCanvas.h"
@@ -34,7 +35,9 @@ public:
         children_.push_back(std::move(element));
     }
 
-    virtual void Draw(SkCanvas* canvas) = 0;
+    void OnPaint();
+
+    virtual void Paint(PaintContext* context) = 0;
 
     virtual void PerformLayout() {};
 
@@ -50,9 +53,11 @@ public:
 protected:
     void Draw(SkCanvas* canvas, Drawable* drawable, const Position2D& position);
 
-    void PaintChild(Element* element, SkCanvas* canvas);
+    void PaintChild(Element* element, PaintContext *context);
 
-    void CompositeChild(Element* element, SkCanvas* canvas);
+    void CompositeChild(Element* element, PaintContext *context);
+
+    bool is_recording_;
 
     std::vector<std::unique_ptr<Element>> children_;
 

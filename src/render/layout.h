@@ -7,10 +7,10 @@
 
 #include <vector>
 #include <memory>
-#include "element.h"
+#include "render/elements/element.h"
 class Layout : public Element {
 public:
-    void Draw(SkCanvas* canvas) override final;
+    void Paint(PaintContext* context) override final;
 
     void PerformLayout() override;
 

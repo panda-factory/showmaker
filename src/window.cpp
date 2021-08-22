@@ -4,7 +4,7 @@
 
 #include "window.h"
 
-#include "render/element.h"
+#include "render/elements/element.h"
 #include "render/compositing/scene_builder.h"
 #include "render/painting/picture_recorder.h"
 #include "render/pipeline/render_pipeline.h"

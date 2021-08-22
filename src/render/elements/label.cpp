@@ -20,24 +20,15 @@ Label::Label(const std::string& text)
 
 }
 
-void Label::Draw(SkCanvas* canvasxxx)
+void Label::Paint(PaintContext *context)
 {
-    PictureRecorder recorder;
-    auto canvas = recorder.BeginRecording({500, 500});
+    auto canvas = context->canvas();
     auto rect = std::make_unique<Rectangle>(text_.MeasureSize());
 
     Element::Draw(canvas, rect.get(), position_);
     Element::Draw(canvas, &text_, position_);
 
     canvas->restore();
-
-    auto picture = recorder.FinishRecording();
-    auto picture_layer = std::make_shared<PictureLayer>(SkPoint{0, 0}, std::move(picture));
-
-    SkMatrix sk_matrix = SkMatrix::Translate(0, 0);
-    auto offset_layer = std::make_shared<TransformLayer>(sk_matrix);
-    offset_layer->Add(picture_layer);
-    layer()->Add(offset_layer);
 }
 
 Size2D Label::MeasureSize()
