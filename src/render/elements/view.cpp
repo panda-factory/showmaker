@@ -12,11 +12,6 @@ void View::Paint(PaintContext *context)
 
     canvas->clear(SK_ColorWHITE);
 
-    for(std::size_t i = 0; i < children_.size(); ++i)
-    {
-        PaintChild(children_[i].get(), nullptr);
-    }
-
     canvas->restore();
 }
 

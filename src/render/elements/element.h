@@ -53,7 +53,7 @@ public:
 protected:
     void Draw(SkCanvas* canvas, Drawable* drawable, const Position2D& position);
 
-    void PaintChild(Element* element, PaintContext *context);
+    void PaintChildren(PaintContext *context);
 
     void CompositeChild(Element* element, PaintContext *context);
 

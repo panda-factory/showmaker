@@ -9,6 +9,7 @@ SET(WINDOW_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/render/elements/view.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/layer/container_layer.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/layer/layer.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/render/layer/offset_layer.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/layer/picture_layer.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/layer/transform_layer.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/layout/column.cpp

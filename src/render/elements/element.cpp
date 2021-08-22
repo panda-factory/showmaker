@@ -20,6 +20,8 @@ void Element::OnPaint()
     layer_ = layer;
     auto paint_context = std::make_unique<PaintContext>(SkRect({500, 500}), layer_.get());
     Paint(paint_context.get());
+
+    PaintChildren(paint_context.get());
 }
 
 void Element::Draw(SkCanvas *canvas, Drawable* drawable, const Position2D& position)
@@ -27,16 +29,19 @@ void Element::Draw(SkCanvas *canvas, Drawable* drawable, const Position2D& posit
     drawable->Draw(canvas, position);
 }
 
-void Element::PaintChild(Element* element, PaintContext *context)
+void Element::PaintChildren(PaintContext *context)
 {
-    CompositeChild(element, context);
+    for(std::size_t i = 0; i < children_.size(); ++i)
+    {
+        CompositeChild(children_[i].get(), context);
+    }
 }
 
-void Element::CompositeChild(Element* element, PaintContext *context)
+void Element::CompositeChild(Element* child, PaintContext *context)
 {
-    element->OnPaint();
+    child->OnPaint();
 
-    layer_->Add(element->layer());
+    layer_->Add(child->layer());
 }
 
 void Element::Adopt(Node *child)

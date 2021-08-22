@@ -5,17 +5,18 @@
 #ifndef XXX_OFFSET_LAYER_H
 #define XXX_OFFSET_LAYER_H
 
+#include "render/layer/container_layer.h"
 
-class OffsetLayer {
+class OffsetLayer : public ContainerLayer {
 public:
     void Paint(SkCanvas* canvas) const override;
 
     void AddToScene(SceneBuilder *,Position2D) override;
 
-    TransformLayer(const SkMatrix& transform);
+    OffsetLayer(const SkPoint& offset);
 
 private:
-
+    SkPoint offset_;
 };
 
 
