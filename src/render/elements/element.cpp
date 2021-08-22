@@ -4,21 +4,20 @@
 
 #include "element.h"
 
-#include "render/layer/transform_layer.h"
+#include "render/layer/offset_layer.h"
 
 Element::Element()
+    : layer_(nullptr)
 {
-    layer_ = std::make_unique<ContainerLayer>();
 }
 
 Element::~Element() = default;
 
 void Element::OnPaint()
 {
-    SkMatrix sk_matrix = SkMatrix::Translate(0, 0);
-    auto layer = std::make_shared<TransformLayer>(sk_matrix);
+    auto layer = std::make_shared<OffsetLayer>(position_.x, position_.y);
     layer_ = layer;
-    auto paint_context = std::make_unique<PaintContext>(SkRect({500, 500}), layer_.get());
+    auto paint_context = std::make_unique<PaintContext>(SkRect::MakeXYWH(0, 0, 10, 10), layer_.get());
     Paint(paint_context.get());
 
     PaintChildren(paint_context.get());

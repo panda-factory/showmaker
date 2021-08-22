@@ -7,10 +7,6 @@
 #include <memory>
 
 #include "render/shape/rectangle.h"
-#include "render/painting/picture_recorder.h"
-#include "render/layer/picture_layer.h"
-#include "render/layer/transform_layer.h"
-#include "render/painting/picture.h"
 
 #include <third-party/skia/include/core/SkGraphics.h>
 
@@ -25,10 +21,10 @@ void Label::Paint(PaintContext *context)
     auto canvas = context->canvas();
     auto rect = std::make_unique<Rectangle>(text_.MeasureSize());
 
-    Element::Draw(canvas, rect.get(), position_);
-    Element::Draw(canvas, &text_, position_);
+    Element::Draw(canvas, rect.get(), {0, 0});
+    Element::Draw(canvas, &text_, {0, 0});
 
-    canvas->restore();
+    canvas->save();
 }
 
 Size2D Label::MeasureSize()

@@ -12,7 +12,7 @@ void View::Paint(PaintContext *context)
 
     canvas->clear(SK_ColorWHITE);
 
-    canvas->restore();
+    canvas->save();
 }
 
 void View::PerformLayout()

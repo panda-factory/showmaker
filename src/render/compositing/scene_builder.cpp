@@ -8,6 +8,7 @@
 
 #include "render/layer/picture_layer.h"
 #include "render/layer/transform_layer.h"
+#include "render/layer/offset_layer.h"
 
 std::unique_ptr<SceneBuilder> SceneBuilder::Create()
 {
@@ -35,8 +36,7 @@ void SceneBuilder::AddPicture(double dx,
 
 void SceneBuilder::PushOffset(double dx, double dy)
 {
-    SkMatrix sk_matrix = SkMatrix::Translate(dx, dy);
-    auto layer = std::make_shared<TransformLayer>(sk_matrix);
+    auto layer = std::make_shared<OffsetLayer>(dx, dy);
     PushLayer(layer);
 }
 

@@ -29,6 +29,7 @@ int main_win32(int argc, char **argv, HINSTANCE hInstance, int show)
     column->AddElement(std::make_unique<Label>("HelloWorld!"));
     column->AddElement(std::make_unique<Label>("Hello!"));
     column->AddElement(std::make_unique<Label>("World!"));
+    column->AddElement(std::make_unique<Label>("guozhenxiong!"));
 
     auto view = std::make_unique<View>();
     view->Adopt(column.get());

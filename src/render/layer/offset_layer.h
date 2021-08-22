@@ -13,7 +13,7 @@ public:
 
     void AddToScene(SceneBuilder *,Position2D) override;
 
-    OffsetLayer(const SkPoint& offset);
+    OffsetLayer(const float x, const float y);
 
 private:
     SkPoint offset_;
