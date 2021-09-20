@@ -64,6 +64,8 @@ protected:
     std::shared_ptr<ContainerLayer> layer_;
 
     Position2D position_;
+
+    SkRect bound_;
 private:
 };
 

@@ -5,6 +5,7 @@
 #include <memory>
 
 #include "window.h"
+#include "task_runner_host.h"
 #include "render/elements/label.h"
 #include "render/elements/view.h"
 #include "render/layout/column.h"
@@ -22,6 +23,12 @@ void OnIdle()
 int main_win32(int argc, char **argv, HINSTANCE hInstance, int show)
 {
     bool idled = false;
+
+    auto task_host = wtf::TaskRunnerHost::Create(
+            "wtf",
+            wtf::TaskRunnerHost::Type::Platform | wtf::TaskRunnerHost::Type::IO |
+                wtf::TaskRunnerHost::Type::UI | wtf::TaskRunnerHost::Type::RASTER);
+
     window.reset(wtf::Window::CreateNativeWindow(hInstance));
     window->Attach();
 

@@ -23,7 +23,7 @@ void Label::Paint(PaintContext *context)
 
     Element::Draw(canvas, rect.get(), {0, 0});
     Element::Draw(canvas, &text_, {0, 0});
-
+    canvas->clipRect({0, 0, 10, 10});
     canvas->save();
 }
 
