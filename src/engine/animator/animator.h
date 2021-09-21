@@ -10,14 +10,21 @@
 #include "vsync_waiter.h"
 
 namespace wtf {
-class Animator {
+class Animator final {
 public:
+    class Delegate {
+    public:
+        virtual void OnAnimatorBeginFrame(fml::TimePoint frame_target_time) = 0;
+    };
+
     void AwaitVsync();
 
-    void BeginFrame();
+    void BeginFrame(const fml::TimePoint& frame_target_time);
 
 private:
     std::unique_ptr<VsyncWaiter> waiter_;
+
+    Delegate* delegate_;
 };
 } // namespace wtf
 

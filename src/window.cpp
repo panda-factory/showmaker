@@ -10,7 +10,7 @@
 #include "render/pipeline/render_pipeline.h"
 
 #include <include/core/SkSurface.h>
-#include <third-party/taskrunner/include/task_runner/task_runner.h>
+
 namespace wtf {
 
 //auto ui_runner = TaskRunner::Create("ui.thread");

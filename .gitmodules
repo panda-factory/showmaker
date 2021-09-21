@@ -1,3 +1,0 @@
-[submodule "third-party/taskrunner"]
-	path = third-party/taskrunner
-	url = https://github.com/panda-factory/taskrunner.git

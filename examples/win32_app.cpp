@@ -5,12 +5,12 @@
 #include <memory>
 
 #include "window.h"
-#include "task_runner_host.h"
+#include "engine/thread_host.h"
 #include "render/elements/label.h"
 #include "render/elements/view.h"
 #include "render/layout/column.h"
 #include <windows.h>
-
+#include "flutter/fml/thread.h"
 namespace {
 
 double fNextTime = -DBL_MAX;
@@ -23,11 +23,6 @@ void OnIdle()
 int main_win32(int argc, char **argv, HINSTANCE hInstance, int show)
 {
     bool idled = false;
-
-    auto task_host = wtf::TaskRunnerHost::Create(
-            "wtf",
-            wtf::TaskRunnerHost::Type::Platform | wtf::TaskRunnerHost::Type::IO |
-                wtf::TaskRunnerHost::Type::UI | wtf::TaskRunnerHost::Type::RASTER);
 
     window.reset(wtf::Window::CreateNativeWindow(hInstance));
     window->Attach();

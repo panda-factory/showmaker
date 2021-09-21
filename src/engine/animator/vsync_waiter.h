@@ -7,17 +7,31 @@
 
 #include <functional>
 
+#include "engine/thread_host.h"
+#include "engine/task_runners.h"
+
+namespace wtf {
 class VsyncWaiter {
 public:
-    void AsyncWaitForVsync();
+    using Invoker = std::function<void(const fml::TimePoint&)>;
+
+    void AsyncWaitForVsync(const Invoker& invoker);
 
     virtual void AwaitVSync() = 0;
 
-    void Invoke();
+    virtual ~VsyncWaiter();
+
+protected:
+    explicit VsyncWaiter(const TaskRunners *task_runners);
+
+    void Invoke(const fml::TimePoint& frame_start_time,
+                const fml::TimePoint& frame_target_time);
 
 private:
-    std::function<void ()> invoker_;
-};
+    Invoker invoker_;
 
+    const TaskRunners *task_runners_;
+};
+} // namespace wtf
 
 #endif //XXX_VSYNC_WAITER_H

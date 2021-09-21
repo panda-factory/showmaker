@@ -7,10 +7,17 @@
 namespace wtf {
 void Animator::AwaitVsync()
 {
-    waiter_->AsyncWaitForVsync();
+    waiter_->AsyncWaitForVsync(
+            [thiz = this](const fml::TimePoint& frame_target_time) {
+                if (thiz) {
+                    thiz->BeginFrame(frame_target_time);
+                }
+            });
 }
 
-void Animator::BeginFrame()
-{}
+void Animator::BeginFrame(const fml::TimePoint& frame_target_time)
+{
+    delegate_->OnAnimatorBeginFrame(frame_target_time);
+}
 
 } // namespace wtf
