@@ -8,17 +8,22 @@
 #include <vector>
 #include "window_context.h"
 #include "layer.h"
-
+#include "engine/engine.h"
 
 class Element;
 namespace wtf {
 
-class Window {
+class Window : public Engine::Delegate{
 public:
     static Window* CreateNativeWindow(void* platformData);
 
+    /// | Engine::Delegate |
+    void OnEngineBeginFrame(fml::TimePoint frame_target_time) override;
+
     virtual bool Attach() = 0;
     virtual void Show() = 0;
+
+    void ScheduleFrame();
 
     void DispatchTask();
 
@@ -59,6 +64,8 @@ private:
     void MarkInvalidProcessed();
 
     void VisitRootElement(std::function<void (Element*)> visitor);
+
+    std::unique_ptr<Engine> engine_;
 };
 } // namespace wtf
 

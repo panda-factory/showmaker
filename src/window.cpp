@@ -15,10 +15,24 @@ namespace wtf {
 
 //auto ui_runner = TaskRunner::Create("ui.thread");
 
-Window::Window() = default;
+Window::Window()
+{
+    engine_ = Engine::Create(*this);
+}
 
 Window::~Window()
 { }
+
+/// | Engine::Delegate |
+void Window::OnEngineBeginFrame(fml::TimePoint frame_target_time)
+{
+    OnPaint();
+}
+
+void Window::ScheduleFrame()
+{
+    engine_->ScheduleFrame();
+}
 
 void Window::DispatchTask()
 {}
@@ -46,6 +60,7 @@ void Window::OnPaint() {
     if (!window_context_) {
         return;
     }
+    window_context_->MakeCurrent();
     if (!is_active) {
         return;
     }

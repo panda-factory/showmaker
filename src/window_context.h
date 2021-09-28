@@ -21,6 +21,8 @@ public:
 
     virtual bool IsValid() = 0;
 
+    virtual int MakeCurrent() = 0;
+
     virtual void SwapBuffers() = 0;
 
     const DisplayParams& GetDisplayParams() { return display_params_; }

@@ -29,7 +29,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wparam, LPARAM lparam)
     switch (message) {
         case WM_PAINT:
             hdc = BeginPaint(hWnd, &ps);
-            window->OnPaint();
+            //window->OnPaint();
             EndPaint(hWnd, &ps);
             eventHandled = true;
             break;

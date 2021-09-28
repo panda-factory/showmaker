@@ -7,17 +7,34 @@
 
 #include "thread_host.h"
 #include "task_runners.h"
+#include "animator/animator.h"
 
 namespace wtf {
-class Engine {
+class Engine : public Animator::Delegate {
 public:
-    static std::unique_ptr<Engine> Create();
+    class Delegate {
+    public:
+        virtual void OnEngineBeginFrame(fml::TimePoint frame_target_time) = 0;
+    };
+
+    static std::unique_ptr<Engine> Create(Delegate& delegate);
+
+    /// | Animator::Delegate |
+    void OnAnimatorBeginFrame(fml::TimePoint frame_target_time) override;
+
+    void BeginFrame(fml::TimePoint frame_target_time);
+
+    void ScheduleFrame();
 
 private:
-    Engine();
+    Engine(Delegate& delegate,
+           std::unique_ptr<ThreadHost> thread_host,
+           std::unique_ptr<TaskRunners> task_runners);
 
+    Delegate& delegate_;
     std::unique_ptr<ThreadHost> thread_host_;
     std::unique_ptr<TaskRunners> task_runners_;
+    std::unique_ptr<Animator> animator_;
 };
 } // namespace wtf
 

@@ -5,12 +5,11 @@
 #include <memory>
 
 #include "window.h"
-#include "engine/thread_host.h"
+#include "engine/engine.h"
 #include "render/elements/label.h"
 #include "render/elements/view.h"
 #include "render/layout/column.h"
 #include <windows.h>
-#include "flutter/fml/thread.h"
 namespace {
 
 double fNextTime = -DBL_MAX;
@@ -39,6 +38,8 @@ int main_win32(int argc, char **argv, HINSTANCE hInstance, int show)
     window->element_ = std::move(view);
 
     window->Show();
+
+    window->ScheduleFrame();
 
     MSG msg;
     memset(&msg, 0, sizeof(msg));

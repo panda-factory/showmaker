@@ -23,6 +23,8 @@ public:
 
     AngleGLWindowContext(HWND wnd, const DisplayParams &params);
 
+    int MakeCurrent() override;
+
 protected:
 
     int CreateSurface() override;
@@ -36,8 +38,9 @@ protected:
     void OnSwapBuffers() override;
 
 private:
-    int MakeCurrent();
+
     EGLDisplay InitializeEGLDisplay(HDC hdc);
+
     bool InitializeEGL(
             PFNEGLGETPLATFORMDISPLAYEXTPROC egl_get_platform_display_EXT,
             const EGLint *config);

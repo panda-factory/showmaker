@@ -36,6 +36,5 @@ void VsyncWaiterWin32::AwaitVSync()
             SnapToNextTick(fml::TimePoint::Now(), phase_, kSingleFrameInterval);
 
     Invoke(next, next + kSingleFrameInterval);
-    //Invoke();
 }
 } // namespace wtf
