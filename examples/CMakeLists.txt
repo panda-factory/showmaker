@@ -12,7 +12,7 @@ ENDIF()
 TARGET_INCLUDE_DIRECTORIES(win32_app PRIVATE
     ${PROJECT_ROOT_PATH}/include
     ${PROJECT_ROOT_PATH}/src
-    ${PROJECT_ROOT_PATH}/third-party/skia
+    ${PROJECT_ROOT_PATH}/third_party/skia
     )
 
 TARGET_LINK_LIBRARIES(win32_app PRIVATE window)

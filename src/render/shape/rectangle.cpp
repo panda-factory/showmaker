@@ -6,7 +6,7 @@
 
 #include "render/canvas_scope.h"
 
-#include <third-party/skia/include/core/SkRRect.h>
+#include <third_party/skia/include/core/SkRRect.h>
 
 
 Rectangle::Rectangle(const Size2D& size)

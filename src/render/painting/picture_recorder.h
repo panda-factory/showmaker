@@ -7,7 +7,7 @@
 
 #include "render/painting/picture.h"
 
-#include <third-party/skia/include/core/SkPictureRecorder.h>
+#include <third_party/skia/include/core/SkPictureRecorder.h>
 class PictureRecorder {
 public:
     SkCanvas* BeginRecording(SkRect bounds);

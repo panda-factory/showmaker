@@ -9,7 +9,7 @@
 
 #include "render/clipping_box.h"
 
-#include <third-party/skia/include/core/SkCanvas.h>
+#include <third_party/skia/include/core/SkCanvas.h>
 
 struct CanvasScope {
     CanvasScope(SkCanvas* canvas, const std::optional<ClippingBox>& clipping_box);

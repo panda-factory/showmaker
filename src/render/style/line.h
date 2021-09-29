@@ -5,7 +5,7 @@
 #ifndef XXX_LINE_H
 #define XXX_LINE_H
 
-#include <third-party/skia/include/core/SkScalar.h>
+#include <third_party/skia/include/core/SkScalar.h>
 
 struct Line {
     SkScalar thickness = 0;

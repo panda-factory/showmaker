@@ -4,9 +4,9 @@
 
 #include "gl_window_context.h"
 
-#include "third-party/skia/include/core/SkCanvas.h"
-#include "third-party/skia/include/gpu/GrBackendSurface.h"
-#include "third-party/skia/include/gpu/GrDirectContext.h"
+#include "third_party/skia/include/core/SkCanvas.h"
+#include "third_party/skia/include/gpu/GrBackendSurface.h"
+#include "third_party/skia/include/gpu/GrDirectContext.h"
 
 namespace wtf {
 #define GPU_GL_RGBA8 0x8058

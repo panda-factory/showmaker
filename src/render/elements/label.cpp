@@ -8,7 +8,7 @@
 
 #include "render/shape/rectangle.h"
 
-#include <third-party/skia/include/core/SkGraphics.h>
+#include <third_party/skia/include/core/SkGraphics.h>
 
 Label::Label(const std::string& text)
     :text_(text)

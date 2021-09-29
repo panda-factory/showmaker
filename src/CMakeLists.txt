@@ -55,10 +55,10 @@ endif()
 TARGET_INCLUDE_DIRECTORIES(window PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${PROJECT_ROOT_PATH}
-    ${PROJECT_ROOT_PATH}/third-party/angle/include
-    ${PROJECT_ROOT_PATH}/third-party/skia
-    ${PROJECT_ROOT_PATH}/third-party)
+    ${PROJECT_ROOT_PATH}/third_party/angle/include
+    ${PROJECT_ROOT_PATH}/third_party/skia
+    ${PROJECT_ROOT_PATH}/third_party)
 
-TARGET_LINK_DIRECTORIES(window PUBLIC ${PROJECT_ROOT_PATH}/third-party/angle/libs)
-TARGET_LINK_DIRECTORIES(window PUBLIC ${PROJECT_ROOT_PATH}/third-party/skia/libs)
+TARGET_LINK_DIRECTORIES(window PUBLIC ${PROJECT_ROOT_PATH}/third_party/angle/libs)
+TARGET_LINK_DIRECTORIES(window PUBLIC ${PROJECT_ROOT_PATH}/third_party/skia/libs)
 TARGET_LINK_LIBRARIES(window PRIVATE libEGL.dll.lib libGLESv2.dll.lib skia.dll.lib skshaper.dll.lib ext_convertUTF engine)

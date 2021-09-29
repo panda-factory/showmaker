@@ -7,8 +7,8 @@
 
 #include "render/position2d.h"
 
-#include <third-party/skia/include/core/SkPicture.h>
-#include <third-party/skia/include/core/SkCanvas.h>
+#include <third_party/skia/include/core/SkPicture.h>
+#include <third_party/skia/include/core/SkCanvas.h>
 
 class SceneBuilder;
 

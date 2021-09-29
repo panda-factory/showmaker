@@ -5,9 +5,9 @@
 #ifndef XXX_DISPLAY_PARAMS_H
 #define XXX_DISPLAY_PARAMS_H
 
-#include "third-party/skia/include/core/SkImageInfo.h"
-#include "third-party/skia/include/core/SkSurfaceProps.h"
-#include "third-party/skia/include/gpu/GrContextOptions.h"
+#include "third_party/skia/include/core/SkImageInfo.h"
+#include "third_party/skia/include/core/SkSurfaceProps.h"
+#include "third_party/skia/include/gpu/GrContextOptions.h"
 
 namespace wtf {
 struct DisplayParams {

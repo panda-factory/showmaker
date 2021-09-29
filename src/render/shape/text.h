@@ -8,7 +8,7 @@
 #include "render/shape.h"
 #include "render/size.h"
 
-#include <third-party/skia/include/core/SkFont.h>
+#include <third_party/skia/include/core/SkFont.h>
 
 class Text : public Shape {
 public:

@@ -7,7 +7,7 @@
 
 #include <memory>
 
-#include <third-party/skia/include/core/SkPicture.h>
+#include <third_party/skia/include/core/SkPicture.h>
 
 class Picture {
 public:

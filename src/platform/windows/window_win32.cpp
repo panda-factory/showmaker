@@ -7,7 +7,7 @@
 #include <tchar.h>
 
 #include "angle_gl_window_context.h"
-#include <third-party/ConvertUTF/UTF8.h>
+#include <third_party/ConvertUTF/UTF8.h>
 namespace wtf {
 
 namespace {

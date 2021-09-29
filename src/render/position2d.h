@@ -5,7 +5,7 @@
 #ifndef XXX_POSITION2D_H
 #define XXX_POSITION2D_H
 
-#include "third-party/skia/include/core/SkScalar.h"
+#include "third_party/skia/include/core/SkScalar.h"
 
 struct Position2D {
     SkScalar x;

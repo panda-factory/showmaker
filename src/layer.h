@@ -5,11 +5,11 @@
 #ifndef XXX_WTF_LAYER_H
 #define XXX_WTF_LAYER_H
 
-#include "third-party/skia/include/core/SkSurface.h"
-#include "third-party/skia/include/core/SkRect.h"
-#include "third-party/skia/include/core/SkTypes.h"
-#include "third-party/skia/include/core/SkString.h"
-#include "third-party/skia/include/private/SkTDArray.h"
+#include "third_party/skia/include/core/SkSurface.h"
+#include "third_party/skia/include/core/SkRect.h"
+#include "third_party/skia/include/core/SkTypes.h"
+#include "third_party/skia/include/core/SkString.h"
+#include "third_party/skia/include/private/SkTDArray.h"
 
 namespace wtf {
 class Window;
