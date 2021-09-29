@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-08-18.
 //
 
-#ifndef XXX_PICTURE_LAYER_H
-#define XXX_PICTURE_LAYER_H
+#ifndef STRUGGLE_PICTURE_LAYER_H
+#define STRUGGLE_PICTURE_LAYER_H
 
 #include "render/layer/layer.h"
 
@@ -29,4 +29,4 @@ private:
 };
 
 
-#endif //XXX_PICTURE_LAYER_H
+#endif //STRUGGLE_PICTURE_LAYER_H

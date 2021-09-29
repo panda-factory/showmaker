@@ -4,7 +4,7 @@
 
 #include "engine.h"
 #include "animator/platform/win32/vsync_waiter_win32.h"
-namespace wtf {
+namespace strg {
 
 // | static |
 std::unique_ptr<Engine> Engine::Create(Delegate& delegate)
@@ -52,4 +52,4 @@ void Engine::ScheduleFrame()
     animator_->RequestFrame();
 }
 
-} // namespace wtf
+} // namespace strg

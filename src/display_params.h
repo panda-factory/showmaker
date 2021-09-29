@@ -2,14 +2,14 @@
 // Created by guozhenxiong on 2021-07-22.
 //
 
-#ifndef XXX_DISPLAY_PARAMS_H
-#define XXX_DISPLAY_PARAMS_H
+#ifndef STRUGGLE_DISPLAY_PARAMS_H
+#define STRUGGLE_DISPLAY_PARAMS_H
 
 #include "third_party/skia/include/core/SkImageInfo.h"
 #include "third_party/skia/include/core/SkSurfaceProps.h"
 #include "third_party/skia/include/gpu/GrContextOptions.h"
 
-namespace wtf {
+namespace strg {
 struct DisplayParams {
     DisplayParams()
             : fColorType(kN32_SkColorType)
@@ -30,6 +30,6 @@ struct DisplayParams {
     bool                fDelayDrawableAcquisition;
     bool                fEnableBinaryArchive;
 };
-} // namespace wtf
+} // namespace strg
 
-#endif //XXX_DISPLAY_PARAMS_H
+#endif //STRUGGLE_DISPLAY_PARAMS_H

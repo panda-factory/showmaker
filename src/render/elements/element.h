@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-08-04.
 //
 
-#ifndef XXX_ELEMENT_H
-#define XXX_ELEMENT_H
+#ifndef STRUGGLE_ELEMENT_H
+#define STRUGGLE_ELEMENT_H
 
 #include <vector>
 
@@ -70,4 +70,4 @@ private:
 };
 
 
-#endif //XXX_ELEMENT_H
+#endif //STRUGGLE_ELEMENT_H

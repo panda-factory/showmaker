@@ -11,7 +11,7 @@
 #include "engine/engine.h"
 
 class Element;
-namespace wtf {
+namespace strg {
 
 class Window : public Engine::Delegate{
 public:
@@ -67,6 +67,6 @@ private:
 
     std::unique_ptr<Engine> engine_;
 };
-} // namespace wtf
+} // namespace strg
 
 #endif //WTF_WINDOW_H

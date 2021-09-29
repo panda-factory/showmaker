@@ -4,7 +4,7 @@
 
 #include "vsync_waiter.h"
 
-namespace wtf {
+namespace strg {
 VsyncWaiter::VsyncWaiter(const TaskRunners *task_runners)
   : task_runners_(task_runners)
 {}
@@ -40,4 +40,4 @@ void VsyncWaiter::Invoke(const fml::TimePoint& frame_start_time,
                 frame_start_time);
     }
 }
-} // namespace wtf
+} // namespace strg

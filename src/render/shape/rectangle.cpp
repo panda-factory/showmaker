@@ -8,12 +8,12 @@
 
 #include <third_party/skia/include/core/SkRRect.h>
 
-
-Rectangle::Rectangle(const Size2D& size)
-    : size_(size)
+namespace strg {
+Rectangle::Rectangle(const Size2D &size)
+        : size_(size)
 {}
 
-void Rectangle::Draw(SkCanvas* canvas, const Position2D& position)
+void Rectangle::Draw(SkCanvas *canvas, const Position2D &position)
 {
     SkAutoCanvasRestore acr(canvas, true);
 
@@ -24,3 +24,4 @@ void Rectangle::Draw(SkCanvas* canvas, const Position2D& position)
     canvas->drawRect(fill_rect, selection);
 
 }
+} // namespace strg

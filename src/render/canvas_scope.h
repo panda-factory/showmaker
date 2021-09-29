@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-08-07.
 //
 
-#ifndef XXX_CANVAS_SCOPE_H
-#define XXX_CANVAS_SCOPE_H
+#ifndef STRUGGLE_CANVAS_SCOPE_H
+#define STRUGGLE_CANVAS_SCOPE_H
 
 #include <optional>
 
@@ -18,4 +18,4 @@ struct CanvasScope {
 };
 
 
-#endif //XXX_CANVAS_SCOPE_H
+#endif //STRUGGLE_CANVAS_SCOPE_H

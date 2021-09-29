@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-08-07.
 //
 
-#ifndef XXX_LINE_H
-#define XXX_LINE_H
+#ifndef STRUGGLE_LINE_H
+#define STRUGGLE_LINE_H
 
 #include <third_party/skia/include/core/SkScalar.h>
 
@@ -12,4 +12,4 @@ struct Line {
 };
 
 
-#endif //XXX_LINE_H
+#endif //STRUGGLE_LINE_H

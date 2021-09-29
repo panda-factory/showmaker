@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-08-21.
 //
 
-#ifndef XXX_VIEW_H
-#define XXX_VIEW_H
+#ifndef STRUGGLE_VIEW_H
+#define STRUGGLE_VIEW_H
 
 #include "element.h"
 
@@ -17,4 +17,4 @@ public:
 };
 
 
-#endif //XXX_VIEW_H
+#endif //STRUGGLE_VIEW_H

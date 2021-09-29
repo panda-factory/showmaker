@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-08-22.
 //
 
-#ifndef XXX_PAINT_CONTEXT_H
-#define XXX_PAINT_CONTEXT_H
+#ifndef STRUGGLE_PAINT_CONTEXT_H
+#define STRUGGLE_PAINT_CONTEXT_H
 
 #include "render/painting/picture_recorder.h"
 #include "render/layer/container_layer.h"
@@ -31,4 +31,4 @@ private:
 };
 
 
-#endif //XXX_PAINT_CONTEXT_H
+#endif //STRUGGLE_PAINT_CONTEXT_H

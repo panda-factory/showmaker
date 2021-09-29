@@ -3,5 +3,5 @@
 //
 
 #include "layer.h"
-namespace wtf {
-} // namespace wtf
+namespace strg {
+} // namespace strg

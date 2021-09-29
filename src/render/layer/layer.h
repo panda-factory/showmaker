@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-08-18.
 //
 
-#ifndef XXX_LAYER_H
-#define XXX_LAYER_H
+#ifndef STRUGGLE_LAYER_H
+#define STRUGGLE_LAYER_H
 
 #include "render/position2d.h"
 
@@ -22,4 +22,4 @@ public:
 };
 
 
-#endif //XXX_LAYER_H
+#endif //STRUGGLE_LAYER_H

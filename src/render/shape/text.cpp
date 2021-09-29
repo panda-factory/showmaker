@@ -8,11 +8,12 @@
 
 #include <include/core/SkFontMetrics.h>
 
-Text::Text(const std::string& text)
-    : text_(text)
+namespace strg {
+Text::Text(const std::string &text)
+        : text_(text)
 {}
 
-void Text::Draw(SkCanvas* canvas, const Position2D& position)
+void Text::Draw(SkCanvas *canvas, const Position2D &position)
 {
     SkAutoCanvasRestore acr(canvas, true);
     SkPaint paint;
@@ -45,11 +46,12 @@ Size2D Text::MeasureSize()
 
     SkRect bounds;
     const SkScalar width = font_.measureText(text_.c_str(),
-                                            text_.size(),
-                                            SkTextEncoding::kUTF8,
-                                            &bounds,
-                                            &paint);
+                                             text_.size(),
+                                             SkTextEncoding::kUTF8,
+                                             &bounds,
+                                             &paint);
     const SkScalar height = std::abs(metrics.fAscent - metrics.fDescent);
 
     return {width, height};
 }
+} // namespace strg

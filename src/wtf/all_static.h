@@ -2,12 +2,12 @@
 // Created by guozhenxiong on 2021-08-20.
 //
 
-#ifndef XXX_ALL_STATIC_H
-#define XXX_ALL_STATIC_H
+#ifndef STRUGGLE_ALL_STATIC_H
+#define STRUGGLE_ALL_STATIC_H
 
 class AllStatic {
 private:
     AllStatic() = delete;
 };
 
-#endif //XXX_ALL_STATIC_H
+#endif //STRUGGLE_ALL_STATIC_H

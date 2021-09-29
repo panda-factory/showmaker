@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-08-18.
 //
 
-#ifndef XXX_PICTURE_RECORDER_H
-#define XXX_PICTURE_RECORDER_H
+#ifndef STRUGGLE_PICTURE_RECORDER_H
+#define STRUGGLE_PICTURE_RECORDER_H
 
 #include "render/painting/picture.h"
 
@@ -19,4 +19,4 @@ private:
 };
 
 
-#endif //XXX_PICTURE_RECORDER_H
+#endif //STRUGGLE_PICTURE_RECORDER_H

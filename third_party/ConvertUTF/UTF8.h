@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-07-30.
 //
 
-#ifndef XXX_UTF8_H
-#define XXX_UTF8_H
+#ifndef STRUGGLE_UTF8_H
+#define STRUGGLE_UTF8_H
 
 #include <string>
 
@@ -20,4 +20,4 @@ public:
 };
 
 
-#endif //XXX_UTF8_H
+#endif //STRUGGLE_UTF8_H

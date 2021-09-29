@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-08-18.
 //
 
-#ifndef XXX_CONTAINER_LAYER_H
-#define XXX_CONTAINER_LAYER_H
+#ifndef STRUGGLE_CONTAINER_LAYER_H
+#define STRUGGLE_CONTAINER_LAYER_H
 
 #include <vector>
 
@@ -31,4 +31,4 @@ private:
 };
 
 
-#endif //XXX_CONTAINER_LAYER_H
+#endif //STRUGGLE_CONTAINER_LAYER_H

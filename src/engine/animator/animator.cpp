@@ -4,7 +4,7 @@
 
 #include "animator.h"
 
-namespace wtf {
+namespace strg {
 
 Animator::Animator(Delegate& delegate,
                    TaskRunners* task_runners,
@@ -38,4 +38,4 @@ void Animator::RequestFrame()
             });
 }
 
-} // namespace wtf
+} // namespace strg

@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-08-20.
 //
 
-#ifndef XXX_NODE_H
-#define XXX_NODE_H
+#ifndef STRUGGLE_NODE_H
+#define STRUGGLE_NODE_H
 
 #include <vector>
 
@@ -26,4 +26,4 @@ private:
 };
 
 
-#endif //XXX_NODE_H
+#endif //STRUGGLE_NODE_H

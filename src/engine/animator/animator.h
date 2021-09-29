@@ -2,14 +2,14 @@
 // Created by guozhenxiong on 2021-09-18.
 //
 
-#ifndef XXX_ANIMATOR_H
-#define XXX_ANIMATOR_H
+#ifndef STRUGGLE_ANIMATOR_H
+#define STRUGGLE_ANIMATOR_H
 
 #include <memory>
 
 #include "vsync_waiter.h"
 
-namespace wtf {
+namespace strg {
 class Animator final {
 public:
     class Delegate {
@@ -34,6 +34,6 @@ private:
 
     std::unique_ptr<VsyncWaiter> waiter_;
 };
-} // namespace wtf
+} // namespace strg
 
-#endif //XXX_ANIMATOR_H
+#endif //STRUGGLE_ANIMATOR_H

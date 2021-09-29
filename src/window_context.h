@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-07-22.
 //
 
-#ifndef XXX_WINDOW_CONTEXT_H
-#define XXX_WINDOW_CONTEXT_H
+#ifndef STRUGGLE_WINDOW_CONTEXT_H
+#define STRUGGLE_WINDOW_CONTEXT_H
 
 #include "display_params.h"
 #include "include/core/SkSurfaceProps.h"
@@ -14,7 +14,7 @@
 class GrDirectContext;
 class SkSurface;
 
-namespace wtf {
+namespace strg {
 class WindowContext {
 public:
     virtual sk_sp<SkSurface> GetBackbufferSurface() = 0;
@@ -28,6 +28,7 @@ public:
     const DisplayParams& GetDisplayParams() { return display_params_; }
 
     inline int width() const { return width_; }
+
     inline int height() const { return height_; }
 
     WindowContext(const DisplayParams&);
@@ -42,6 +43,6 @@ protected:
     int sample_count_;
     int stencil_bits_;
 };
-} // namespace wtf
+} // namespace strg
 
-#endif //XXX_WINDOW_CONTEXT_H
+#endif //STRUGGLE_WINDOW_CONTEXT_H

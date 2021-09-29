@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-08-07.
 //
 
-#ifndef XXX_BORDER_H
-#define XXX_BORDER_H
+#ifndef STRUGGLE_BORDER_H
+#define STRUGGLE_BORDER_H
 
 #include "render/style/line.h"
 
@@ -12,4 +12,4 @@ struct Border : public Line {
 };
 
 
-#endif //XXX_BORDER_H
+#endif //STRUGGLE_BORDER_H

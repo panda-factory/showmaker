@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-08-04.
 //
 
-#ifndef XXX_DRAWABLE_H
-#define XXX_DRAWABLE_H
+#ifndef STRUGGLE_DRAWABLE_H
+#define STRUGGLE_DRAWABLE_H
 
 #include "render/position2d.h"
 
@@ -15,4 +15,4 @@ public:
 };
 
 
-#endif //XXX_DRAWABLE_H
+#endif //STRUGGLE_DRAWABLE_H

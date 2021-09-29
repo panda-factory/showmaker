@@ -2,10 +2,10 @@
 // Created by guozhenxiong on 2021-07-21.
 //
 
-#ifndef XXX_APPLICATION_H
-#define XXX_APPLICATION_H
+#ifndef STRUGGLE_APPLICATION_H
+#define STRUGGLE_APPLICATION_H
 
-namespace wtf {
+namespace strg {
 class Application {
 public:
     static Application *Create(int argc, char **argv, void *platformData);
@@ -13,6 +13,6 @@ public:
     virtual ~Application()
     {}
 };
-} // namespace wtf
+} // namespace strg
 
-#endif //XXX_APPLICATION_H
+#endif //STRUGGLE_APPLICATION_H

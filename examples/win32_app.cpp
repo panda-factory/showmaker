@@ -13,7 +13,7 @@
 namespace {
 
 double fNextTime = -DBL_MAX;
-std::unique_ptr<wtf::Window> window;
+std::unique_ptr<strg::Window> window;
 
 void OnIdle()
 {
@@ -23,14 +23,14 @@ int main_win32(int argc, char **argv, HINSTANCE hInstance, int show)
 {
     bool idled = false;
 
-    window.reset(wtf::Window::CreateNativeWindow(hInstance));
+    window.reset(strg::Window::CreateNativeWindow(hInstance));
     window->Attach();
 
     auto column = std::make_unique<Column>();
-    column->AddElement(std::make_unique<Label>("HelloWorld!"));
-    column->AddElement(std::make_unique<Label>("Hello!"));
-    column->AddElement(std::make_unique<Label>("World!"));
-    column->AddElement(std::make_unique<Label>("guozhenxiong!"));
+    column->AddElement(std::make_unique<strg::Label>("HelloWorld!"));
+    column->AddElement(std::make_unique<strg::Label>("Hello!"));
+    column->AddElement(std::make_unique<strg::Label>("World!"));
+    column->AddElement(std::make_unique<strg::Label>("guozhenxiong!"));
 
     auto view = std::make_unique<View>();
     view->Adopt(column.get());

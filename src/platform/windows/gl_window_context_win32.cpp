@@ -3,7 +3,7 @@
 //
 
 #include "gl_window_context_win32.h"
-namespace wtf {
+namespace strg {
 
 GLWindowContextWin32::GLWindowContextWin32(HWND wnd, const DisplayParams& params)
         : INHERITED(params)
@@ -95,4 +95,4 @@ void GLWindowContextWin32::OnSwapBuffers() {
     SwapBuffers(dc);
     ReleaseDC((HWND)fHWND, dc);
 }
-} // namespace wtf
+} // namespace strg

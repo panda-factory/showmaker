@@ -9,7 +9,7 @@
 
 #include <windows.h>
 
-namespace wtf {
+namespace strg {
 class WindowWin32 : public Window {
 public:
 
@@ -30,6 +30,6 @@ private:
     HWND        hWnd_;
 
 };
-} // namespace wtf
+} // namespace strg
 
 #endif //WTF_WINDOW_WIN32_H

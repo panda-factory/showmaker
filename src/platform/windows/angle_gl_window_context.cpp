@@ -8,11 +8,8 @@
 #include "third_party/skia/include/core/SkCanvas.h"
 #include "third_party/skia/include/gpu/GrBackendSurface.h"
 #include "third_party/skia/include/gpu/GrDirectContext.h"
-#include "include/gpu/gl/GrGLInterface.h"
-#include "include/core/SkRefCnt.h"
-#include "include/core/SkSurface.h"
 
-namespace wtf {
+namespace strg {
 namespace {
 static void LogEglError(std::string message)
 {
@@ -214,4 +211,4 @@ void AngleGLWindowContext::OnSwapBuffers() {
     }
 }
 
-} // namespace wtf
+} // namespace strg

@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-08-18.
 //
 
-#ifndef XXX_TANSFORM_LAYER_H
-#define XXX_TANSFORM_LAYER_H
+#ifndef STRUGGLE_TANSFORM_LAYER_H
+#define STRUGGLE_TANSFORM_LAYER_H
 
 #include "render/layer/container_layer.h"
 
@@ -20,4 +20,4 @@ private:
 };
 
 
-#endif //XXX_TANSFORM_LAYER_H
+#endif //STRUGGLE_TANSFORM_LAYER_H

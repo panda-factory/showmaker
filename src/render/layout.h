@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-08-04.
 //
 
-#ifndef XXX_LAYOUT_H
-#define XXX_LAYOUT_H
+#ifndef STRUGGLE_LAYOUT_H
+#define STRUGGLE_LAYOUT_H
 
 #include <vector>
 #include <memory>
@@ -22,4 +22,4 @@ private:
 };
 
 
-#endif //XXX_LAYOUT_H
+#endif //STRUGGLE_LAYOUT_H

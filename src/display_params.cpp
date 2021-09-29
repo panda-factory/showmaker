@@ -3,6 +3,6 @@
 //
 
 #include "display_params.h"
-namespace wtf {
+namespace strg {
 
-} // namespace wtf
+} // namespace strg

@@ -2,14 +2,14 @@
 // Created by guozhenxiong on 2021-09-21.
 //
 
-#ifndef XXX_ENGINE_H
-#define XXX_ENGINE_H
+#ifndef STRUGGLE_ENGINE_H
+#define STRUGGLE_ENGINE_H
 
 #include "thread_host.h"
 #include "task_runners.h"
 #include "animator/animator.h"
 
-namespace wtf {
+namespace strg {
 class Engine : public Animator::Delegate {
 public:
     class Delegate {
@@ -36,6 +36,6 @@ private:
     std::unique_ptr<TaskRunners> task_runners_;
     std::unique_ptr<Animator> animator_;
 };
-} // namespace wtf
+} // namespace strg
 
-#endif //XXX_ENGINE_H
+#endif //STRUGGLE_ENGINE_H

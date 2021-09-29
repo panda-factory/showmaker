@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-08-22.
 //
 
-#ifndef XXX_OFFSET_LAYER_H
-#define XXX_OFFSET_LAYER_H
+#ifndef STRUGGLE_OFFSET_LAYER_H
+#define STRUGGLE_OFFSET_LAYER_H
 
 #include "render/layer/container_layer.h"
 
@@ -20,4 +20,4 @@ private:
 };
 
 
-#endif //XXX_OFFSET_LAYER_H
+#endif //STRUGGLE_OFFSET_LAYER_H

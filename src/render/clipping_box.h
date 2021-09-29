@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-08-07.
 //
 
-#ifndef XXX_CLIPPING_BOX_H
-#define XXX_CLIPPING_BOX_H
+#ifndef STRUGGLE_CLIPPING_BOX_H
+#define STRUGGLE_CLIPPING_BOX_H
 
 #include "render/position2d.h"
 #include "render/size.h"
@@ -14,4 +14,4 @@ struct ClippingBox {
 };
 
 
-#endif //XXX_CLIPPING_BOX_H
+#endif //STRUGGLE_CLIPPING_BOX_H

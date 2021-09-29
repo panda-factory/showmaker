@@ -2,12 +2,12 @@
 // Created by guozhenxiong on 2021-09-20.
 //
 
-#ifndef XXX_VSYNC_WAITER_WIN32_H
-#define XXX_VSYNC_WAITER_WIN32_H
+#ifndef STRUGGLE_VSYNC_WAITER_WIN32_H
+#define STRUGGLE_VSYNC_WAITER_WIN32_H
 
 #include "vsync_waiter.h"
 
-namespace wtf {
+namespace strg {
 class VsyncWaiterWin32 : public VsyncWaiter {
 public:
     // | VsyncWaiter |
@@ -20,6 +20,6 @@ public:
 private:
     fml::TimePoint phase_;
 };
-} // namespace wtf
+} // namespace strg
 
-#endif //XXX_VSYNC_WAITER_WIN32_H
+#endif //STRUGGLE_VSYNC_WAITER_WIN32_H

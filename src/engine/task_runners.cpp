@@ -4,7 +4,7 @@
 
 #include "task_runners.h"
 
-namespace wtf {
+namespace strg {
 TaskRunners::TaskRunners(std::string label,
                          fml::RefPtr<fml::TaskRunner> platform,
                          fml::RefPtr<fml::TaskRunner> raster,
@@ -50,4 +50,4 @@ bool TaskRunners::IsValid() const
 {
     return platform_ && raster_ && ui_ && io_;
 }
-} // namespace wtf
+} // namespace strg

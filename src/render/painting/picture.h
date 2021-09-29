@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-08-18.
 //
 
-#ifndef XXX_PICTURE_H
-#define XXX_PICTURE_H
+#ifndef STRUGGLE_PICTURE_H
+#define STRUGGLE_PICTURE_H
 
 #include <memory>
 
@@ -27,4 +27,4 @@ private:
 };
 
 
-#endif //XXX_PICTURE_H
+#endif //STRUGGLE_PICTURE_H

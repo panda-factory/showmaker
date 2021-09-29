@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-07-24.
 //
 
-#ifndef XXX_WTF_LAYER_H
-#define XXX_WTF_LAYER_H
+#ifndef STRUGGLE_WTF_LAYER_H
+#define STRUGGLE_WTF_LAYER_H
 
 #include "third_party/skia/include/core/SkSurface.h"
 #include "third_party/skia/include/core/SkRect.h"
@@ -11,7 +11,7 @@
 #include "third_party/skia/include/core/SkString.h"
 #include "third_party/skia/include/private/SkTDArray.h"
 
-namespace wtf {
+namespace strg {
 class Window;
 class Layer {
 public:
@@ -34,6 +34,6 @@ private:
     friend class Window;
     bool active_;
 };
-} // namespace wtf
+} // namespace strg
 
-#endif //XXX_LAYER_H
+#endif //STRUGGLE_LAYER_H

@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-08-18.
 //
 
-#ifndef XXX_SCENE_BUILDER_H
-#define XXX_SCENE_BUILDER_H
+#ifndef STRUGGLE_SCENE_BUILDER_H
+#define STRUGGLE_SCENE_BUILDER_H
 
 #include <memory>
 
@@ -37,4 +37,4 @@ private:
 };
 
 
-#endif //XXX_SCENE_BUILDER_H
+#endif //STRUGGLE_SCENE_BUILDER_H

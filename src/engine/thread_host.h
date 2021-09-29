@@ -2,15 +2,15 @@
 // Created by guozhenxiong on 2021-09-18.
 //
 
-#ifndef XXX_THREAD_HOST_H
-#define XXX_THREAD_HOST_H
+#ifndef STRUGGLE_THREAD_HOST_H
+#define STRUGGLE_THREAD_HOST_H
 
 #include <memory>
 #include <string>
 
 #include "flutter/fml/thread.h"
 
-namespace wtf {
+namespace strg {
 
 class ThreadHost {
 public:
@@ -45,6 +45,6 @@ private:
     std::unique_ptr<fml::Thread> io_thread_;
     std::unique_ptr<fml::Thread> profiler_thread_;
 };
-} // namespace wtf
+} // namespace strg
 
-#endif //XXX_THREAD_HOST_H
+#endif //STRUGGLE_THREAD_HOST_H

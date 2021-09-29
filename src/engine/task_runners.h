@@ -2,12 +2,12 @@
 // Created by guozhenxiong on 2021-09-21.
 //
 
-#ifndef XXX_TASK_RUNNERS_H
-#define XXX_TASK_RUNNERS_H
+#ifndef STRUGGLE_TASK_RUNNERS_H
+#define STRUGGLE_TASK_RUNNERS_H
 
 #include <flutter/fml/task_runner.h>
 
-namespace wtf {
+namespace strg {
 
 class TaskRunners {
 public:
@@ -42,4 +42,4 @@ private:
 };
 }
 
-#endif //XXX_TASK_RUNNERS_H
+#endif //STRUGGLE_TASK_RUNNERS_H

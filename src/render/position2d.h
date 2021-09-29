@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-08-04.
 //
 
-#ifndef XXX_POSITION2D_H
-#define XXX_POSITION2D_H
+#ifndef STRUGGLE_POSITION2D_H
+#define STRUGGLE_POSITION2D_H
 
 #include "third_party/skia/include/core/SkScalar.h"
 
@@ -13,4 +13,4 @@ struct Position2D {
 };
 
 
-#endif //XXX_POSITION2D_H
+#endif //STRUGGLE_POSITION2D_H

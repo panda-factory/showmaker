@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-08-20.
 //
 
-#ifndef XXX_RENDER_PIPELINE_H
-#define XXX_RENDER_PIPELINE_H
+#ifndef STRUGGLE_RENDER_PIPELINE_H
+#define STRUGGLE_RENDER_PIPELINE_H
 
 #include <memory>
 
@@ -23,4 +23,4 @@ public:
 };
 
 
-#endif //XXX_RENDER_PIPELINE_H
+#endif //STRUGGLE_RENDER_PIPELINE_H

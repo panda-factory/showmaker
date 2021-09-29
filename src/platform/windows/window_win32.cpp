@@ -8,7 +8,7 @@
 
 #include "angle_gl_window_context.h"
 #include <third_party/ConvertUTF/UTF8.h>
-namespace wtf {
+namespace strg {
 
 namespace {
 
@@ -137,4 +137,4 @@ void WindowWin32::Show()
     ShowWindow(hWnd_, SW_SHOW);
 }
 
-} // namespace wtf
+} // namespace strg

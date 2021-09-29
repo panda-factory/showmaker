@@ -3,7 +3,7 @@
 //
 
 #include "angle_surface_manager.h"
-namespace wtf {
+namespace strg {
 
 // | static |
 std::unique_ptr<AngleSurfaceManager> AngleSurfaceManager::Create() {
@@ -49,4 +49,4 @@ bool AngleSurfaceManager::CreateSurface(HWND* hWnd,
     return true;
 }
 
-} // namespace wtf
+} // namespace strg
