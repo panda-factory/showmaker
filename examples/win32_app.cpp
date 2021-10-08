@@ -39,6 +39,11 @@ int main_win32(int argc, char **argv, HINSTANCE hInstance, int show)
 
     window->Show();
 
+    window->RegisterOnBeginFrame(
+            [window = window.get()] () {
+                window->OnPaint();
+    });
+
     window->ScheduleFrame();
 
     MSG msg;

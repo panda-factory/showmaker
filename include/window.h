@@ -15,12 +15,15 @@ namespace strg {
 
 class Window : public Engine::Delegate{
 public:
+    using OnBeginFrame = std::function<void()>;
+
     static Window* CreateNativeWindow(void* platformData);
 
     /// | Engine::Delegate |
     void OnEngineBeginFrame(fml::TimePoint frame_target_time) override;
 
     virtual bool Attach() = 0;
+
     virtual void Show() = 0;
 
     void ScheduleFrame();
@@ -40,7 +43,10 @@ public:
     void OnPaint();
 
     int width() const;
+
     int height() const;
+
+    void RegisterOnBeginFrame(const OnBeginFrame& on_begin_frame);
 
     virtual ~Window();
 
@@ -66,6 +72,8 @@ private:
     void VisitRootElement(std::function<void (Element*)> visitor);
 
     std::unique_ptr<Engine> engine_;
+
+    OnBeginFrame on_begin_frame_;
 };
 } // namespace strg
 

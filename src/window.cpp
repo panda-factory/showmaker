@@ -26,7 +26,9 @@ Window::~Window()
 /// | Engine::Delegate |
 void Window::OnEngineBeginFrame(fml::TimePoint frame_target_time)
 {
-    OnPaint();
+    if (on_begin_frame_) {
+        on_begin_frame_();
+    }
 }
 
 void Window::ScheduleFrame()
@@ -107,6 +109,11 @@ void Window::OnPaint() {
 void Window::PushLayer(Layer* layer) {
     layer->OnAttach(this);
     layers_.push_back(layer);
+}
+
+void Window::RegisterOnBeginFrame(const OnBeginFrame& on_begin_frame)
+{
+    on_begin_frame_ = std::move(on_begin_frame);
 }
 
 bool Window::SignalLayers(std::function<bool (Layer*)> visitor)

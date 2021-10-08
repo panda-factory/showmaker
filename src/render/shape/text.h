@@ -9,6 +9,7 @@
 #include "render/size.h"
 
 #include <third_party/skia/include/core/SkFont.h>
+#include <third_party/flutter/third_party/txt/src/txt/paragraph.h>
 
 namespace strg {
 class Text : public Shape {
@@ -25,6 +26,8 @@ private:
     SkFont font_;
 
     SkScalar size_ = 12;
+
+    std::unique_ptr<txt::Paragraph> paragraph_;
 };
 } // namespace strg
 

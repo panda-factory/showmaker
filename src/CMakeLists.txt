@@ -19,11 +19,12 @@ SET(WINDOW_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/render/painting/picture_recorder.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/pipeline/render_pipeline.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/drawable.cpp
-    render/elements/element.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/render/elements/element.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/layout.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/shape.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/shape/rectangle.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/shape/text.cpp
+    #${CMAKE_CURRENT_SOURCE_DIR}/render/shape/text/font_collection.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/gl_window_context.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/window_context.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/window.cpp
@@ -61,4 +62,4 @@ TARGET_INCLUDE_DIRECTORIES(window PUBLIC
 
 TARGET_LINK_DIRECTORIES(window PUBLIC ${PROJECT_ROOT_PATH}/third_party/angle/libs)
 TARGET_LINK_DIRECTORIES(window PUBLIC ${PROJECT_ROOT_PATH}/third_party/skia/libs)
-TARGET_LINK_LIBRARIES(window PRIVATE libEGL.dll.lib libGLESv2.dll.lib skia.dll.lib skshaper.dll.lib ext_convertUTF engine)
+TARGET_LINK_LIBRARIES(window PUBLIC libEGL.dll.lib libGLESv2.dll.lib skia.dll.lib skshaper.dll.lib ext_convertUTF engine lib_txt)
