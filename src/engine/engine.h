@@ -10,6 +10,9 @@
 #include "animator/animator.h"
 
 namespace strg {
+class Scene;
+class Rasterizer;
+
 class Engine : public Animator::Delegate {
 public:
     class Delegate {
@@ -24,6 +27,10 @@ public:
 
     void BeginFrame(fml::TimePoint frame_target_time);
 
+    void Render(std::unique_ptr<Scene> scene);
+
+    void SetRasterizer(std::unique_ptr<Rasterizer> rasterizer);
+
     void ScheduleFrame();
 
 private:
@@ -35,6 +42,7 @@ private:
     std::unique_ptr<ThreadHost> thread_host_;
     std::unique_ptr<TaskRunners> task_runners_;
     std::unique_ptr<Animator> animator_;
+    std::unique_ptr<Rasterizer> rasterizer_;
 };
 } // namespace strg
 

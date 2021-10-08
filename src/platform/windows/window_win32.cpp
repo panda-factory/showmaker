@@ -5,7 +5,7 @@
 #include "window_win32.h"
 
 #include <tchar.h>
-
+#include "engine/rasterizer/rasterizer.h"
 #include "angle_gl_window_context.h"
 #include <third_party/ConvertUTF/UTF8.h>
 namespace strg {
@@ -81,6 +81,7 @@ WindowWin32::WindowWin32()
 bool WindowWin32::Attach()
 {
     window_context_ = MakeAngleContextForWin(hWnd_, {});
+    engine_->SetRasterizer(std::make_unique<Rasterizer>(window_context_.get()));
     return 0;
 }
 

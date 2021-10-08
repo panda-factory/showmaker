@@ -60,12 +60,12 @@ protected:
 
     std::unique_ptr<WindowContext> window_context_;
 
+    std::unique_ptr<Engine> engine_;
+
 private:
     void MarkInvalidProcessed();
 
     void VisitRootElement(std::function<void (Element*)> visitor);
-
-    std::unique_ptr<Engine> engine_;
 
     OnBeginFrame on_begin_frame_;
 };

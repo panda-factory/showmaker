@@ -4,6 +4,10 @@
 
 #include "engine.h"
 #include "animator/platform/win32/vsync_waiter_win32.h"
+#include "rasterizer/rasterizer.h"
+#include "render/compositing/scene.h"
+#include "third_party/flutter/fml/make_copyable.h"
+
 namespace strg {
 
 // | static |
@@ -45,6 +49,20 @@ void Engine::OnAnimatorBeginFrame(fml::TimePoint frame_target_time)
 void Engine::BeginFrame(fml::TimePoint frame_target_time)
 {
     delegate_.OnEngineBeginFrame(frame_target_time);
+}
+
+void Engine::Render(std::unique_ptr<Scene> scene)
+{
+    task_runners_->GetRasterTaskRunner()->PostTask(
+            [rasterizer = rasterizer_.get()]() {
+                //rasterizer->Draw(std::move(scene));
+            });
+    rasterizer_->Draw(std::move(scene));
+}
+
+void Engine::SetRasterizer(std::unique_ptr<Rasterizer> rasterizer)
+{
+    rasterizer_ = std::move(rasterizer);
 }
 
 void Engine::ScheduleFrame()

@@ -8,6 +8,7 @@
 #include "render/compositing/scene_builder.h"
 #include "render/painting/picture_recorder.h"
 #include "render/pipeline/render_pipeline.h"
+#include "engine/rasterizer/rasterizer.h"
 
 #include <include/core/SkSurface.h>
 
@@ -61,12 +62,6 @@ void Window::OnPaint() {
     if (!is_active) {
         return;
     }
-    sk_sp<SkSurface> backbuffer = window_context_->GetBackbufferSurface();
-    if (backbuffer == nullptr) {
-        printf("no backbuffer!?\n");
-        // TODO: try recreating testcontext
-        return;
-    }
 
     MarkInvalidProcessed();
 
@@ -91,13 +86,8 @@ void Window::OnPaint() {
 #endif
     RenderPipeline::FlushLayout(element_.get());
     RenderPipeline::FlushPaint(element_.get());
-    auto scene = RenderPipeline::CompositeFrame(element_.get());
 
-    scene->root_layer()->Paint(backbuffer.get()->getCanvas());
-
-    backbuffer->flushAndSubmit();
-
-    window_context_->SwapBuffers();
+    engine_->Render(RenderPipeline::CompositeFrame(element_.get()));
 
 }
 

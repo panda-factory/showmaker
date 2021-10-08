@@ -17,6 +17,8 @@ public:
     inline std::shared_ptr<Layer> root_layer()
     { return root_layer_; }
 
+    Scene (const Scene& scene) = default;
+
     ~Scene();
 
 private:
