@@ -8,9 +8,11 @@
 #include <vector>
 #include <memory>
 #include "render/elements/element.h"
+
+namespace strg {
 class Layout : public Element {
 public:
-    void Paint(PaintContext* context) override final;
+    void Paint(PaintContext *context) override final;
 
     void PerformLayout() override;
 
@@ -20,6 +22,6 @@ protected:
 private:
     virtual std::vector<Position2D> CalculateChildOffsets() const = 0;
 };
-
+} // namespace strg
 
 #endif //STRUGGLE_LAYOUT_H

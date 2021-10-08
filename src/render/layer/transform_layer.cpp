@@ -6,6 +6,7 @@
 
 #include "render/compositing/scene_builder.h"
 
+namespace strg {
 TransformLayer::TransformLayer(const SkMatrix &transform)
         : transform_(transform)
 {
@@ -22,9 +23,10 @@ void TransformLayer::Paint(SkCanvas *canvas) const
     PaintChildren(canvas);
 }
 
-void TransformLayer::AddToScene(SceneBuilder* builder, Position2D offset)
+void TransformLayer::AddToScene(SceneBuilder *builder, Position2D offset)
 {
     builder->PushOffset(0, 0);
     AddChildrenToScene(builder, offset);
     builder->Pop();
 }
+} // namespace strg

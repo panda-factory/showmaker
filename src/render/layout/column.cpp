@@ -4,6 +4,7 @@
 
 #include "column.h"
 
+namespace strg {
 Size2D Column::MeasureSize()
 {
     return {0, 0};
@@ -15,8 +16,7 @@ std::vector<Position2D> Column::CalculateChildOffsets() const
     offsets.reserve(children_.size());
     Position2D offset{0, 0};
 
-    for(const auto& child : children_)
-    {
+    for (const auto &child : children_) {
         offsets.push_back(offset);
         child->SetPosition(offset);
 
@@ -25,3 +25,4 @@ std::vector<Position2D> Column::CalculateChildOffsets() const
 
     return offsets;
 }
+} // namespace strg

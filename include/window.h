@@ -7,11 +7,10 @@
 
 #include <vector>
 #include "window_context.h"
-#include "layer.h"
 #include "engine/engine.h"
 
-class Element;
 namespace strg {
+class Element;
 
 class Window : public Engine::Delegate{
 public:
@@ -32,10 +31,6 @@ public:
 
     void Invalid();
 
-    void PushLayer(Layer* layer);
-
-    bool SignalLayers(std::function<bool (Layer*)> visitor);
-
     void Detach();
 
     bool OnChar(const std::string& utf8);
@@ -55,15 +50,14 @@ public:
 protected:
     friend WindowContext;
 
-    void VisitLayers(std::function<void(Layer*)> visitor);
-
     virtual void OnInvalid() = 0;
 
     Window();
 
     bool is_content_invalidated = false;  // use this to avoid duplicate invalidate events
-    SkTDArray<Layer*> layers_;
+
     bool is_active = true;
+
     std::unique_ptr<WindowContext> window_context_;
 
 private:

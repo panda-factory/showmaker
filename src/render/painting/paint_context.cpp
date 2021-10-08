@@ -4,8 +4,9 @@
 
 #include "paint_context.h"
 
-PaintContext::PaintContext(const SkRect& bounds, ContainerLayer* container)
-    : canvas_(nullptr), bounds_(bounds), container_(container), picture_layer_(nullptr)
+namespace strg {
+PaintContext::PaintContext(const SkRect &bounds, ContainerLayer *container)
+        : canvas_(nullptr), bounds_(bounds), container_(container), picture_layer_(nullptr)
 {
 }
 
@@ -17,7 +18,8 @@ PaintContext::~PaintContext()
     }
 }
 
-SkCanvas* PaintContext::canvas() {
+SkCanvas *PaintContext::canvas()
+{
     if (canvas_ == nullptr) {
         canvas_ = recorder_.BeginRecording(bounds_);
         auto layer = std::make_shared<PictureLayer>(SkPoint({0, 0}), nullptr);
@@ -27,3 +29,4 @@ SkCanvas* PaintContext::canvas() {
 
     return canvas_;
 }
+} // namespace strg

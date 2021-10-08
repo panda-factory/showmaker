@@ -6,6 +6,7 @@
 #define STRUGGLE_COLUMN_H
 
 #include "render/layout.h"
+namespace strg {
 class Column : public Layout {
 protected:
     Size2D MeasureSize() override;
@@ -13,6 +14,6 @@ protected:
 private:
     std::vector<Position2D> CalculateChildOffsets() const override;
 };
-
+} // namespace strg
 
 #endif //STRUGGLE_COLUMN_H

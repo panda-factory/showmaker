@@ -11,6 +11,7 @@
 #include "render/layer/container_layer.h"
 #include "render/painting/picture.h"
 
+namespace strg {
 class SceneBuilder {
 public:
     static std::unique_ptr<SceneBuilder> Create();
@@ -26,6 +27,7 @@ public:
     SceneBuilder();
 
     ~SceneBuilder();
+
 private:
     void AddLayer(std::shared_ptr<Layer> layer);
 
@@ -35,6 +37,6 @@ private:
 
     std::vector<std::shared_ptr<ContainerLayer>> layer_stack_;
 };
-
+} // namespace strg
 
 #endif //STRUGGLE_SCENE_BUILDER_H

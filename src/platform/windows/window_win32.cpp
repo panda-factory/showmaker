@@ -49,7 +49,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wparam, LPARAM lparam)
             std::string utf8;
             UTF::UTF16ToUTF8(text, utf8);
 
-            eventHandled = window->OnChar(utf8);
+            //eventHandled = window->OnChar(utf8);
             break;
         }
         default:

@@ -53,11 +53,6 @@ void Window::MarkInvalidProcessed() {
     is_content_invalidated = false;
 }
 
-bool Window::OnChar(const std::string& utf8)
-{
-    return this->SignalLayers([=](Layer* layer) { return layer->OnChar(utf8);});
-}
-
 void Window::OnPaint() {
     if (!window_context_) {
         return;
@@ -106,37 +101,9 @@ void Window::OnPaint() {
 
 }
 
-void Window::PushLayer(Layer* layer) {
-    layer->OnAttach(this);
-    layers_.push_back(layer);
-}
-
 void Window::RegisterOnBeginFrame(const OnBeginFrame& on_begin_frame)
 {
     on_begin_frame_ = std::move(on_begin_frame);
-}
-
-bool Window::SignalLayers(std::function<bool (Layer*)> visitor)
-{
-    for (int i = layers_.count() - 1; i >= 0; --i) {
-        if (layers_[i]->active_ && visitor(layers_[i])) {
-            return true;
-        }
-    }
-    return false;
-}
-
-void Window::VisitLayers(std::function<void(Layer*)> visitor) {
-    for (int i = 0; i < layers_.count(); ++i) {
-        if (layers_[i]->active_) {
-            visitor(layers_[i]);
-        }
-    }
-}
-
-void Window::VisitRootElement(std::function<void (Element*)> visitor)
-{
-    visitor(element_.get());
 }
 
 int Window::width() const {

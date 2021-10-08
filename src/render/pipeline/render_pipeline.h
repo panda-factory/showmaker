@@ -9,18 +9,20 @@
 
 #include "wtf/all_static.h"
 
+namespace strg {
 class Element;
+
 class Scene;
 
 class RenderPipeline : public AllStatic {
 public:
-    static void FlushLayout(Element*);
+    static void FlushLayout(Element *);
 
-    static void FlushPaint(Element*);
+    static void FlushPaint(Element *);
 
-    static std::unique_ptr<Scene> CompositeFrame(Element*);
+    static std::unique_ptr<Scene> CompositeFrame(Element *);
 
 };
-
+} // namespace strg
 
 #endif //STRUGGLE_RENDER_PIPELINE_H

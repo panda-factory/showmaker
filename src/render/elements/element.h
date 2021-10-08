@@ -16,7 +16,7 @@
 
 #include "include/core/SkSurface.h"
 #include "include/core/SkCanvas.h"
-
+namespace strg {
 class Element : public Node {
 public:
     // | Node |
@@ -31,31 +31,36 @@ public:
     // | Node |
     void Detach() override;
 
-    inline void AddElement(std::unique_ptr<Element> element) {
+    inline void AddElement(std::unique_ptr<Element> element)
+    {
         children_.push_back(std::move(element));
     }
 
     void OnPaint();
 
-    virtual void Paint(PaintContext* context) = 0;
+    virtual void Paint(PaintContext *context) = 0;
 
-    virtual void PerformLayout() {};
+    virtual void PerformLayout()
+    {};
 
-    inline void SetPosition(const Position2D& position) {position_ = position;}
+    inline void SetPosition(const Position2D &position)
+    { position_ = position; }
 
     virtual Size2D MeasureSize() = 0;
 
-    inline std::shared_ptr<ContainerLayer> layer() {return layer_;}
+    inline std::shared_ptr<ContainerLayer> layer()
+    { return layer_; }
 
     Element();
 
     virtual ~Element();
+
 protected:
-    void Draw(SkCanvas* canvas, Drawable* drawable, const Position2D& position);
+    void Draw(SkCanvas *canvas, Drawable *drawable, const Position2D &position);
 
     void PaintChildren(PaintContext *context);
 
-    void CompositeChild(Element* element, PaintContext *context);
+    void CompositeChild(Element *element, PaintContext *context);
 
     bool is_recording_;
 
@@ -68,6 +73,6 @@ protected:
     SkRect bound_;
 private:
 };
-
+} // namespace strg
 
 #endif //STRUGGLE_ELEMENT_H

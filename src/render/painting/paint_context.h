@@ -9,13 +9,15 @@
 #include "render/layer/container_layer.h"
 #include "render/layer/picture_layer.h"
 
+namespace strg {
 class PaintContext {
 public:
-    SkCanvas* canvas();
+    SkCanvas *canvas();
 
-    explicit PaintContext(const SkRect& bounds, ContainerLayer* container);
+    explicit PaintContext(const SkRect &bounds, ContainerLayer *container);
 
     ~PaintContext();
+
 private:
     bool is_recording_;
 
@@ -23,12 +25,12 @@ private:
 
     SkRect bounds_;
 
-    SkCanvas* canvas_;
+    SkCanvas *canvas_;
 
-    ContainerLayer* container_;
+    ContainerLayer *container_;
 
-    PictureLayer* picture_layer_;
+    PictureLayer *picture_layer_;
 };
-
+} // namespace strg
 
 #endif //STRUGGLE_PAINT_CONTEXT_H

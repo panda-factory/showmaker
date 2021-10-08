@@ -10,6 +10,7 @@
 #include "render/layer/transform_layer.h"
 #include "render/layer/offset_layer.h"
 
+namespace strg {
 std::unique_ptr<SceneBuilder> SceneBuilder::Create()
 {
     std::unique_ptr<SceneBuilder> builder;
@@ -65,3 +66,4 @@ void SceneBuilder::PopLayer()
         layer_stack_.pop_back();
     }
 }
+} // namespace strg

@@ -4,7 +4,9 @@
 
 #include "layer.h"
 
+namespace strg {
 Layer::Layer()
 {}
 
 Layer::~Layer() = default;
+} // namespace strg

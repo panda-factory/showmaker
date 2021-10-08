@@ -7,14 +7,15 @@
 
 #include "element.h"
 
+namespace strg {
 class View : public Element {
 public:
-    void Paint(PaintContext* context) override;
+    void Paint(PaintContext *context) override;
 
     void PerformLayout() override;
 
     Size2D MeasureSize() override;
 };
-
+} // namespace strg
 
 #endif //STRUGGLE_VIEW_H

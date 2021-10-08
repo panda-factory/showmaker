@@ -4,6 +4,7 @@
 
 #include "picture.h"
 
+namespace strg {
 std::unique_ptr<Picture> Picture::Create(sk_sp<SkPicture> sk_picture)
 {
     std::unique_ptr<Picture> picture;
@@ -12,7 +13,7 @@ std::unique_ptr<Picture> Picture::Create(sk_sp<SkPicture> sk_picture)
 }
 
 Picture::Picture(sk_sp<SkPicture> picture)
-    : picture_(std::move(picture))
+        : picture_(std::move(picture))
 {}
 
 Picture::~Picture() = default;
@@ -21,3 +22,4 @@ void Picture::OnPaint(SkCanvas *canvas)
 {
     picture()->playback(canvas);
 }
+} // namespace strg

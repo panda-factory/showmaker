@@ -4,6 +4,7 @@
 
 #include "container_layer.h"
 
+namespace strg {
 void ContainerLayer::Add(std::shared_ptr<Layer> layer)
 {
     layers_.emplace_back(std::move(layer));
@@ -21,14 +22,15 @@ void ContainerLayer::PaintChildren(SkCanvas *canvas) const
     }
 }
 
-void ContainerLayer::AddToScene(SceneBuilder* builder, Position2D offset)
+void ContainerLayer::AddToScene(SceneBuilder *builder, Position2D offset)
 {
     AddChildrenToScene(builder, offset);
 }
 
-void ContainerLayer::AddChildrenToScene(SceneBuilder* builder, Position2D offset)
+void ContainerLayer::AddChildrenToScene(SceneBuilder *builder, Position2D offset)
 {
     for (auto &layer : layers_) {
         layer->AddToScene(builder);
     }
 }
+} // namespace strg

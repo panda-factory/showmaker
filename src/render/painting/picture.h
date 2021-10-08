@@ -9,15 +9,18 @@
 
 #include <third_party/skia/include/core/SkPicture.h>
 
+namespace strg {
 class Picture {
 public:
     static std::unique_ptr<Picture> Create(sk_sp<SkPicture> picture);
 
     void OnPaint(SkCanvas *canvas);
 
-    inline sk_sp<SkPicture> picture() const { return picture_; }
+    inline sk_sp<SkPicture> picture() const
+    { return picture_; }
 
     ~Picture();
+
 private:
     Picture() = default;
 
@@ -25,6 +28,6 @@ private:
 
     sk_sp<SkPicture> picture_;
 };
-
+} // namespace strg
 
 #endif //STRUGGLE_PICTURE_H

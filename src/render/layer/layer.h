@@ -10,16 +10,19 @@
 #include <third_party/skia/include/core/SkPicture.h>
 #include <third_party/skia/include/core/SkCanvas.h>
 
+namespace strg {
 class SceneBuilder;
 
 class Layer {
 public:
-    virtual void Paint(SkCanvas* canvas) const = 0;
+    virtual void Paint(SkCanvas *canvas) const = 0;
 
-    virtual void AddToScene(SceneBuilder* builder, Position2D offset = {0, 0}) = 0;
+    virtual void AddToScene(SceneBuilder *builder, Position2D offset = {0, 0}) = 0;
+
     Layer();
+
     virtual ~Layer();
 };
-
+} // namespace strg
 
 #endif //STRUGGLE_LAYER_H

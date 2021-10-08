@@ -6,6 +6,7 @@
 
 #include "render/compositing/scene_builder.h"
 
+namespace strg {
 OffsetLayer::OffsetLayer(const float x, const float y)
         : offset_(SkPoint({x, y}))
 {
@@ -19,9 +20,10 @@ void OffsetLayer::Paint(SkCanvas *canvas) const
     PaintChildren(canvas);
 }
 
-void OffsetLayer::AddToScene(SceneBuilder* builder, Position2D offset)
+void OffsetLayer::AddToScene(SceneBuilder *builder, Position2D offset)
 {
     builder->PushOffset(offset_.x(), offset_.y());
     AddChildrenToScene(builder, offset);
     builder->Pop();
 }
+} // namespace strg

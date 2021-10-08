@@ -6,6 +6,7 @@
 
 #include "render/layer/transform_layer.h"
 
+namespace strg {
 void View::Paint(PaintContext *context)
 {
     auto canvas = context->canvas();
@@ -24,3 +25,4 @@ Size2D View::MeasureSize()
 {
     return {};
 }
+} // namespace strg

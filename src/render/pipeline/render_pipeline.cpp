@@ -8,12 +8,13 @@
 #include "render/painting/picture_recorder.h"
 #include "render/compositing/scene_builder.h"
 
-void RenderPipeline::FlushLayout(Element* element)
+namespace strg {
+void RenderPipeline::FlushLayout(Element *element)
 {
     element->PerformLayout();
 }
 
-void RenderPipeline::FlushPaint(Element* element)
+void RenderPipeline::FlushPaint(Element *element)
 {
     SceneBuilder builder;
     PictureRecorder recorder;
@@ -28,7 +29,6 @@ std::unique_ptr<Scene> RenderPipeline::CompositeFrame(Element *element)
 
     element->layer()->AddToScene(&builder);
 
-    auto scene = builder.Build();
-
-    return scene;
+    return builder.Build();
 }
+} // namespace strg
