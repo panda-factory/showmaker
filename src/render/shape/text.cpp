@@ -22,12 +22,12 @@ Text::Text(const std::string &text)
     paragraph_ = builder->Build();
 }
 
-void Text::Draw(SkCanvas *canvas, const Position2D &position)
+void Text::Draw(SkCanvas *canvas, const Position &position)
 {
     paragraph_->Paint(canvas, position.x, position.y);
 }
 
-Size2D Text::MeasureSize()
+Size Text::MeasureSize()
 {
     SkPaint paint;
     font_.setSize(size_);

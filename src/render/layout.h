@@ -20,7 +20,7 @@ protected:
     SkScalar spacing_;
 
 private:
-    virtual std::vector<Position2D> CalculateChildOffsets() const = 0;
+    virtual std::vector<Position> CalculateChildOffsets() const = 0;
 };
 } // namespace strg
 

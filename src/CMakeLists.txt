@@ -1,6 +1,7 @@
 
 ADD_SUBDIRECTORY(css)
 ADD_SUBDIRECTORY(engine)
+ADD_SUBDIRECTORY(graphics)
 ADD_SUBDIRECTORY(render)
 
 SET(WINDOW_SRC
@@ -63,4 +64,4 @@ TARGET_INCLUDE_DIRECTORIES(window PUBLIC
 
 TARGET_LINK_DIRECTORIES(window PUBLIC ${PROJECT_ROOT_PATH}/third_party/angle/libs)
 TARGET_LINK_DIRECTORIES(window PUBLIC ${PROJECT_ROOT_PATH}/third_party/skia/libs)
-TARGET_LINK_LIBRARIES(window PUBLIC libEGL.dll.lib libGLESv2.dll.lib skia.dll.lib skshaper.dll.lib ext_convertUTF engine lib_txt shape)
+TARGET_LINK_LIBRARIES(window PUBLIC libEGL.dll.lib libGLESv2.dll.lib skia.dll.lib skshaper.dll.lib ext_convertUTF engine lib_txt shape graphics)

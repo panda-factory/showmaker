@@ -5,14 +5,14 @@
 #ifndef STRUGGLE_DRAWABLE_H
 #define STRUGGLE_DRAWABLE_H
 
-#include "render/position2d.h"
+#include "graphics/position.h"
 
 #include <third_party/skia/include/core/SkCanvas.h>
-
+namespace strg {
 class Drawable {
 public:
-    virtual void Draw(SkCanvas*, const Position2D& position) = 0;
+    virtual void Draw(SkCanvas *, const Position &position) = 0;
 };
-
+} // namespace strg
 
 #endif //STRUGGLE_DRAWABLE_H

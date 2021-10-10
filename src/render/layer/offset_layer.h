@@ -12,7 +12,7 @@ class OffsetLayer : public ContainerLayer {
 public:
     void Paint(SkCanvas *canvas) const override;
 
-    void AddToScene(SceneBuilder *, Position2D) override;
+    void AddToScene(SceneBuilder *, Position) override;
 
     OffsetLayer(const float x, const float y);
 

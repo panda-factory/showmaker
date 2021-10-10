@@ -21,7 +21,7 @@ void View::PerformLayout()
     children_[0]->PerformLayout();
 }
 
-Size2D View::MeasureSize()
+Size View::MeasureSize()
 {
     return {};
 }

@@ -10,12 +10,12 @@
 #include "render/clipping_box.h"
 
 #include <third_party/skia/include/core/SkCanvas.h>
-
+namespace strg {
 struct CanvasScope {
-    CanvasScope(SkCanvas* canvas, const std::optional<ClippingBox>& clipping_box);
+    CanvasScope(SkCanvas *canvas, const std::optional<ClippingBox> &clipping_box);
 
     SkAutoCanvasRestore auto_restore;
 };
-
+} // namespace strg
 
 #endif //STRUGGLE_CANVAS_SCOPE_H

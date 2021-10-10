@@ -6,10 +6,10 @@
 #define STRUGGLE_BORDER_H
 
 #include "render/style/line.h"
-
+namespace strg {
 struct Border : public Line {
     SkScalar radius = 0;
 };
-
+} // namespace strg
 
 #endif //STRUGGLE_BORDER_H

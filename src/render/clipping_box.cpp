@@ -3,3 +3,7 @@
 //
 
 #include "clipping_box.h"
+
+namespace strg {
+
+} // namespace strg

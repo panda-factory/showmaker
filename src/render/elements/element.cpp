@@ -24,7 +24,7 @@ void Element::OnPaint()
     PaintChildren(paint_context.get());
 }
 
-void Element::Draw(SkCanvas *canvas, Drawable *drawable, const Position2D &position)
+void Element::Draw(SkCanvas *canvas, Drawable *drawable, const Position &position)
 {
     drawable->Draw(canvas, position);
 }

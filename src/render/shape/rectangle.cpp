@@ -9,11 +9,11 @@
 #include <third_party/skia/include/core/SkRRect.h>
 
 namespace strg {
-Rectangle::Rectangle(const Size2D &size)
+Rectangle::Rectangle(const Size &size)
         : size_(size)
 {}
 
-void Rectangle::Draw(SkCanvas *canvas, const Position2D &position)
+void Rectangle::Draw(SkCanvas *canvas, const Position &position)
 {
     SkAutoCanvasRestore acr(canvas, true);
 

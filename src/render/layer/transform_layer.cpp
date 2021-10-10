@@ -23,7 +23,7 @@ void TransformLayer::Paint(SkCanvas *canvas) const
     PaintChildren(canvas);
 }
 
-void TransformLayer::AddToScene(SceneBuilder *builder, Position2D offset)
+void TransformLayer::AddToScene(SceneBuilder *builder, Position offset)
 {
     builder->PushOffset(0, 0);
     AddChildrenToScene(builder, offset);

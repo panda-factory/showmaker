@@ -5,7 +5,7 @@
 #ifndef STRUGGLE_LAYER_H
 #define STRUGGLE_LAYER_H
 
-#include "render/position2d.h"
+#include "graphics/position.h"
 
 #include <third_party/skia/include/core/SkPicture.h>
 #include <third_party/skia/include/core/SkCanvas.h>
@@ -17,7 +17,7 @@ class Layer {
 public:
     virtual void Paint(SkCanvas *canvas) const = 0;
 
-    virtual void AddToScene(SceneBuilder *builder, Position2D offset = {0, 0}) = 0;
+    virtual void AddToScene(SceneBuilder *builder, Position offset = {0, 0}) = 0;
 
     Layer();
 

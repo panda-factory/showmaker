@@ -6,11 +6,11 @@
 #define STRUGGLE_SIZE_H
 
 #include "third_party/skia/include/core/SkScalar.h"
-
-struct Size2D {
+namespace strg {
+struct Size {
     SkScalar width;
     SkScalar height;
 };
-
+} // namespace strg
 
 #endif //STRUGGLE_SIZE_H

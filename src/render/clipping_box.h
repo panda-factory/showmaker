@@ -5,13 +5,14 @@
 #ifndef STRUGGLE_CLIPPING_BOX_H
 #define STRUGGLE_CLIPPING_BOX_H
 
-#include "render/position2d.h"
-#include "render/size.h"
+#include "graphics/position.h"
+#include "graphics/size.h"
 
+namespace strg {
 struct ClippingBox {
-    Position2D top_left;
-    Size2D size;
+    Position top_left;
+    Size size;
 };
-
+} // namespace strg
 
 #endif //STRUGGLE_CLIPPING_BOX_H

@@ -20,7 +20,7 @@ void OffsetLayer::Paint(SkCanvas *canvas) const
     PaintChildren(canvas);
 }
 
-void OffsetLayer::AddToScene(SceneBuilder *builder, Position2D offset)
+void OffsetLayer::AddToScene(SceneBuilder *builder, Position offset)
 {
     builder->PushOffset(offset_.x(), offset_.y());
     AddChildrenToScene(builder, offset);

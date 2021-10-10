@@ -13,7 +13,7 @@ class Label : public Element {
 public:
     void Paint(PaintContext *context) override;
 
-    Size2D MeasureSize() override;
+    Size MeasureSize() override;
 
     explicit Label(const std::string &text);
 

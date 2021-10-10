@@ -6,7 +6,7 @@
 #define STRUGGLE_TEXT_H
 
 #include "render/shape.h"
-#include "render/size.h"
+#include "graphics/size.h"
 
 #include "text/paragraph.h"
 
@@ -15,9 +15,9 @@
 namespace strg {
 class Text : public Shape {
 public:
-    void Draw(SkCanvas *, const Position2D &position) override;
+    void Draw(SkCanvas *, const Position &position) override;
 
-    Size2D MeasureSize();
+    Size MeasureSize();
 
     Text(const std::string &text);
 

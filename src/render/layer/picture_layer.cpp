@@ -22,7 +22,7 @@ void PictureLayer::Paint(SkCanvas *canvas) const
     picture()->OnPaint(canvas);
 }
 
-void PictureLayer::AddToScene(SceneBuilder *builder, Position2D offset)
+void PictureLayer::AddToScene(SceneBuilder *builder, Position offset)
 {
     builder->AddPicture(offset.x, offset.y, std::move(picture_));
 }

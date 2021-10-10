@@ -3,3 +3,6 @@
 //
 
 #include "size.h"
+namespace strg {
+
+} // namespace strg

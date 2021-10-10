@@ -3,9 +3,9 @@
 //
 
 #include "canvas_scope.h"
-
+namespace strg {
 CanvasScope::CanvasScope(SkCanvas *canvas, const std::optional<ClippingBox> &clipping_box)
-    : auto_restore(canvas, clipping_box.has_value())
+        : auto_restore(canvas, clipping_box.has_value())
 {
     if (clipping_box) {
         canvas->clipRect(SkRect::MakeXYWH(clipping_box->top_left.x,
@@ -14,3 +14,4 @@ CanvasScope::CanvasScope(SkCanvas *canvas, const std::optional<ClippingBox> &cli
                                           clipping_box->size.height));
     }
 }
+} // namespace strg

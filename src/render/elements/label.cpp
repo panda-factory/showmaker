@@ -28,7 +28,7 @@ void Label::Paint(PaintContext *context)
     canvas->save();
 }
 
-Size2D Label::MeasureSize()
+Size Label::MeasureSize()
 {
     const auto text_size = text_.MeasureSize();
     return text_size;

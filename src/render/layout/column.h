@@ -9,10 +9,10 @@
 namespace strg {
 class Column : public Layout {
 protected:
-    Size2D MeasureSize() override;
+    Size MeasureSize() override;
 
 private:
-    std::vector<Position2D> CalculateChildOffsets() const override;
+    std::vector<Position> CalculateChildOffsets() const override;
 };
 } // namespace strg
 

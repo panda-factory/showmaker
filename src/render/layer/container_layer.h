@@ -16,7 +16,7 @@ public:
 
     void Paint(SkCanvas *canvas) const override;
 
-    void AddToScene(SceneBuilder *builder, Position2D offset = {0, 0}) override;
+    void AddToScene(SceneBuilder *builder, Position offset = {0, 0}) override;
 
     void PaintChildren(SkCanvas *canvas) const;
 
@@ -25,7 +25,7 @@ public:
     ~ContainerLayer() = default;
 
 protected:
-    void AddChildrenToScene(SceneBuilder *builder, Position2D offset);
+    void AddChildrenToScene(SceneBuilder *builder, Position offset);
 
 private:
     std::vector<std::shared_ptr<Layer>> layers_;

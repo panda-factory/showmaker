@@ -14,7 +14,7 @@ class PictureLayer : public Layer {
 public:
     void Paint(SkCanvas *canvas) const override;
 
-    void AddToScene(SceneBuilder *builder, Position2D offset) override;
+    void AddToScene(SceneBuilder *builder, Position offset) override;
 
     inline Picture *picture() const
     { return picture_.get(); }

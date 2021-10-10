@@ -54,8 +54,6 @@ int main_win32(int argc, char **argv, HINSTANCE hInstance, int show)
     window.reset(strg::Window::CreateNativeWindow(hInstance));
     window->Attach();
 
-
-
     window->Show();
 
     window->RegisterOnBeginFrame(

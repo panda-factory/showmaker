@@ -8,6 +8,7 @@
 #include "drawable.h"
 #include "style/border.h"
 
+namespace strg {
 class Shape : public Drawable {
 public:
     Shape();
@@ -15,6 +16,6 @@ public:
 protected:
     Border border_;
 };
-
+} // namespace strg
 
 #endif //STRUGGLE_SHAPE_H

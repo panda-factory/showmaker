@@ -8,9 +8,9 @@
 #include <vector>
 
 #include "node/node.h"
-#include "render/position2d.h"
+#include "graphics/position.h"
 #include "render/drawable.h"
-#include "render/size.h"
+#include "graphics/size.h"
 #include "render/layer/container_layer.h"
 #include "render/painting/paint_context.h"
 
@@ -43,10 +43,10 @@ public:
     virtual void PerformLayout()
     {};
 
-    inline void SetPosition(const Position2D &position)
+    inline void SetPosition(const Position &position)
     { position_ = position; }
 
-    virtual Size2D MeasureSize() = 0;
+    virtual Size MeasureSize() = 0;
 
     inline std::shared_ptr<ContainerLayer> layer()
     { return layer_; }
@@ -56,7 +56,7 @@ public:
     virtual ~Element();
 
 protected:
-    void Draw(SkCanvas *canvas, Drawable *drawable, const Position2D &position);
+    void Draw(SkCanvas *canvas, Drawable *drawable, const Position &position);
 
     void PaintChildren(PaintContext *context);
 
@@ -68,7 +68,7 @@ protected:
 
     std::shared_ptr<ContainerLayer> layer_;
 
-    Position2D position_;
+    Position position_;
 
     SkRect bound_;
 private:

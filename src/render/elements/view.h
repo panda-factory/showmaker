@@ -14,7 +14,7 @@ public:
 
     void PerformLayout() override;
 
-    Size2D MeasureSize() override;
+    Size MeasureSize() override;
 };
 } // namespace strg
 
