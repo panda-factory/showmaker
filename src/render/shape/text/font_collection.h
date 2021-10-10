@@ -16,12 +16,6 @@ public:
 
     void SetupDefaultFontManager();
 
-    //void RegisterFonts(std::shared_ptr<AssetManager> asset_manager);
-
-    void LoadFontFromList(const uint8_t* font_data,
-                          int length,
-                          std::string family_name);
-
     FontCollection();
 
     ~FontCollection();

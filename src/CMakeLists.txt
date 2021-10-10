@@ -1,5 +1,7 @@
 
+ADD_SUBDIRECTORY(css)
 ADD_SUBDIRECTORY(engine)
+ADD_SUBDIRECTORY(render)
 
 SET(WINDOW_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/node/node.cpp
@@ -24,7 +26,6 @@ SET(WINDOW_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/render/shape.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/shape/rectangle.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/shape/text.cpp
-    #${CMAKE_CURRENT_SOURCE_DIR}/render/shape/text/font_collection.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/gl_window_context.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/window_context.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/window.cpp
@@ -62,4 +63,4 @@ TARGET_INCLUDE_DIRECTORIES(window PUBLIC
 
 TARGET_LINK_DIRECTORIES(window PUBLIC ${PROJECT_ROOT_PATH}/third_party/angle/libs)
 TARGET_LINK_DIRECTORIES(window PUBLIC ${PROJECT_ROOT_PATH}/third_party/skia/libs)
-TARGET_LINK_LIBRARIES(window PUBLIC libEGL.dll.lib libGLESv2.dll.lib skia.dll.lib skshaper.dll.lib ext_convertUTF engine lib_txt)
+TARGET_LINK_LIBRARIES(window PUBLIC libEGL.dll.lib libGLESv2.dll.lib skia.dll.lib skshaper.dll.lib ext_convertUTF engine lib_txt shape)

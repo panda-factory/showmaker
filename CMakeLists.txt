@@ -24,6 +24,7 @@ LINK_DIRECTORIES("${CMAKE_SOURCE_DIR}/lib/")
 
 ADD_SUBDIRECTORY(third_party/ConvertUTF)
 ADD_SUBDIRECTORY(third_party/flutter)
+ADD_SUBDIRECTORY(third_party/harfbuzz)
 ADD_SUBDIRECTORY(src)
 
 IF(ENABLE_EXAMPLES)

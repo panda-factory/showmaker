@@ -43,6 +43,8 @@ public:
 
     void RegisterOnBeginFrame(const OnBeginFrame& on_begin_frame);
 
+    void Render(std::unique_ptr<Scene> scene);
+
     virtual ~Window();
 
     std::unique_ptr<Element> element_;

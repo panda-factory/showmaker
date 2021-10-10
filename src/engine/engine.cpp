@@ -54,10 +54,11 @@ void Engine::BeginFrame(fml::TimePoint frame_target_time)
 void Engine::Render(std::unique_ptr<Scene> scene)
 {
     task_runners_->GetRasterTaskRunner()->PostTask(
-            [rasterizer = rasterizer_.get()]() {
-                //rasterizer->Draw(std::move(scene));
-            });
-    rasterizer_->Draw(std::move(scene));
+            fml::MakeCopyable(
+                    [rasterizer = rasterizer_.get(),
+                     scene = std::move(scene)]() mutable {
+                        rasterizer->Draw(std::move(scene));
+                    }));
 }
 
 void Engine::SetRasterizer(std::unique_ptr<Rasterizer> rasterizer)

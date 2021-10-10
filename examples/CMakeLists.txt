@@ -1,4 +1,6 @@
 
+ADD_SUBDIRECTORY(text)
+
 SET(EXAMPLE_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/win32_app.cpp
     )

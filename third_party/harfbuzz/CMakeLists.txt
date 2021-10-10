@@ -36,7 +36,7 @@ endif ()
 option(HB_HAVE_FREETYPE "Enable freetype interop helpers" OFF)
 option(HB_HAVE_GRAPHITE2 "Enable Graphite2 complementary shaper" OFF)
 option(HB_HAVE_GLIB "Enable glib unicode functions" OFF)
-option(HB_HAVE_ICU "Enable icu unicode functions" OFF)
+option(HB_HAVE_ICU "Enable icu unicode functions" ON)
 if (APPLE)
   option(HB_HAVE_CORETEXT "Enable CoreText shaper backend on macOS" ON)
   set (CMAKE_MACOSX_RPATH ON)
@@ -240,11 +240,11 @@ endif ()
 
 if (HB_HAVE_ICU)
   add_definitions(-DHAVE_ICU)
+  set(ICU_INCLUDE_DIR ${PROJECT_ROOT_PATH}/third_party/icu/include)
 
   # https://github.com/WebKit/webkit/blob/fdd7733f2f30eab7fe096a9791f98c60f62f49c0/Source/cmake/FindICU.cmake
   find_package(PkgConfig)
   pkg_check_modules(PC_ICU QUIET icu-uc)
-
   find_path(ICU_INCLUDE_DIR NAMES unicode/utypes.h HINTS ${PC_ICU_INCLUDE_DIRS} ${PC_ICU_INCLUDEDIR})
   find_library(ICU_LIBRARY NAMES libicuuc cygicuuc cygicuuc32 icuuc HINTS ${PC_ICU_LIBRARY_DIRS} ${PC_ICU_LIBDIR})
 

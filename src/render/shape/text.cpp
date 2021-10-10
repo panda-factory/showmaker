@@ -3,37 +3,28 @@
 //
 
 #include "text.h"
+#include "text/paragraph_builder.h"
 
 #include "include/core/SkFont.h"
 
 #include <include/core/SkFontMetrics.h>
+#include <third_party/ConvertUTF/UTF8.h>
 
 namespace strg {
 Text::Text(const std::string &text)
         : text_(text)
-{}
+{
+    auto builder = std::make_unique<ParagraphBuilder>(size_, size_);
+    std::u16string out;
+    UTF::UTF8ToUTF16(text, out);
+    //builder->PushTextStyle();
+    builder->AddText(out);
+    paragraph_ = builder->Build();
+}
 
 void Text::Draw(SkCanvas *canvas, const Position2D &position)
 {
-    SkAutoCanvasRestore acr(canvas, true);
-    SkPaint paint;
-
-    // Draw a message with a nice black paint
-    font_.setSubpixel(true);
-    font_.setSize(size_);
-
-    SkFontMetrics metrics;
-    font_.getMetrics(&metrics);
-    SkScalar offset = -metrics.fAscent;
-    paint.setColor(SK_ColorBLACK);
-
-    // Draw the text
-    canvas->drawSimpleText(text_.c_str(),
-                           text_.size(),
-                           SkTextEncoding::kUTF8,
-                           position.x,
-                           position.y + offset,
-                           font_, paint);
+    paragraph_->Paint(canvas, position.x, position.y);
 }
 
 Size2D Text::MeasureSize()
@@ -51,7 +42,7 @@ Size2D Text::MeasureSize()
                                              &bounds,
                                              &paint);
     const SkScalar height = std::abs(metrics.fAscent - metrics.fDescent);
-
+    paragraph_->Layout(width);
     return {width, height};
 }
 } // namespace strg

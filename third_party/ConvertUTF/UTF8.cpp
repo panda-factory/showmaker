@@ -66,6 +66,11 @@ bool utfConvert(
 }
 } // namespace
 
+bool UTF::UTF8ToUTF16(const std::string& utf8, std::u16string& outUtf16)
+{
+    return utfConvert(utf8, outUtf16, ConvertUTF8toUTF16);
+}
+
 bool UTF::UTF16ToUTF8(const std::u16string& utf16, std::string& out_utf8)
 {
     return utfConvert(utf16, out_utf8, ConvertUTF16toUTF8);

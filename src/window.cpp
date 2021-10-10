@@ -96,6 +96,11 @@ void Window::RegisterOnBeginFrame(const OnBeginFrame& on_begin_frame)
     on_begin_frame_ = std::move(on_begin_frame);
 }
 
+void Window::Render(std::unique_ptr<Scene> scene)
+{
+    engine_->Render(std::move(scene));
+}
+
 int Window::width() const {
     if (!window_context_) {
         return 0;
