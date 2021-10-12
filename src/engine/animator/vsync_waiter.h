@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-09-20.
 //
 
-#ifndef STRUGGLE_VSYNC_WAITER_H
-#define STRUGGLE_VSYNC_WAITER_H
+#ifndef SHOWMAKER_VSYNC_WAITER_H
+#define SHOWMAKER_VSYNC_WAITER_H
 
 #include <mutex>
 #include <functional>
@@ -11,7 +11,7 @@
 #include "engine/thread_host.h"
 #include "engine/task_runners.h"
 
-namespace strg {
+namespace sm {
 class VsyncWaiter {
 public:
     using Invoker = std::function<void(const fml::TimePoint&)>;
@@ -35,6 +35,6 @@ private:
 
     const TaskRunners *task_runners_;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_VSYNC_WAITER_H
+#endif //SHOWMAKER_VSYNC_WAITER_H

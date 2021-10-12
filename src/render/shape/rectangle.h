@@ -2,13 +2,13 @@
 // Created by guozhenxiong on 2021-08-05.
 //
 
-#ifndef STRUGGLE_RECTANGLE_H
-#define STRUGGLE_RECTANGLE_H
+#ifndef SHOWMAKER_RECTANGLE_H
+#define SHOWMAKER_RECTANGLE_H
 
 #include "render/shape.h"
 #include "graphics/size.h"
 
-namespace strg {
+namespace sm {
 class Rectangle : public Shape {
 public:
     void Draw(SkCanvas *, const Position &position) override;
@@ -18,6 +18,6 @@ public:
 private:
     Size size_;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_RECTANGLE_H
+#endif //SHOWMAKER_RECTANGLE_H

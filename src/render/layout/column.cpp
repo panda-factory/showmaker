@@ -4,7 +4,7 @@
 
 #include "column.h"
 
-namespace strg {
+namespace sm {
 Size Column::MeasureSize()
 {
     return {0, 0};
@@ -25,4 +25,4 @@ std::vector<Position> Column::CalculateChildOffsets() const
 
     return offsets;
 }
-} // namespace strg
+} // namespace sm

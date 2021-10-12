@@ -3,6 +3,6 @@
 //
 
 #include "drawable.h"
-namespace strg {
+namespace sm {
 
-} // namespace strg
+} // namespace sm

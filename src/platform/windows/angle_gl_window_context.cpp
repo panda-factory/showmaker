@@ -9,7 +9,7 @@
 #include "third_party/skia/include/gpu/GrBackendSurface.h"
 #include "third_party/skia/include/gpu/GrDirectContext.h"
 
-namespace strg {
+namespace sm {
 namespace {
 static void LogEglError(std::string message)
 {
@@ -211,4 +211,4 @@ void AngleGLWindowContext::OnSwapBuffers() {
     }
 }
 
-} // namespace strg
+} // namespace sm

@@ -2,13 +2,13 @@
 // Created by guozhenxiong on 2021-10-10.
 //
 
-#ifndef STRUGGLE_COLOR_H
-#define STRUGGLE_COLOR_H
+#ifndef SHOWMAKER_COLOR_H
+#define SHOWMAKER_COLOR_H
 
 #include <cmath>
 #include <cstdint>
 
-namespace strg {
+namespace sm {
 namespace css {
 class Color {
 public:
@@ -184,6 +184,6 @@ static constexpr Color YELLOW_GREEN            {0x9ACD32FF};
 } // namespace colors
 
 } // namespace css
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_COLOR_H
+#endif //SHOWMAKER_COLOR_H

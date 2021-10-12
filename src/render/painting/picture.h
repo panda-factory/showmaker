@@ -2,14 +2,14 @@
 // Created by guozhenxiong on 2021-08-18.
 //
 
-#ifndef STRUGGLE_PICTURE_H
-#define STRUGGLE_PICTURE_H
+#ifndef SHOWMAKER_PICTURE_H
+#define SHOWMAKER_PICTURE_H
 
 #include <memory>
 
 #include <third_party/skia/include/core/SkPicture.h>
 
-namespace strg {
+namespace sm {
 class Picture {
 public:
     static std::unique_ptr<Picture> Create(sk_sp<SkPicture> picture);
@@ -28,6 +28,6 @@ private:
 
     sk_sp<SkPicture> picture_;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_PICTURE_H
+#endif //SHOWMAKER_PICTURE_H

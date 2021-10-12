@@ -2,17 +2,17 @@
 // Created by guozhenxiong on 2021-08-04.
 //
 
-#ifndef STRUGGLE_DRAWABLE_H
-#define STRUGGLE_DRAWABLE_H
+#ifndef SHOWMAKER_DRAWABLE_H
+#define SHOWMAKER_DRAWABLE_H
 
 #include "graphics/position.h"
 
 #include <third_party/skia/include/core/SkCanvas.h>
-namespace strg {
+namespace sm {
 class Drawable {
 public:
     virtual void Draw(SkCanvas *, const Position &position) = 0;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_DRAWABLE_H
+#endif //SHOWMAKER_DRAWABLE_H

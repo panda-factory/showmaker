@@ -2,13 +2,13 @@
 // Created by guozhenxiong on 2021-08-18.
 //
 
-#ifndef STRUGGLE_PICTURE_RECORDER_H
-#define STRUGGLE_PICTURE_RECORDER_H
+#ifndef SHOWMAKER_PICTURE_RECORDER_H
+#define SHOWMAKER_PICTURE_RECORDER_H
 
 #include "render/painting/picture.h"
 
 #include <third_party/skia/include/core/SkPictureRecorder.h>
-namespace strg {
+namespace sm {
 class PictureRecorder {
 public:
     SkCanvas *BeginRecording(SkRect bounds);
@@ -18,6 +18,6 @@ public:
 private:
     SkPictureRecorder picture_recorder_;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_PICTURE_RECORDER_H
+#endif //SHOWMAKER_PICTURE_RECORDER_H

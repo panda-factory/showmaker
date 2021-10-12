@@ -6,7 +6,7 @@
 
 #include "flutter/fml/thread.h"
 
-namespace strg {
+namespace sm {
 
 ThreadHost::ThreadHost() = default;
 

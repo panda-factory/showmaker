@@ -3,7 +3,7 @@
 //
 
 #include "canvas_scope.h"
-namespace strg {
+namespace sm {
 CanvasScope::CanvasScope(SkCanvas *canvas, const std::optional<ClippingBox> &clipping_box)
         : auto_restore(canvas, clipping_box.has_value())
 {
@@ -14,4 +14,4 @@ CanvasScope::CanvasScope(SkCanvas *canvas, const std::optional<ClippingBox> &cli
                                           clipping_box->size.height));
     }
 }
-} // namespace strg
+} // namespace sm

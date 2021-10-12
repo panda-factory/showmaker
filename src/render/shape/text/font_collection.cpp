@@ -9,7 +9,7 @@
 #include <third_party/skia/include/core/SkStream.h>
 #include <third_party/skia/include/core/SkTypeface.h>
 
-namespace strg {
+namespace sm {
 
 FontCollection::FontCollection()
         : collection_(std::make_shared<txt::FontCollection>()) {
@@ -30,4 +30,4 @@ void FontCollection::SetupDefaultFontManager() {
     collection_->SetupDefaultFontManager();
 }
 
-} // namespace strg
+} // namespace sm

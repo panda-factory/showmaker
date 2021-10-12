@@ -13,7 +13,7 @@
 namespace {
 
 double fNextTime = -DBL_MAX;
-std::unique_ptr<strg::Window> window;
+std::unique_ptr<sm::Window> window;
 
 void OnIdle()
 {
@@ -23,16 +23,16 @@ int main_win32(int argc, char **argv, HINSTANCE hInstance, int show)
 {
     bool idled = false;
 
-    window.reset(strg::Window::CreateNativeWindow(hInstance));
+    window.reset(sm::Window::CreateNativeWindow(hInstance));
     window->Attach();
 
-    auto column = std::make_unique<strg::Column>();
-    column->AddElement(std::make_unique<strg::Label>("HelloWorld!"));
-    column->AddElement(std::make_unique<strg::Label>("Hello!"));
-    column->AddElement(std::make_unique<strg::Label>("World!"));
-    column->AddElement(std::make_unique<strg::Label>("guozhenxiong!"));
+    auto column = std::make_unique<sm::Column>();
+    column->AddElement(std::make_unique<sm::Label>("HelloWorld!"));
+    column->AddElement(std::make_unique<sm::Label>("Hello!"));
+    column->AddElement(std::make_unique<sm::Label>("World!"));
+    column->AddElement(std::make_unique<sm::Label>("guozhenxiong!"));
 
-    auto view = std::make_unique<strg::View>();
+    auto view = std::make_unique<sm::View>();
     view->Adopt(column.get());
     view->AddElement(std::move(column));
     window->element_ = std::move(view);

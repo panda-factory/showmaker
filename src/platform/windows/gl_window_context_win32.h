@@ -2,13 +2,13 @@
 // Created by guozhenxiong on 2021-07-24.
 //
 
-#ifndef STRUGGLE_GL_WINDOW_CONTEXT_WIN32_H
-#define STRUGGLE_GL_WINDOW_CONTEXT_WIN32_H
+#ifndef SHOWMAKER_GL_WINDOW_CONTEXT_WIN32_H
+#define SHOWMAKER_GL_WINDOW_CONTEXT_WIN32_H
 
 #include "gl_window_context.h"
 
 #include <windows.h>
-namespace strg {
+namespace sm {
 class GLWindowContextWin32 : public GLWindowContext {
 public:
     GLWindowContextWin32(HWND, const DisplayParams&);
@@ -26,6 +26,6 @@ private:
 
     using INHERITED = GLWindowContext;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_GL_WINDOW_CONTEXT_WIN32_H
+#endif //SHOWMAKER_GL_WINDOW_CONTEXT_WIN32_H

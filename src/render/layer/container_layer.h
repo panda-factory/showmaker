@@ -2,14 +2,14 @@
 // Created by guozhenxiong on 2021-08-18.
 //
 
-#ifndef STRUGGLE_CONTAINER_LAYER_H
-#define STRUGGLE_CONTAINER_LAYER_H
+#ifndef SHOWMAKER_CONTAINER_LAYER_H
+#define SHOWMAKER_CONTAINER_LAYER_H
 
 #include <vector>
 
 #include "render/layer/layer.h"
 
-namespace strg {
+namespace sm {
 class ContainerLayer : public Layer {
 public:
     virtual void Add(std::shared_ptr<Layer> layer);
@@ -30,6 +30,6 @@ protected:
 private:
     std::vector<std::shared_ptr<Layer>> layers_;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_CONTAINER_LAYER_H
+#endif //SHOWMAKER_CONTAINER_LAYER_H

@@ -20,15 +20,15 @@
 namespace {
 
 double fNextTime = -DBL_MAX;
-std::unique_ptr<strg::Window> window;
+std::unique_ptr<sm::Window> window;
 
-std::unique_ptr<strg::Picture> Paint()
+std::unique_ptr<sm::Picture> Paint()
 {
-    strg::PictureRecorder recorder;
+    sm::PictureRecorder recorder;
 
     auto canvas = recorder.BeginRecording({500, 500});
 
-    auto builder = std::make_unique<strg::ParagraphBuilder>(12, 12);
+    auto builder = std::make_unique<sm::ParagraphBuilder>(12, 12);
     std::u16string out;
     UTF::UTF8ToUTF16("text for paragraph", out);
     //builder->PushTextStyle();
@@ -40,9 +40,9 @@ std::unique_ptr<strg::Picture> Paint()
     return recorder.FinishRecording();
 }
 
-std::unique_ptr<strg::Scene> Composite(std::unique_ptr<strg::Picture> picture)
+std::unique_ptr<sm::Scene> Composite(std::unique_ptr<sm::Picture> picture)
 {
-    strg::SceneBuilder builder;
+    sm::SceneBuilder builder;
     builder.PushOffset(0, 0);
     builder.AddPicture(0, 0, std::move(picture));
     builder.Pop();
@@ -51,7 +51,7 @@ std::unique_ptr<strg::Scene> Composite(std::unique_ptr<strg::Picture> picture)
 
 int main_win32(int argc, char **argv, HINSTANCE hInstance, int show)
 {
-    window.reset(strg::Window::CreateNativeWindow(hInstance));
+    window.reset(sm::Window::CreateNativeWindow(hInstance));
     window->Attach();
 
     window->Show();

@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-08-20.
 //
 
-#ifndef STRUGGLE_NODE_H
-#define STRUGGLE_NODE_H
+#ifndef SHOWMAKER_NODE_H
+#define SHOWMAKER_NODE_H
 
 #include <vector>
 
@@ -26,4 +26,4 @@ private:
 };
 
 
-#endif //STRUGGLE_NODE_H
+#endif //SHOWMAKER_NODE_H

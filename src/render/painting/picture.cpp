@@ -4,7 +4,7 @@
 
 #include "picture.h"
 
-namespace strg {
+namespace sm {
 std::unique_ptr<Picture> Picture::Create(sk_sp<SkPicture> sk_picture)
 {
     std::unique_ptr<Picture> picture;
@@ -22,4 +22,4 @@ void Picture::OnPaint(SkCanvas *canvas)
 {
     picture()->playback(canvas);
 }
-} // namespace strg
+} // namespace sm

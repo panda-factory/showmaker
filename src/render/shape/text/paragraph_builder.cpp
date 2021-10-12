@@ -6,7 +6,7 @@
 
 #include "font_collection.h"
 
-namespace strg {
+namespace sm {
 namespace {
 
 // TextStyle
@@ -161,4 +161,4 @@ void ParagraphBuilder::PushTextStyle(const TextStyle& text_style)
     paragraph_builder_->PushStyle(style);
 }
 
-} // namespace strg
+} // namespace sm

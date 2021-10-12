@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-07-22.
 //
 
-#ifndef STRUGGLE_GL_WINDOW_CONTEXT_H
-#define STRUGGLE_GL_WINDOW_CONTEXT_H
+#ifndef SHOWMAKER_GL_WINDOW_CONTEXT_H
+#define SHOWMAKER_GL_WINDOW_CONTEXT_H
 
 #include "window_context.h"
 
@@ -11,7 +11,7 @@
 #include "include/core/SkRefCnt.h"
 #include "include/core/SkSurface.h"
 
-namespace strg {
+namespace sm {
 class GLWindowContext : public WindowContext {
 public:
     sk_sp<SkSurface> GetBackbufferSurface() override;
@@ -39,6 +39,6 @@ protected:
     sk_sp<const GrGLInterface> backend_context_;
     sk_sp<SkSurface>           surface_;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_GL_WINDOW_CONTEXT_H
+#endif //SHOWMAKER_GL_WINDOW_CONTEXT_H

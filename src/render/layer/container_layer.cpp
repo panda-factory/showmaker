@@ -4,7 +4,7 @@
 
 #include "container_layer.h"
 
-namespace strg {
+namespace sm {
 void ContainerLayer::Add(std::shared_ptr<Layer> layer)
 {
     layers_.emplace_back(std::move(layer));
@@ -33,4 +33,4 @@ void ContainerLayer::AddChildrenToScene(SceneBuilder *builder, Position offset)
         layer->AddToScene(builder);
     }
 }
-} // namespace strg
+} // namespace sm

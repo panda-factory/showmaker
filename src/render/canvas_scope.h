@@ -2,20 +2,20 @@
 // Created by guozhenxiong on 2021-08-07.
 //
 
-#ifndef STRUGGLE_CANVAS_SCOPE_H
-#define STRUGGLE_CANVAS_SCOPE_H
+#ifndef SHOWMAKER_CANVAS_SCOPE_H
+#define SHOWMAKER_CANVAS_SCOPE_H
 
 #include <optional>
 
 #include "render/clipping_box.h"
 
 #include <third_party/skia/include/core/SkCanvas.h>
-namespace strg {
+namespace sm {
 struct CanvasScope {
     CanvasScope(SkCanvas *canvas, const std::optional<ClippingBox> &clipping_box);
 
     SkAutoCanvasRestore auto_restore;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_CANVAS_SCOPE_H
+#endif //SHOWMAKER_CANVAS_SCOPE_H

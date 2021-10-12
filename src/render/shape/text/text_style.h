@@ -2,18 +2,18 @@
 // Created by guozhenxiong on 2021-10-10.
 //
 
-#ifndef STRUGGLE_TEXT_STYLE_H
-#define STRUGGLE_TEXT_STYLE_H
+#ifndef SHOWMAKER_TEXT_STYLE_H
+#define SHOWMAKER_TEXT_STYLE_H
 
 #include "css/color.h"
 
-namespace strg {
+namespace sm {
 class TextStyle {
 public:
     explicit TextStyle(const css::Color& color);
 private:
     css::Color color_;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_TEXT_STYLE_H
+#endif //SHOWMAKER_TEXT_STYLE_H

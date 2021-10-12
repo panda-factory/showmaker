@@ -8,7 +8,7 @@
 #include "render/painting/picture_recorder.h"
 #include "render/compositing/scene_builder.h"
 
-namespace strg {
+namespace sm {
 void RenderPipeline::FlushLayout(Element *element)
 {
     element->PerformLayout();
@@ -31,4 +31,4 @@ std::unique_ptr<Scene> RenderPipeline::CompositeFrame(Element *element)
 
     return builder.Build();
 }
-} // namespace strg
+} // namespace sm

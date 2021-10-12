@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-07-23.
 //
 
-#ifndef STRUGGLE_ANGLE_GL_WINDOW_CONTEXT_H
-#define STRUGGLE_ANGLE_GL_WINDOW_CONTEXT_H
+#ifndef SHOWMAKER_ANGLE_GL_WINDOW_CONTEXT_H
+#define SHOWMAKER_ANGLE_GL_WINDOW_CONTEXT_H
 
 #include "gl_window_context.h"
 // OpenGL ES and EGL includes
@@ -15,7 +15,7 @@
 
 #include <windows.h>
 
-namespace strg {
+namespace sm {
 std::unique_ptr<WindowContext> MakeAngleContextForWin(HWND wnd, const DisplayParams &params);
 
 class AngleGLWindowContext : public GLWindowContext {
@@ -56,4 +56,4 @@ private:
 };
 }
 
-#endif //STRUGGLE_ANGLE_GL_WINDOW_CONTEXT_H
+#endif //SHOWMAKER_ANGLE_GL_WINDOW_CONTEXT_H

@@ -2,15 +2,15 @@
 // Created by guozhenxiong on 2021-10-09.
 //
 
-#ifndef STRUGGLE_PARAGRAPH_BUILDER_H
-#define STRUGGLE_PARAGRAPH_BUILDER_H
+#ifndef SHOWMAKER_PARAGRAPH_BUILDER_H
+#define SHOWMAKER_PARAGRAPH_BUILDER_H
 
 #include "paragraph.h"
 #include "text_style.h"
 
 #include <third_party/flutter/third_party/txt/src/txt/paragraph_builder.h>
 
-namespace strg {
+namespace sm {
 class ParagraphBuilder {
 public:
     void AddText(const std::u16string& text);
@@ -26,6 +26,6 @@ public:
 private:
     std::unique_ptr<txt::ParagraphBuilder> paragraph_builder_;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_PARAGRAPH_BUILDER_H
+#endif //SHOWMAKER_PARAGRAPH_BUILDER_H

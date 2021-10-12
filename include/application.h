@@ -2,10 +2,10 @@
 // Created by guozhenxiong on 2021-07-21.
 //
 
-#ifndef STRUGGLE_APPLICATION_H
-#define STRUGGLE_APPLICATION_H
+#ifndef SHOWMAKER_APPLICATION_H
+#define SHOWMAKER_APPLICATION_H
 
-namespace strg {
+namespace sm {
 class Application {
 public:
     static Application *Create(int argc, char **argv, void *platformData);
@@ -13,6 +13,6 @@ public:
     virtual ~Application()
     {}
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_APPLICATION_H
+#endif //SHOWMAKER_APPLICATION_H

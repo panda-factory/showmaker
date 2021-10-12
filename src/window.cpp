@@ -12,7 +12,7 @@
 
 #include <include/core/SkSurface.h>
 
-namespace strg {
+namespace sm {
 
 //auto ui_runner = TaskRunner::Create("ui.thread");
 
@@ -115,4 +115,4 @@ int Window::height() const {
     return window_context_->height();
 }
 
-} // namespace strg
+} // namespace sm

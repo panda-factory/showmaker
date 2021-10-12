@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-08-18.
 //
 
-#ifndef STRUGGLE_SCENE_BUILDER_H
-#define STRUGGLE_SCENE_BUILDER_H
+#ifndef SHOWMAKER_SCENE_BUILDER_H
+#define SHOWMAKER_SCENE_BUILDER_H
 
 #include <memory>
 
@@ -11,7 +11,7 @@
 #include "render/layer/container_layer.h"
 #include "render/painting/picture.h"
 
-namespace strg {
+namespace sm {
 class SceneBuilder {
 public:
     static std::unique_ptr<SceneBuilder> Create();
@@ -37,6 +37,6 @@ private:
 
     std::vector<std::shared_ptr<ContainerLayer>> layer_stack_;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_SCENE_BUILDER_H
+#endif //SHOWMAKER_SCENE_BUILDER_H

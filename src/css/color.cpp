@@ -3,8 +3,8 @@
 //
 
 #include "color.h"
-namespace strg {
+namespace sm {
 namespace css {
 
 } // namespace css
-} // namespace strg
+} // namespace sm

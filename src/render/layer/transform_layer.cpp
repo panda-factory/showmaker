@@ -6,7 +6,7 @@
 
 #include "render/compositing/scene_builder.h"
 
-namespace strg {
+namespace sm {
 TransformLayer::TransformLayer(const SkMatrix &transform)
         : transform_(transform)
 {
@@ -29,4 +29,4 @@ void TransformLayer::AddToScene(SceneBuilder *builder, Position offset)
     AddChildrenToScene(builder, offset);
     builder->Pop();
 }
-} // namespace strg
+} // namespace sm

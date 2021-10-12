@@ -2,13 +2,13 @@
 // Created by guozhenxiong on 2021-08-04.
 //
 
-#ifndef STRUGGLE_SHAPE_H
-#define STRUGGLE_SHAPE_H
+#ifndef SHOWMAKER_SHAPE_H
+#define SHOWMAKER_SHAPE_H
 
 #include "drawable.h"
 #include "style/border.h"
 
-namespace strg {
+namespace sm {
 class Shape : public Drawable {
 public:
     Shape();
@@ -16,6 +16,6 @@ public:
 protected:
     Border border_;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_SHAPE_H
+#endif //SHOWMAKER_SHAPE_H

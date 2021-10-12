@@ -2,11 +2,11 @@
 // Created by guozhenxiong on 2021-08-04.
 //
 
-#ifndef STRUGGLE_COLUMN_H
-#define STRUGGLE_COLUMN_H
+#ifndef SHOWMAKER_COLUMN_H
+#define SHOWMAKER_COLUMN_H
 
 #include "render/layout.h"
-namespace strg {
+namespace sm {
 class Column : public Layout {
 protected:
     Size MeasureSize() override;
@@ -14,6 +14,6 @@ protected:
 private:
     std::vector<Position> CalculateChildOffsets() const override;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_COLUMN_H
+#endif //SHOWMAKER_COLUMN_H

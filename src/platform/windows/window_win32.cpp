@@ -8,7 +8,7 @@
 #include "engine/rasterizer/rasterizer.h"
 #include "angle_gl_window_context.h"
 #include <third_party/ConvertUTF/UTF8.h>
-namespace strg {
+namespace sm {
 
 namespace {
 
@@ -138,4 +138,4 @@ void WindowWin32::Show()
     ShowWindow(hWnd_, SW_SHOW);
 }
 
-} // namespace strg
+} // namespace sm

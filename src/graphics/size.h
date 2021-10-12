@@ -2,15 +2,15 @@
 // Created by guozhenxiong on 2021-08-07.
 //
 
-#ifndef STRUGGLE_SIZE_H
-#define STRUGGLE_SIZE_H
+#ifndef SHOWMAKER_SIZE_H
+#define SHOWMAKER_SIZE_H
 
 #include "third_party/skia/include/core/SkScalar.h"
-namespace strg {
+namespace sm {
 struct Size {
     SkScalar width;
     SkScalar height;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_SIZE_H
+#endif //SHOWMAKER_SIZE_H

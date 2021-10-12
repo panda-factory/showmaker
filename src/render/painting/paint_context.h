@@ -2,14 +2,14 @@
 // Created by guozhenxiong on 2021-08-22.
 //
 
-#ifndef STRUGGLE_PAINT_CONTEXT_H
-#define STRUGGLE_PAINT_CONTEXT_H
+#ifndef SHOWMAKER_PAINT_CONTEXT_H
+#define SHOWMAKER_PAINT_CONTEXT_H
 
 #include "render/painting/picture_recorder.h"
 #include "render/layer/container_layer.h"
 #include "render/layer/picture_layer.h"
 
-namespace strg {
+namespace sm {
 class PaintContext {
 public:
     SkCanvas *canvas();
@@ -31,6 +31,6 @@ private:
 
     PictureLayer *picture_layer_;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_PAINT_CONTEXT_H
+#endif //SHOWMAKER_PAINT_CONTEXT_H

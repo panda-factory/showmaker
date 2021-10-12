@@ -8,13 +8,13 @@
 
 #include <third_party/skia/include/core/SkSurface.h>
 
-namespace strg {
+namespace sm {
 
 Rasterizer::Rasterizer(WindowContext* window_context)
   : window_context_(window_context)
 {}
 
-void Rasterizer::Draw(std::unique_ptr<strg::Scene> scene)
+void Rasterizer::Draw(std::unique_ptr<sm::Scene> scene)
 {
     window_context_->MakeCurrent();
 
@@ -30,4 +30,4 @@ void Rasterizer::Draw(std::unique_ptr<strg::Scene> scene)
 
     window_context_->SwapBuffers();
 }
-} // namespace strg
+} // namespace sm

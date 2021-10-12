@@ -2,15 +2,15 @@
 // Created by guozhenxiong on 2021-08-18.
 //
 
-#ifndef STRUGGLE_LAYER_H
-#define STRUGGLE_LAYER_H
+#ifndef SHOWMAKER_LAYER_H
+#define SHOWMAKER_LAYER_H
 
 #include "graphics/position.h"
 
 #include <third_party/skia/include/core/SkPicture.h>
 #include <third_party/skia/include/core/SkCanvas.h>
 
-namespace strg {
+namespace sm {
 class SceneBuilder;
 
 class Layer {
@@ -23,6 +23,6 @@ public:
 
     virtual ~Layer();
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_LAYER_H
+#endif //SHOWMAKER_LAYER_H

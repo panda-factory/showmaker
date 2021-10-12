@@ -3,7 +3,7 @@
 //
 
 #include "text_style.h"
-namespace strg {
+namespace sm {
 TextStyle::TextStyle(const css::Color& color)
   : color_(color)
 {}

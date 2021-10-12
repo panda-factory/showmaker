@@ -2,16 +2,16 @@
 // Created by guozhenxiong on 2021-08-04.
 //
 
-#ifndef STRUGGLE_POSITION_H
-#define STRUGGLE_POSITION_H
+#ifndef SHOWMAKER_POSITION_H
+#define SHOWMAKER_POSITION_H
 
 #include "third_party/skia/include/core/SkScalar.h"
 
-namespace strg {
+namespace sm {
 struct Position {
     SkScalar x;
     SkScalar y;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_POSITION_H
+#endif //SHOWMAKER_POSITION_H

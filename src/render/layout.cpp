@@ -4,7 +4,7 @@
 
 #include "layout.h"
 
-namespace strg {
+namespace sm {
 void Layout::Paint(PaintContext *context)
 {
 }
@@ -13,4 +13,4 @@ void Layout::PerformLayout()
 {
     auto child_offsets = CalculateChildOffsets();
 }
-} // namespace strg
+} // namespace sm

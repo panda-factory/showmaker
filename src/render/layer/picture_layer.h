@@ -2,12 +2,12 @@
 // Created by guozhenxiong on 2021-08-18.
 //
 
-#ifndef STRUGGLE_PICTURE_LAYER_H
-#define STRUGGLE_PICTURE_LAYER_H
+#ifndef SHOWMAKER_PICTURE_LAYER_H
+#define SHOWMAKER_PICTURE_LAYER_H
 
 #include "render/layer/layer.h"
 
-namespace strg {
+namespace sm {
 class Picture;
 
 class PictureLayer : public Layer {
@@ -30,6 +30,6 @@ private:
 
     std::unique_ptr<Picture> picture_;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_PICTURE_LAYER_H
+#endif //SHOWMAKER_PICTURE_LAYER_H

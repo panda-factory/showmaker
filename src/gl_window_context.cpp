@@ -8,7 +8,7 @@
 #include "third_party/skia/include/gpu/GrBackendSurface.h"
 #include "third_party/skia/include/gpu/GrDirectContext.h"
 
-namespace strg {
+namespace sm {
 #define GPU_GL_RGBA8 0x8058
 #define GPU_GL_RGBA4 0x8056
 #define GPU_GL_RGB565 0x8D62
@@ -90,4 +90,4 @@ void GLWindowContext::SwapBuffers() {
     this->OnSwapBuffers();
 }
 
-} // namespace strg
+} // namespace sm

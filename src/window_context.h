@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-07-22.
 //
 
-#ifndef STRUGGLE_WINDOW_CONTEXT_H
-#define STRUGGLE_WINDOW_CONTEXT_H
+#ifndef SHOWMAKER_WINDOW_CONTEXT_H
+#define SHOWMAKER_WINDOW_CONTEXT_H
 
 #include "display_params.h"
 #include "include/core/SkSurfaceProps.h"
@@ -14,7 +14,7 @@
 class GrDirectContext;
 class SkSurface;
 
-namespace strg {
+namespace sm {
 class WindowContext {
 public:
     virtual sk_sp<SkSurface> GetBackbufferSurface() = 0;
@@ -43,6 +43,6 @@ protected:
     int sample_count_;
     int stencil_bits_;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_WINDOW_CONTEXT_H
+#endif //SHOWMAKER_WINDOW_CONTEXT_H

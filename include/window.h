@@ -9,7 +9,7 @@
 #include "window_context.h"
 #include "engine/engine.h"
 
-namespace strg {
+namespace sm {
 class Element;
 
 class Window : public Engine::Delegate{
@@ -71,6 +71,6 @@ private:
 
     OnBeginFrame on_begin_frame_;
 };
-} // namespace strg
+} // namespace sm
 
 #endif //WTF_WINDOW_H

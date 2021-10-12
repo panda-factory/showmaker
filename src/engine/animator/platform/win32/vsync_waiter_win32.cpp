@@ -6,7 +6,7 @@
 
 #include <chrono>
 
-namespace strg {
+namespace sm {
 namespace {
 static fml::TimePoint SnapToNextTick(fml::TimePoint value,
                                      fml::TimePoint tick_phase,
@@ -37,4 +37,4 @@ void VsyncWaiterWin32::AwaitVSync()
 
     Invoke(next, next + kSingleFrameInterval);
 }
-} // namespace strg
+} // namespace sm

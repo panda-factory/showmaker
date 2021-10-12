@@ -6,11 +6,11 @@
 
 #include "include/gpu/GrDirectContext.h"
 
-namespace strg {
+namespace sm {
 
 WindowContext::WindowContext(const DisplayParams &params)
         : display_params_(params)
 {}
 
 WindowContext::~WindowContext() = default;
-} // namespace strg
+} // namespace sm

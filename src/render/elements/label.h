@@ -2,13 +2,13 @@
 // Created by guozhenxiong on 2021-08-04.
 //
 
-#ifndef STRUGGLE_LABEL_H
-#define STRUGGLE_LABEL_H
+#ifndef SHOWMAKER_LABEL_H
+#define SHOWMAKER_LABEL_H
 
 #include "element.h"
 #include "render/shape/text.h"
 
-namespace strg {
+namespace sm {
 class Label : public Element {
 public:
     void Paint(PaintContext *context) override;
@@ -22,6 +22,6 @@ public:
 private:
     Text text_;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_LABEL_H
+#endif //SHOWMAKER_LABEL_H

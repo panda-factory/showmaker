@@ -6,7 +6,7 @@
 
 #include "render/layer/offset_layer.h"
 
-namespace strg {
+namespace sm {
 Element::Element()
         : layer_(nullptr)
 {
@@ -62,4 +62,4 @@ void Element::Detach()
 {
     Node::Detach();
 }
-} // namespace strg
+} // namespace sm

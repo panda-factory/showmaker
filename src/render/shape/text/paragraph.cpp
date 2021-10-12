@@ -6,7 +6,7 @@
 
 #include <flutter/fml/memory/ref_counted.h>
 
-namespace strg {
+namespace sm {
 
 /// | static |
 std::unique_ptr<Paragraph> Paragraph::Create(std::unique_ptr<txt::Paragraph> txt_paragraph)
@@ -28,4 +28,4 @@ void Paragraph::Layout(double width) {
 void Paragraph::Paint(SkCanvas* canvas, double x, double y) {
     paragraph_->Paint(canvas, x, y);
 }
-} // namespace strg
+} // namespace sm

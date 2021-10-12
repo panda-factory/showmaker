@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-08-04.
 //
 
-#ifndef STRUGGLE_ELEMENT_H
-#define STRUGGLE_ELEMENT_H
+#ifndef SHOWMAKER_ELEMENT_H
+#define SHOWMAKER_ELEMENT_H
 
 #include <vector>
 
@@ -16,7 +16,7 @@
 
 #include "include/core/SkSurface.h"
 #include "include/core/SkCanvas.h"
-namespace strg {
+namespace sm {
 class Element : public Node {
 public:
     // | Node |
@@ -73,6 +73,6 @@ protected:
     SkRect bound_;
 private:
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_ELEMENT_H
+#endif //SHOWMAKER_ELEMENT_H

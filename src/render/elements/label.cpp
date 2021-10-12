@@ -10,7 +10,7 @@
 
 #include <third_party/skia/include/core/SkGraphics.h>
 
-namespace strg {
+namespace sm {
 Label::Label(const std::string &text)
         : text_(text)
 {
@@ -20,7 +20,7 @@ Label::Label(const std::string &text)
 void Label::Paint(PaintContext *context)
 {
     auto canvas = context->canvas();
-    auto rect = std::make_unique<strg::Rectangle>(text_.MeasureSize());
+    auto rect = std::make_unique<sm::Rectangle>(text_.MeasureSize());
 
     Element::Draw(canvas, rect.get(), {0, 0});
     Element::Draw(canvas, &text_, {0, 0});
@@ -33,4 +33,4 @@ Size Label::MeasureSize()
     const auto text_size = text_.MeasureSize();
     return text_size;
 }
-} // namespace strg
+} // namespace sm

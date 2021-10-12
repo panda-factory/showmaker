@@ -2,12 +2,12 @@
 // Created by guozhenxiong on 2021-08-21.
 //
 
-#ifndef STRUGGLE_VIEW_H
-#define STRUGGLE_VIEW_H
+#ifndef SHOWMAKER_VIEW_H
+#define SHOWMAKER_VIEW_H
 
 #include "element.h"
 
-namespace strg {
+namespace sm {
 class View : public Element {
 public:
     void Paint(PaintContext *context) override;
@@ -16,6 +16,6 @@ public:
 
     Size MeasureSize() override;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_VIEW_H
+#endif //SHOWMAKER_VIEW_H

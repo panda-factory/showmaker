@@ -2,12 +2,12 @@
 // Created by guozhenxiong on 2021-10-09.
 //
 
-#ifndef STRUGGLE_PARAGRAPH_H
-#define STRUGGLE_PARAGRAPH_H
+#ifndef SHOWMAKER_PARAGRAPH_H
+#define SHOWMAKER_PARAGRAPH_H
 
 #include <third_party/flutter/third_party/txt/src/txt/paragraph.h>
 
-namespace strg {
+namespace sm {
 class Paragraph {
 public:
     static std::unique_ptr<Paragraph> Create(std::unique_ptr<txt::Paragraph> txt_paragraph);
@@ -21,6 +21,6 @@ private:
 
     std::unique_ptr<txt::Paragraph> paragraph_;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_PARAGRAPH_H
+#endif //SHOWMAKER_PARAGRAPH_H

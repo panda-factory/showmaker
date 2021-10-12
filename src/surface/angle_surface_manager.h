@@ -2,8 +2,8 @@
 // Created by guozhenxiong on 2021-07-21.
 //
 
-#ifndef STRUGGLE_ANGLE_SURFACE_MANAGER_H
-#define STRUGGLE_ANGLE_SURFACE_MANAGER_H
+#ifndef SHOWMAKER_ANGLE_SURFACE_MANAGER_H
+#define SHOWMAKER_ANGLE_SURFACE_MANAGER_H
 
 // OpenGL ES and EGL includes
 #include <EGL/egl.h>
@@ -15,7 +15,7 @@
 #include <memory>
 #include <windows.h>
 
-namespace strg {
+namespace sm {
 class WindowWin32;
 // A manager for inializing ANGLE correctly and using it to create and
 // destroy surfaces
@@ -78,7 +78,7 @@ private:
     static int instance_count_;
 };
 
-}  // namespace strg
+}  // namespace sm
 
 
-#endif //STRUGGLE_ANGLE_SURFACE_MANAGER_H
+#endif //SHOWMAKER_ANGLE_SURFACE_MANAGER_H

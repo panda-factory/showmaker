@@ -2,14 +2,14 @@
 // Created by guozhenxiong on 2021-08-20.
 //
 
-#ifndef STRUGGLE_RENDER_PIPELINE_H
-#define STRUGGLE_RENDER_PIPELINE_H
+#ifndef SHOWMAKER_RENDER_PIPELINE_H
+#define SHOWMAKER_RENDER_PIPELINE_H
 
 #include <memory>
 
 #include "wtf/all_static.h"
 
-namespace strg {
+namespace sm {
 class Element;
 
 class Scene;
@@ -23,6 +23,6 @@ public:
     static std::unique_ptr<Scene> CompositeFrame(Element *);
 
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_RENDER_PIPELINE_H
+#endif //SHOWMAKER_RENDER_PIPELINE_H

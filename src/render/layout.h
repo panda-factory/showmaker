@@ -2,14 +2,14 @@
 // Created by guozhenxiong on 2021-08-04.
 //
 
-#ifndef STRUGGLE_LAYOUT_H
-#define STRUGGLE_LAYOUT_H
+#ifndef SHOWMAKER_LAYOUT_H
+#define SHOWMAKER_LAYOUT_H
 
 #include <vector>
 #include <memory>
 #include "render/elements/element.h"
 
-namespace strg {
+namespace sm {
 class Layout : public Element {
 public:
     void Paint(PaintContext *context) override final;
@@ -22,6 +22,6 @@ protected:
 private:
     virtual std::vector<Position> CalculateChildOffsets() const = 0;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_LAYOUT_H
+#endif //SHOWMAKER_LAYOUT_H

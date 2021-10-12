@@ -3,7 +3,7 @@
 //
 
 #include "shape.h"
-namespace strg {
+namespace sm {
 Shape::Shape()
 {}
-} // namespace strg
+} // namespace sm

@@ -4,7 +4,7 @@
 
 #include "paint_context.h"
 
-namespace strg {
+namespace sm {
 PaintContext::PaintContext(const SkRect &bounds, ContainerLayer *container)
         : canvas_(nullptr), bounds_(bounds), container_(container), picture_layer_(nullptr)
 {
@@ -29,4 +29,4 @@ SkCanvas *PaintContext::canvas()
 
     return canvas_;
 }
-} // namespace strg
+} // namespace sm

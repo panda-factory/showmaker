@@ -2,14 +2,14 @@
 // Created by guozhenxiong on 2021-09-21.
 //
 
-#ifndef STRUGGLE_ENGINE_H
-#define STRUGGLE_ENGINE_H
+#ifndef SHOWMAKER_ENGINE_H
+#define SHOWMAKER_ENGINE_H
 
 #include "thread_host.h"
 #include "task_runners.h"
 #include "animator/animator.h"
 
-namespace strg {
+namespace sm {
 class Scene;
 class Rasterizer;
 
@@ -44,6 +44,6 @@ private:
     std::unique_ptr<Animator> animator_;
     std::unique_ptr<Rasterizer> rasterizer_;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_ENGINE_H
+#endif //SHOWMAKER_ENGINE_H

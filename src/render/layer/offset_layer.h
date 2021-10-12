@@ -2,12 +2,12 @@
 // Created by guozhenxiong on 2021-08-22.
 //
 
-#ifndef STRUGGLE_OFFSET_LAYER_H
-#define STRUGGLE_OFFSET_LAYER_H
+#ifndef SHOWMAKER_OFFSET_LAYER_H
+#define SHOWMAKER_OFFSET_LAYER_H
 
 #include "render/layer/container_layer.h"
 
-namespace strg {
+namespace sm {
 class OffsetLayer : public ContainerLayer {
 public:
     void Paint(SkCanvas *canvas) const override;
@@ -19,6 +19,6 @@ public:
 private:
     SkPoint offset_;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_OFFSET_LAYER_H
+#endif //SHOWMAKER_OFFSET_LAYER_H

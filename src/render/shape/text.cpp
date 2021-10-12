@@ -10,7 +10,7 @@
 #include <include/core/SkFontMetrics.h>
 #include <third_party/ConvertUTF/UTF8.h>
 
-namespace strg {
+namespace sm {
 Text::Text(const std::string &text)
         : text_(text)
 {
@@ -45,4 +45,4 @@ Size Text::MeasureSize()
     paragraph_->Layout(width);
     return {width, height};
 }
-} // namespace strg
+} // namespace sm

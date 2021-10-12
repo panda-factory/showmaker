@@ -8,7 +8,7 @@
 #include "render/compositing/scene.h"
 #include "third_party/flutter/fml/make_copyable.h"
 
-namespace strg {
+namespace sm {
 
 // | static |
 std::unique_ptr<Engine> Engine::Create(Delegate& delegate)
@@ -71,4 +71,4 @@ void Engine::ScheduleFrame()
     animator_->RequestFrame();
 }
 
-} // namespace strg
+} // namespace sm

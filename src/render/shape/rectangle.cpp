@@ -8,7 +8,7 @@
 
 #include <third_party/skia/include/core/SkRRect.h>
 
-namespace strg {
+namespace sm {
 Rectangle::Rectangle(const Size &size)
         : size_(size)
 {}
@@ -24,4 +24,4 @@ void Rectangle::Draw(SkCanvas *canvas, const Position &position)
     canvas->drawRect(fill_rect, selection);
 
 }
-} // namespace strg
+} // namespace sm

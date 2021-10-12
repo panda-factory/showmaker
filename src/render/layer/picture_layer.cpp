@@ -5,7 +5,7 @@
 #include "picture_layer.h"
 #include "render/compositing/scene_builder.h"
 
-namespace strg {
+namespace sm {
 PictureLayer::PictureLayer(const SkPoint &offset, std::unique_ptr<Picture> picture)
         : offset_(offset),
           picture_(std::move(picture))
@@ -32,4 +32,4 @@ void PictureLayer::ResetPicture(std::unique_ptr<Picture> picture)
     picture_.reset();
     picture_ = std::move(picture);
 }
-} // namespace strg
+} // namespace sm

@@ -3,6 +3,6 @@
 //
 
 #include "display_params.h"
-namespace strg {
+namespace sm {
 
-} // namespace strg
+} // namespace sm

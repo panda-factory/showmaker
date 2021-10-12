@@ -4,7 +4,7 @@
 
 #include "scene.h"
 
-namespace strg {
+namespace sm {
 std::unique_ptr<Scene> Scene::Create(std::shared_ptr<Layer> root_layer)
 {
     std::unique_ptr<Scene> scene;
@@ -18,4 +18,4 @@ Scene::Scene(std::shared_ptr<Layer> root_layer)
 }
 
 Scene::~Scene() = default;
-} // namespace strg
+} // namespace sm

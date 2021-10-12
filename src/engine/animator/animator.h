@@ -2,14 +2,14 @@
 // Created by guozhenxiong on 2021-09-18.
 //
 
-#ifndef STRUGGLE_ANIMATOR_H
-#define STRUGGLE_ANIMATOR_H
+#ifndef SHOWMAKER_ANIMATOR_H
+#define SHOWMAKER_ANIMATOR_H
 
 #include <memory>
 
 #include "vsync_waiter.h"
 
-namespace strg {
+namespace sm {
 class Animator final {
 public:
     class Delegate {
@@ -34,6 +34,6 @@ private:
 
     std::unique_ptr<VsyncWaiter> waiter_;
 };
-} // namespace strg
+} // namespace sm
 
-#endif //STRUGGLE_ANIMATOR_H
+#endif //SHOWMAKER_ANIMATOR_H
