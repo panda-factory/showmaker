@@ -10,6 +10,8 @@
 namespace sm {
 class View : public Element {
 public:
+    bool HitTest(double x, double y) override;
+
     void Paint(PaintContext *context) override;
 
     void PerformLayout() override;

@@ -15,9 +15,15 @@
 namespace sm {
 class Text : public Shape {
 public:
+    SkRect GetLocation();
+
+    size_t GetPosition(double x, double y);
+
     void Draw(SkCanvas *, const Position &position) override;
 
     Size MeasureSize();
+
+    Text();
 
     Text(const std::string &text);
 
@@ -29,6 +35,8 @@ private:
     SkScalar size_ = 12;
 
     std::unique_ptr<Paragraph> paragraph_;
+
+    TextPosition position_;
 };
 } // namespace sm
 

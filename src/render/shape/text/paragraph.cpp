@@ -21,6 +21,20 @@ Paragraph::Paragraph(std::unique_ptr<txt::Paragraph> paragraph)
         : paragraph_(std::move(paragraph))
         {}
 
+
+std::vector<txt::Paragraph::TextBox> Paragraph::GetRectsForRange(unsigned start,
+                                                                 unsigned end)
+{
+    return paragraph_->GetRectsForRange(start, end, txt::Paragraph::RectHeightStyle::kMax, txt::Paragraph::RectWidthStyle::kTight);
+}
+
+TextPosition Paragraph::GetPositionForOffset(double dx, double dy)
+{
+    auto pos =  paragraph_->GetGlyphPositionAtCoordinate(dx, dy);
+
+    return {pos.position, static_cast<TextAffinity>(pos.affinity)};
+}
+
 void Paragraph::Layout(double width) {
     paragraph_->Layout(width);
 }

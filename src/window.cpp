@@ -32,6 +32,11 @@ void Window::OnEngineBeginFrame(fml::TimePoint frame_target_time)
     }
 }
 
+bool Window::HitTest(double x, double y)
+{
+    return element_->HitTest(x, y);
+}
+
 void Window::ScheduleFrame()
 {
     engine_->ScheduleFrame();

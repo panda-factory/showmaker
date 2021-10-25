@@ -5,6 +5,14 @@
 #include "layout.h"
 
 namespace sm {
+bool Layout::HitTest(double x, double y)
+{
+    for (const auto& child : children_) {
+        child->HitTest(x, y);
+    }
+    return false;
+}
+
 void Layout::Paint(PaintContext *context)
 {
 }

@@ -12,6 +12,8 @@
 namespace sm {
 class Layout : public Element {
 public:
+    bool HitTest(double x, double y) override;
+
     void Paint(PaintContext *context) override final;
 
     void PerformLayout() override;

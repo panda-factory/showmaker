@@ -5,6 +5,7 @@
 #include "window_win32.h"
 
 #include <tchar.h>
+#include <windowsx.h>
 #include "engine/rasterizer/rasterizer.h"
 #include "angle_gl_window_context.h"
 #include <third_party/ConvertUTF/UTF8.h>
@@ -21,6 +22,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wparam, LPARAM lparam)
 {
     PAINTSTRUCT ps;
     HDC hdc;
+    int x_pos = 0, y_pos = 0;
+    UINT width = 0, height = 0;
+    UINT button_pressed = 0;
 
     WindowWin32 *window = (WindowWin32 *) GetWindowLongPtr(hWnd, GWLP_USERDATA);
 
@@ -33,7 +37,21 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wparam, LPARAM lparam)
             EndPaint(hWnd, &ps);
             eventHandled = true;
             break;
+        case WM_LBUTTONUP:
+        case WM_RBUTTONUP:
+        case WM_MBUTTONUP:
+        case WM_XBUTTONUP:
+            if (message == WM_LBUTTONUP) {
+                ReleaseCapture();
+            }
+            button_pressed = message;
+            if (message == WM_XBUTTONUP) {
+                button_pressed = GET_XBUTTON_WPARAM(wparam);
+            }
+            x_pos = GET_X_LPARAM(lparam);
+            y_pos = GET_Y_LPARAM(lparam);
 
+            window->HitTest(x_pos, y_pos);
         case WM_CLOSE:
             PostQuitMessage(0);
             eventHandled = true;

@@ -11,6 +11,8 @@
 #include <third_party/ConvertUTF/UTF8.h>
 
 namespace sm {
+Text::Text() = default;
+
 Text::Text(const std::string &text)
         : text_(text)
 {
@@ -20,6 +22,18 @@ Text::Text(const std::string &text)
     //builder->PushTextStyle();
     builder->AddText(out);
     paragraph_ = builder->Build();
+}
+
+SkRect Text::GetLocation()
+{
+    auto locations = paragraph_->GetRectsForRange(text_.size() - 1, text_.size());
+    return locations.begin()->rect;
+}
+
+size_t Text::GetPosition(double x, double y)
+{
+    position_ = paragraph_->GetPositionForOffset(x, y);
+    return position_.offset;
 }
 
 void Text::Draw(SkCanvas *canvas, const Position &position)

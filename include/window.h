@@ -23,6 +23,8 @@ public:
 
     virtual bool Attach() = 0;
 
+    virtual bool HitTest(double x, double y);
+
     virtual void Show() = 0;
 
     void ScheduleFrame();

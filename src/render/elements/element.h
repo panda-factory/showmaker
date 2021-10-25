@@ -38,6 +38,8 @@ public:
 
     void OnPaint();
 
+    virtual bool HitTest(double x, double y) { return false; }
+
     virtual void Paint(PaintContext *context) = 0;
 
     virtual void PerformLayout()

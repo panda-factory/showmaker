@@ -9,6 +9,7 @@ SET(WINDOW_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/render/compositing/scene.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/compositing/scene_builder.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/canvas_scope.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/render/elements/editable_text.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/elements/label.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/elements/view.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/layer/container_layer.cpp

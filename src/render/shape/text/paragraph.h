@@ -8,9 +8,28 @@
 #include <third_party/flutter/third_party/txt/src/txt/paragraph.h>
 
 namespace sm {
+
+enum TextAffinity {
+    UPSTREAM,
+    DOWNSTREAM,
+};
+struct TextPosition {
+    size_t offset;
+    TextAffinity affinity;
+};
+
 class Paragraph {
 public:
     static std::unique_ptr<Paragraph> Create(std::unique_ptr<txt::Paragraph> txt_paragraph);
+
+    inline double width() { return paragraph_->GetMaxWidth(); }
+
+    inline double height() { return paragraph_->GetHeight(); }
+
+    std::vector<txt::Paragraph::TextBox> GetRectsForRange(unsigned start,
+                                                          unsigned end);
+
+    TextPosition GetPositionForOffset(double dx, double dy);
 
     void Layout(double width);
 
