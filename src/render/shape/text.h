@@ -9,6 +9,7 @@
 #include "graphics/size.h"
 
 #include "text/paragraph.h"
+#include "text/text_editing_value.h"
 
 #include <third_party/skia/include/core/SkFont.h>
 
@@ -19,6 +20,8 @@ public:
 
     size_t GetPosition(double x, double y);
 
+    inline TextEditingValue& text() { return text_; }
+
     void Draw(SkCanvas *, const Position &position) override;
 
     Size MeasureSize();
@@ -28,15 +31,13 @@ public:
     Text(const std::string &text);
 
 private:
-    std::string text_;
+    TextEditingValue text_;
 
     SkFont font_;
 
     SkScalar size_ = 12;
 
     std::unique_ptr<Paragraph> paragraph_;
-
-    TextPosition position_;
 };
 } // namespace sm
 

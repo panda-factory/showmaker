@@ -39,6 +39,8 @@ int main_win32(int argc, char **argv, HINSTANCE hInstance, int show)
     window->RegisterOnBeginFrame(
             [window = window.get()] () {
                 window->OnPaint();
+                std::this_thread::sleep_for(std::chrono::milliseconds(500));
+                window->ScheduleFrame();
             });
 
     window->ScheduleFrame();

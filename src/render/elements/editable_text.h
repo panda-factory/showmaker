@@ -8,14 +8,21 @@
 #include "element.h"
 
 #include "render/shape/text.h"
+#include "render/shape/text/text_input_client.h"
 
 namespace sm {
-class EditableText : public Element{
+class EditableText : public Element, public TextInputClient {
 public:
+    /// | TextInputClient |
+    void OnChar(const std::u16string& c) override;
+
+    /// | Element |
     bool HitTest(double x, double y) override;
 
+    /// | Element |
     void Paint(PaintContext *context) override;
 
+    /// | Element |
     Size MeasureSize() override;
 
     EditableText(const std::string &text);

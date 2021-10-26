@@ -8,6 +8,7 @@
 #include <vector>
 #include "window_context.h"
 #include "engine/engine.h"
+#include "render/shape/text/text_input_client.h"
 
 namespace sm {
 class Element;
@@ -17,6 +18,10 @@ public:
     using OnBeginFrame = std::function<void()>;
 
     static Window* CreateNativeWindow(void* platformData);
+
+    static void RegisterOnChar(std::function<void (const std::u16string& utf16)> on_char) {
+        on_char_handler = on_char;
+    }
 
     /// | Engine::Delegate |
     void OnEngineBeginFrame(fml::TimePoint frame_target_time) override;
@@ -35,7 +40,7 @@ public:
 
     void Detach();
 
-    bool OnChar(const std::string& utf8);
+    bool OnChar(const std::u16string& utf16);
 
     void OnPaint();
 
@@ -70,6 +75,8 @@ private:
     void MarkInvalidProcessed();
 
     void VisitRootElement(std::function<void (Element*)> visitor);
+
+    static std::function<void (const std::u16string& utf16)> on_char_handler;
 
     OnBeginFrame on_begin_frame_;
 };

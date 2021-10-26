@@ -5,11 +5,21 @@
 #include "editable_text.h"
 
 #include "render/shape/rectangle.h"
-
+#include "window.h"
 namespace sm {
 EditableText::EditableText(const std::string &text)
   : text_(text), blink_(false)
 {
+    std::function<void (const std::u16string& u16)> handle = [this] (const std::u16string& u16) {
+        this->OnChar(u16);
+    };
+    Window::RegisterOnChar(handle);
+}
+
+/// | TextInputClient |
+void EditableText::OnChar(const std::u16string& c)
+{
+    text_.text().AddText(c);
 }
 
 bool EditableText::HitTest(double x, double y)
@@ -26,9 +36,9 @@ void EditableText::Paint(PaintContext *context)
     Element::Draw(canvas, rect.get(), {0, 0});
     Element::Draw(canvas, &text_, {0, 0});
     auto cursor_rect = text_.GetLocation();
-    //auto cursor = std::make_unique<sm::Rectangle>(Size({cursor_rect.width(), cursor_rect.height()}));
-    //Element::Draw(canvas, cursor.get(), {cursor_rect.x(), cursor_rect.y()});
-    canvas->drawRect(cursor_rect, SkPaint({1, 0, 0, 1.0f}));
+    SkPaint cursor_paint({1, 0, 0, blink_ ? 1.0f : 0.0f});
+    blink_ = !blink_;
+    canvas->drawRect(cursor_rect, cursor_paint);
 
     canvas->save();
 }

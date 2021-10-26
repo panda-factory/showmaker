@@ -5,6 +5,7 @@ SET(SHAPE_SRC
     ${SHAPE_SRC_DIR}/text/font_collection.cpp
     ${SHAPE_SRC_DIR}/text/paragraph.cpp
     ${SHAPE_SRC_DIR}/text/paragraph_builder.cpp
+    ${SHAPE_SRC_DIR}/text/text_editing_value.cpp
     ${SHAPE_SRC_DIR}/text/text_style.cpp)
 
 ADD_LIBRARY(${TARGET_NAME} STATIC ${SHAPE_SRC})

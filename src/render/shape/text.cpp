@@ -26,14 +26,15 @@ Text::Text(const std::string &text)
 
 SkRect Text::GetLocation()
 {
-    auto locations = paragraph_->GetRectsForRange(text_.size() - 1, text_.size());
+    auto locations = paragraph_->GetRectsForRange(text_.position() - 1, text_.position());
     return locations.begin()->rect;
 }
 
 size_t Text::GetPosition(double x, double y)
 {
-    position_ = paragraph_->GetPositionForOffset(x, y);
-    return position_.offset;
+    auto pos = paragraph_->GetPositionForOffset(x, y);
+    text_.position() = pos.offset;
+    return text_.position();
 }
 
 void Text::Draw(SkCanvas *canvas, const Position &position)
@@ -43,20 +44,10 @@ void Text::Draw(SkCanvas *canvas, const Position &position)
 
 Size Text::MeasureSize()
 {
-    SkPaint paint;
-    font_.setSize(size_);
-
-    SkFontMetrics metrics;
-    font_.getMetrics(&metrics);
-
-    SkRect bounds;
-    const SkScalar width = font_.measureText(text_.c_str(),
-                                             text_.size(),
-                                             SkTextEncoding::kUTF8,
-                                             &bounds,
-                                             &paint);
-    const SkScalar height = std::abs(metrics.fAscent - metrics.fDescent);
-    paragraph_->Layout(width);
-    return {width, height};
+    auto builder = std::make_unique<ParagraphBuilder>(size_, size_);
+    builder->AddText(text_.text());
+    paragraph_ = builder->Build();
+    paragraph_->Layout(120);
+    return {(SkScalar)paragraph_->width(), (SkScalar)paragraph_->height()};
 }
 } // namespace sm

@@ -52,6 +52,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wparam, LPARAM lparam)
             y_pos = GET_Y_LPARAM(lparam);
 
             window->HitTest(x_pos, y_pos);
+            break;
         case WM_CLOSE:
             PostQuitMessage(0);
             eventHandled = true;
@@ -67,7 +68,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wparam, LPARAM lparam)
             std::string utf8;
             UTF::UTF16ToUTF8(text, utf8);
 
-            //eventHandled = window->OnChar(utf8);
+            window->OnChar(text);
             break;
         }
         default:

@@ -15,6 +15,7 @@
 namespace sm {
 
 //auto ui_runner = TaskRunner::Create("ui.thread");
+std::function<void (const std::u16string& utf16)> Window::on_char_handler;
 
 Window::Window()
 {
@@ -57,6 +58,14 @@ void Window::Invalid() {
 
 void Window::MarkInvalidProcessed() {
     is_content_invalidated = false;
+}
+
+bool Window::OnChar(const std::u16string& utf16)
+{
+    if (on_char_handler) {
+        on_char_handler(utf16);
+    }
+    return false;
 }
 
 void Window::OnPaint() {
