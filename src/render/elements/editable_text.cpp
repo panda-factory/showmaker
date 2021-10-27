@@ -14,6 +14,7 @@ EditableText::EditableText(const std::string &text)
         this->OnChar(u16);
     };
     Window::RegisterOnChar(handle);
+    MarkNeedsPaint();
 }
 
 /// | TextInputClient |
@@ -26,6 +27,12 @@ bool EditableText::HitTest(double x, double y)
 {
     auto pos = text_.GetPosition(x, y);
     return false;
+}
+
+/// | RenderObject |
+void EditableText::Paint(const PaintContext* context, Position offset)
+{
+    Paint(const_cast<PaintContext*>(context));
 }
 
 void EditableText::Paint(PaintContext *context)
@@ -46,6 +53,7 @@ void EditableText::Paint(PaintContext *context)
 Size EditableText::MeasureSize()
 {
     const auto text_size = text_.MeasureSize();
+    MarkNeedsPaint();
     return text_size;
 }
 }

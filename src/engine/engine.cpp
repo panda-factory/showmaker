@@ -46,6 +46,11 @@ void Engine::OnAnimatorBeginFrame(fml::TimePoint frame_target_time)
     BeginFrame(frame_target_time);
 }
 
+void Engine::PostUITask(std::function<void ()> task)
+{
+    task_runners_->GetUITaskRunner()->PostTask(task);
+}
+
 void Engine::BeginFrame(fml::TimePoint frame_target_time)
 {
     delegate_.OnEngineBeginFrame(frame_target_time);

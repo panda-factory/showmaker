@@ -63,7 +63,9 @@ void Window::MarkInvalidProcessed() {
 bool Window::OnChar(const std::u16string& utf16)
 {
     if (on_char_handler) {
-        on_char_handler(utf16);
+        engine_->PostUITask([utf16] () {
+            on_char_handler(utf16);
+        });
     }
     return false;
 }

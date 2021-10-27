@@ -13,11 +13,12 @@
 #include "graphics/size.h"
 #include "render/layer/container_layer.h"
 #include "render/painting/paint_context.h"
+#include "render/pipeline/render_object.h"
 
 #include "include/core/SkSurface.h"
 #include "include/core/SkCanvas.h"
 namespace sm {
-class Element : public Node {
+class Element : public Node, public RenderObject {
 public:
     // | Node |
     void Adopt(Node *child) override;
@@ -50,9 +51,6 @@ public:
 
     virtual Size MeasureSize() = 0;
 
-    inline std::shared_ptr<ContainerLayer> layer()
-    { return layer_; }
-
     Element();
 
     virtual ~Element();
@@ -67,8 +65,6 @@ protected:
     bool is_recording_;
 
     std::vector<std::unique_ptr<Element>> children_;
-
-    std::shared_ptr<ContainerLayer> layer_;
 
     Position position_;
 

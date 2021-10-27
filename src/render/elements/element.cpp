@@ -8,8 +8,8 @@
 
 namespace sm {
 Element::Element()
-        : layer_(nullptr)
 {
+    MarkNeedsPaint();
 }
 
 Element::~Element() = default;

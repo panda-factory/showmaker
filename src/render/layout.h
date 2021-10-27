@@ -14,6 +14,8 @@ class Layout : public Element {
 public:
     bool HitTest(double x, double y) override;
 
+    void Paint(const PaintContext* context, Position offset) override;
+
     void Paint(PaintContext *context) override final;
 
     void PerformLayout() override;

@@ -10,8 +10,14 @@
 #include "render/layer/picture_layer.h"
 
 namespace sm {
+class RenderObject;
+
 class PaintContext {
 public:
+    static void RepaintCompositedChild(RenderObject* child);
+
+    void PaintChild(RenderObject* child, Position offset) const;
+
     SkCanvas *canvas();
 
     explicit PaintContext(const SkRect &bounds, ContainerLayer *container);

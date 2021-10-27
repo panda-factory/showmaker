@@ -26,12 +26,11 @@ int main_win32(int argc, char **argv, HINSTANCE hInstance, int show)
     window.reset(sm::Window::CreateNativeWindow(hInstance));
     window->Attach();
 
-    auto column = std::make_unique<sm::Column>();
-    column->AddElement(std::make_unique<sm::EditableText>("HelloWorld!"));
+    auto edit = std::make_unique<sm::EditableText>("HelloWorld!");
 
     auto view = std::make_unique<sm::View>();
-    view->Adopt(column.get());
-    view->AddElement(std::move(column));
+    view->Adopt(edit.get());
+    view->AddElement(std::move(edit));
     window->element_ = std::move(view);
 
     window->Show();

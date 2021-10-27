@@ -9,6 +9,13 @@
 #include "render/compositing/scene_builder.h"
 
 namespace sm {
+std::list<RenderObject*> RenderPipeline::nodes_needing_paint_;
+
+void RenderPipeline::AddNodeNeedingPaint(RenderObject* node)
+{
+    nodes_needing_paint_.emplace_back(node);
+}
+
 void RenderPipeline::FlushLayout(Element *element)
 {
     element->PerformLayout();
@@ -16,10 +23,12 @@ void RenderPipeline::FlushLayout(Element *element)
 
 void RenderPipeline::FlushPaint(Element *element)
 {
-    SceneBuilder builder;
-    PictureRecorder recorder;
-
-    element->OnPaint();
+    auto dirty_nodes = std::move(nodes_needing_paint_);
+    for (auto node : dirty_nodes) {
+        if (node->needs_paint() == true) {
+            PaintContext::RepaintCompositedChild(node);
+        }
+    }
 
 }
 

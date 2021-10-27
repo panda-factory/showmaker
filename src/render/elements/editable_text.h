@@ -25,6 +25,9 @@ public:
     /// | Element |
     Size MeasureSize() override;
 
+    /// | RenderObject |
+    void Paint(const PaintContext* context, Position offset) override;
+
     EditableText(const std::string &text);
 
 private:

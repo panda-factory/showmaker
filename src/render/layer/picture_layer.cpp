@@ -19,6 +19,9 @@ void PictureLayer::Paint(SkCanvas *canvas) const
     SkAutoCanvasRestore save(canvas, true);
     canvas->translate(offset_.x(), offset_.y());
 
+    if (picture_ == nullptr) {
+        return;
+    }
     picture()->OnPaint(canvas);
 }
 

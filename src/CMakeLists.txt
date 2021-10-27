@@ -21,6 +21,7 @@ SET(WINDOW_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/render/painting/paint_context.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/painting/picture.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/painting/picture_recorder.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/render/pipeline/render_object.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/pipeline/render_pipeline.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/drawable.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/elements/element.cpp

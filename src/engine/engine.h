@@ -25,6 +25,8 @@ public:
     /// | Animator::Delegate |
     void OnAnimatorBeginFrame(fml::TimePoint frame_target_time) override;
 
+    void PostUITask(std::function<void ()> task);
+
     void BeginFrame(fml::TimePoint frame_target_time);
 
     void Render(std::unique_ptr<Scene> scene);
