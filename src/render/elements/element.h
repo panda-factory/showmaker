@@ -7,7 +7,7 @@
 
 #include <vector>
 
-#include "node/node.h"
+#include "node/abstract_node.h"
 #include "graphics/position.h"
 #include "render/drawable.h"
 #include "graphics/size.h"
@@ -18,16 +18,16 @@
 #include "include/core/SkSurface.h"
 #include "include/core/SkCanvas.h"
 namespace sm {
-class Element : public Node, public RenderObject {
+class Element : public AbstractNode, public RenderObject {
 public:
     // | Node |
-    void Adopt(Node *child) override;
+    void AdoptChild(AbstractNode *child) override;
 
     // | Node |
-    void Drop(Node *child) override;
+    void DropChild(AbstractNode *child) override;
 
     // | Node |
-    void Attach(Node *parent) override;
+    void Attach(void *parent) override;
 
     // | Node |
     void Detach() override;

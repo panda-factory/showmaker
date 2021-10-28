@@ -43,23 +43,23 @@ void Element::CompositeChild(Element *child, PaintContext *context)
     layer_->Add(child->layer());
 }
 
-void Element::Adopt(Node *child)
+void Element::AdoptChild(AbstractNode *child)
 {
-    Node::Adopt(child);
+    AbstractNode::AdoptChild(child);
 }
 
-void Element::Drop(Node *child)
+void Element::DropChild(AbstractNode *child)
 {
-    Node::Drop(child);
+    AbstractNode::DropChild(child);
 }
 
-void Element::Attach(Node *parent)
+void Element::Attach(void *parent)
 {
-    Node::Attach(parent);
+    AbstractNode::Attach(parent);
 }
 
 void Element::Detach()
 {
-    Node::Detach();
+    AbstractNode::Detach();
 }
 } // namespace sm

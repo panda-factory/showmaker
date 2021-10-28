@@ -14,6 +14,8 @@ class ContainerLayer : public Layer {
 public:
     virtual void Add(std::shared_ptr<Layer> layer);
 
+    void Append(Layer* child);
+
     void Paint(SkCanvas *canvas) const override;
 
     void AddToScene(SceneBuilder *builder, Position offset = {0, 0}) override;
@@ -29,6 +31,8 @@ protected:
 
 private:
     std::vector<std::shared_ptr<Layer>> layers_;
+
+    Layer* last_child_;
 };
 } // namespace sm
 

@@ -10,6 +10,12 @@ void ContainerLayer::Add(std::shared_ptr<Layer> layer)
     layers_.emplace_back(std::move(layer));
 }
 
+void ContainerLayer::Append(Layer* child)
+{
+    AdoptChild(child);
+    //child->previous_sibling_ = last_child_;
+}
+
 void ContainerLayer::Paint(SkCanvas *canvas) const
 {
     PaintChildren(canvas);

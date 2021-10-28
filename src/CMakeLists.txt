@@ -5,7 +5,7 @@ ADD_SUBDIRECTORY(graphics)
 ADD_SUBDIRECTORY(render)
 
 SET(WINDOW_SRC
-    ${CMAKE_CURRENT_SOURCE_DIR}/node/node.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/node/abstract_node.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/compositing/scene.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/compositing/scene_builder.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/canvas_scope.cpp
