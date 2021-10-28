@@ -35,6 +35,11 @@ void EditableText::Paint(const PaintContext* context, Position offset)
     Paint(const_cast<PaintContext*>(context));
 }
 
+void EditableText::PerformLayout()
+{
+    MarkNeedsPaint();
+}
+
 void EditableText::Paint(PaintContext *context)
 {
     auto canvas = context->canvas();

@@ -25,6 +25,9 @@ public:
     /// | Element |
     Size MeasureSize() override;
 
+    /// | Element |
+    void PerformLayout() override;
+
     /// | RenderObject |
     void Paint(const PaintContext* context, Position offset) override;
 

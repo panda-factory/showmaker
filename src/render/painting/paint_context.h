@@ -16,6 +16,8 @@ class PaintContext {
 public:
     static void RepaintCompositedChild(RenderObject* child);
 
+    void AppendLayer(std::shared_ptr<ContainerLayer> layer) const;
+
     void PaintChild(RenderObject* child, Position offset) const;
 
     SkCanvas *canvas();
@@ -25,6 +27,8 @@ public:
     ~PaintContext();
 
 private:
+    void CompositeChild(RenderObject* child, Position offset) const;
+
     bool is_recording_;
 
     PictureRecorder recorder_;

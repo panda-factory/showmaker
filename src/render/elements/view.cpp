@@ -30,13 +30,13 @@ void View::Paint(PaintContext *context)
 
 void View::PerformLayout()
 {
-    MarkNeedsPaint();
+    //MarkNeedsPaint();
     children_[0]->PerformLayout();
 }
 
 Size View::MeasureSize()
 {
-    MarkNeedsPaint();
+    //MarkNeedsPaint();
     return {};
 }
 } // namespace sm

@@ -31,6 +31,11 @@ PaintContext::~PaintContext()
     }
 }
 
+void PaintContext::AppendLayer(std::shared_ptr<ContainerLayer> layer) const
+{
+    container_->Add(layer);
+}
+
 SkCanvas *PaintContext::canvas()
 {
     if (canvas_ == nullptr) {
@@ -45,6 +50,14 @@ SkCanvas *PaintContext::canvas()
 
 void PaintContext::PaintChild(RenderObject* child, Position offset) const
 {
-    child->PaintWithContext(this, offset);
+    CompositeChild(child, offset);
+}
+
+void PaintContext::CompositeChild(RenderObject* child, Position offset) const
+{
+    RepaintCompositedChild(child);
+
+    auto layer = child->layer();
+    AppendLayer(layer);
 }
 } // namespace sm
