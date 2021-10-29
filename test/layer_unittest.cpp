@@ -4,11 +4,124 @@
 
 #include "gtest/gtest.h"
 #include "render/layer/container_layer.h"
+#include "render/layer/picture_layer.h"
 
 using namespace sm;
 
+class TestAlwaysNeedsAddToSceneLayer : public ContainerLayer {
+public:
+    bool AlwaysNeedsAddToScene() override { return true; }
+};
+
+// updateSubtreeNeedsAddToScene propagates Layer.alwaysNeedsAddToScene up the tree
+TEST(LayerTest, AlwaysNeedsAddToScene)
+{
+    auto a = std::make_unique<ContainerLayer>();
+    auto b = std::make_unique<ContainerLayer>();
+    auto c = std::make_unique<ContainerLayer>();
+    auto d = std::make_unique<TestAlwaysNeedsAddToSceneLayer>();
+    auto e = std::make_unique<ContainerLayer>();
+    auto f = std::make_unique<ContainerLayer>();
+
+    // Tree structure:
+    //        a
+    //       / \
+    //      b   c
+    //     / \
+    // (x)d   e
+    //   /
+    //  f
+    a->Append(b.get());
+    a->Append(c.get());
+    b->Append(d.get());
+    b->Append(e.get());
+    d->Append(f.get());
+
+    a->DebugMarkClean();
+    b->DebugMarkClean();
+    c->DebugMarkClean();
+    d->DebugMarkClean();
+    e->DebugMarkClean();
+    f->DebugMarkClean();
+
+    EXPECT_GE(a->DebugSubtreeNeedsAddToScene(), false);
+    EXPECT_GE(b->DebugSubtreeNeedsAddToScene(), false);
+    EXPECT_GE(c->DebugSubtreeNeedsAddToScene(), false);
+    EXPECT_GE(d->DebugSubtreeNeedsAddToScene(), false);
+    EXPECT_GE(e->DebugSubtreeNeedsAddToScene(), false);
+    EXPECT_GE(f->DebugSubtreeNeedsAddToScene(), false);
+
+    a->UpdateSubtreeNeedsAddToScene();
+
+    EXPECT_GE(a->DebugSubtreeNeedsAddToScene(), true);
+    EXPECT_GE(b->DebugSubtreeNeedsAddToScene(), true);
+    EXPECT_GE(c->DebugSubtreeNeedsAddToScene(), false);
+    EXPECT_GE(d->DebugSubtreeNeedsAddToScene(), true);
+    EXPECT_GE(e->DebugSubtreeNeedsAddToScene(), false);
+    EXPECT_GE(f->DebugSubtreeNeedsAddToScene(), false);
+}
+
 // updateSubtreeNeedsAddToScene propagates Layer._needsAddToScene up the tree
-TEST(TaskRunner, CreateAndTerminate)
+TEST(LayerTest, NeedsAddToScene)
+{
+    auto a = std::make_unique<ContainerLayer>();
+    auto b = std::make_unique<ContainerLayer>();
+    auto c = std::make_unique<ContainerLayer>();
+    auto d = std::make_unique<ContainerLayer>();
+    auto e = std::make_unique<ContainerLayer>();
+    auto f = std::make_unique<ContainerLayer>();
+    auto g = std::make_unique<ContainerLayer>();
+    std::list<ContainerLayer*> allLayers({a.get(), b.get(), c.get(), d.get(), e.get(), f.get(), g.get()});
+
+    // The tree is like the following where b and j are dirty:
+    //        a____
+    //       /     \
+    //   (x)b___    c
+    //     / \  \   |
+    //    d   e  f  g(x)
+    a->Append(b.get());
+    a->Append(c.get());
+    b->Append(d.get());
+    b->Append(e.get());
+    b->Append(f.get());
+    c->Append(g.get());
+
+    for (auto layer : allLayers) {
+        EXPECT_GE(layer->DebugSubtreeNeedsAddToScene(), true);
+    }
+
+    for (auto layer : allLayers) {
+        layer->DebugMarkClean();
+    }
+
+    for (auto layer : allLayers) {
+        EXPECT_GE(layer->DebugSubtreeNeedsAddToScene(), false);
+    }
+
+    b->MarkNeedsAddToScene();
+    a->UpdateSubtreeNeedsAddToScene();
+
+    EXPECT_GE(a->DebugSubtreeNeedsAddToScene(), true);
+    EXPECT_GE(b->DebugSubtreeNeedsAddToScene(), true);
+    EXPECT_GE(c->DebugSubtreeNeedsAddToScene(), false);
+    EXPECT_GE(d->DebugSubtreeNeedsAddToScene(), false);
+    EXPECT_GE(e->DebugSubtreeNeedsAddToScene(), false);
+    EXPECT_GE(f->DebugSubtreeNeedsAddToScene(), false);
+    EXPECT_GE(g->DebugSubtreeNeedsAddToScene(), false);
+
+    g->MarkNeedsAddToScene();
+    a->UpdateSubtreeNeedsAddToScene();
+
+    EXPECT_GE(a->DebugSubtreeNeedsAddToScene(), true);
+    EXPECT_GE(b->DebugSubtreeNeedsAddToScene(), true);
+    EXPECT_GE(c->DebugSubtreeNeedsAddToScene(), true);
+    EXPECT_GE(d->DebugSubtreeNeedsAddToScene(), false);
+    EXPECT_GE(e->DebugSubtreeNeedsAddToScene(), false);
+    EXPECT_GE(f->DebugSubtreeNeedsAddToScene(), false);
+    EXPECT_GE(g->DebugSubtreeNeedsAddToScene(), true);
+}
+
+TEST(LayerTest, DepthFirstIterateChildren)
 {
     ContainerLayer a = ContainerLayer();
     ContainerLayer b = ContainerLayer();
@@ -18,18 +131,37 @@ TEST(TaskRunner, CreateAndTerminate)
     ContainerLayer f = ContainerLayer();
     ContainerLayer g = ContainerLayer();
 
-    // The tree is like the following where b and j are dirty:
+    PictureLayer h = PictureLayer({0, 0});
+    PictureLayer i = PictureLayer({0, 0});
+    PictureLayer j = PictureLayer({0, 0});
+
+    // The tree is like the following:
     //        a____
     //       /     \
-    //   (x)b___    c
+    //      b___    c
     //     / \  \   |
-    //    d   e  f  g(x)
+    //    d   e  f  g
+    //   / \        |
+    //  h   i       j
     a.Append(&b);
     a.Append(&c);
     b.Append(&d);
     b.Append(&e);
     b.Append(&f);
+    d.Append(&h);
+    d.Append(&i);
     c.Append(&g);
+    g.Append(&j);
 
-    ASSERT_NE(nullptr, nullptr);
+    EXPECT_GE(a.DepthFirstIterateChildren(), std::list<Layer*>({&b, &d, &h, &i, &e, &f, &c, &g, &j}));
+
+    d.Remove();
+    //        a____
+    //       /     \
+    //      b___    c
+    //       \  \   |
+    //        e  f  g
+    //              |
+    //              j
+    EXPECT_GE(a.DepthFirstIterateChildren(), std::list<Layer*>({&b, &e, &f, &c, &g, &j}));
 }

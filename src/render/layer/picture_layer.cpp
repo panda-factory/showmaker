@@ -6,6 +6,10 @@
 #include "render/compositing/scene_builder.h"
 
 namespace sm {
+PictureLayer::PictureLayer(const SkPoint &offset)
+        : offset_(offset)
+{}
+
 PictureLayer::PictureLayer(const SkPoint &offset, std::unique_ptr<Picture> picture)
         : offset_(offset),
           picture_(std::move(picture))

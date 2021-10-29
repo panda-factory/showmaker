@@ -6,7 +6,7 @@
 #define SHOWMAKER_CONTAINER_LAYER_H
 
 #include <vector>
-
+#include <list>
 #include "render/layer/layer.h"
 
 namespace sm {
@@ -22,6 +22,9 @@ public:
 
     void PaintChildren(SkCanvas *canvas) const;
 
+    /// | Layer |
+    void RemoveChild(Layer* child) override;
+
     ContainerLayer() = default;
 
     ~ContainerLayer() = default;
@@ -33,6 +36,14 @@ private:
     std::vector<std::shared_ptr<Layer>> layers_;
 
     Layer* last_child_;
+
+    Layer* first_child_;
+
+#if TESTING
+public:
+    std::list<Layer*> DepthFirstIterateChildren();
+    void UpdateSubtreeNeedsAddToScene() override;
+#endif // TESTING
 };
 } // namespace sm
 

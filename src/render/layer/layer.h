@@ -26,19 +26,35 @@ public:
     /// | AbstractNode |
     void DropChild(AbstractNode *child) override;
 
+    void Remove();
+
+    virtual void RemoveChild(Layer* child) {}
+
     Layer();
 
     virtual ~Layer();
 
 protected:
-    void MarkNeedsAddToScene();
+    friend class ContainerLayer;
 
-    bool AlwaysNeedsAddToScene() { return false; }
+    virtual bool AlwaysNeedsAddToScene() { return false; }
 
     Layer* previous_sibling_ = nullptr;
 
+    Layer* next_sibling_ = nullptr;
+
+    bool needs_add2scene_ = true;
+
 private:
-    bool needs_add_to_scene_ = true;
+
+
+#if TESTING
+public:
+    void DebugMarkClean();
+    bool DebugSubtreeNeedsAddToScene();
+    virtual void UpdateSubtreeNeedsAddToScene();
+    void MarkNeedsAddToScene();
+#endif // TESTING
 };
 } // namespace sm
 

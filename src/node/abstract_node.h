@@ -28,12 +28,12 @@ protected:
 
     virtual void DropChild(AbstractNode *child);
 
+    AbstractNode *parent_ = nullptr;
+
 private:
     int depth_ = 0;
 
     void* owner_ = nullptr;
-
-    AbstractNode *parent_ = nullptr;
 };
 } // namespace sm
 

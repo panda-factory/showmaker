@@ -21,6 +21,8 @@ public:
 
     void ResetPicture(std::unique_ptr<Picture> picture);
 
+    PictureLayer(const SkPoint &offset);
+
     PictureLayer(const SkPoint &offset, std::unique_ptr<Picture> picture);
 
     ~PictureLayer();
