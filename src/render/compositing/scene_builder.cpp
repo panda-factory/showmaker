@@ -24,6 +24,9 @@ SceneBuilder::~SceneBuilder() = default;
 
 std::unique_ptr<Scene> SceneBuilder::Build()
 {
+    if (layer_stack_.empty()) {
+        return nullptr;
+    }
     return Scene::Create(layer_stack_[0]);
 }
 

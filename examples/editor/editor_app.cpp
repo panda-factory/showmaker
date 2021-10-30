@@ -29,7 +29,7 @@ int main_win32(int argc, char **argv, HINSTANCE hInstance, int show)
     auto edit = std::make_unique<sm::EditableText>("HelloWorld!");
 
     auto view = std::make_unique<sm::View>();
-    view->Adopt(edit.get());
+    view->AdoptChild(edit.get());
     view->AddElement(std::move(edit));
     window->element_ = std::move(view);
 

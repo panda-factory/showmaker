@@ -7,7 +7,10 @@
 
 #include <vector>
 #include <list>
+
 #include "render/layer/layer.h"
+#include "render/compositing/scene.h"
+#include "render/compositing/scene_builder.h"
 
 namespace sm {
 class ContainerLayer : public Layer {
@@ -15,6 +18,8 @@ public:
     virtual void Add(std::shared_ptr<Layer> layer);
 
     void Append(Layer* child);
+
+    std::unique_ptr<Scene> BuildScene(SceneBuilder builder);
 
     void Paint(SkCanvas *canvas) const override;
 

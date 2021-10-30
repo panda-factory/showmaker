@@ -71,7 +71,7 @@ TEST(LayerTest, NeedsAddToScene)
     auto e = std::make_unique<ContainerLayer>();
     auto f = std::make_unique<ContainerLayer>();
     auto g = std::make_unique<ContainerLayer>();
-    std::list<ContainerLayer*> allLayers({a.get(), b.get(), c.get(), d.get(), e.get(), f.get(), g.get()});
+    std::list<ContainerLayer*> all_layers({a.get(), b.get(), c.get(), d.get(), e.get(), f.get(), g.get()});
 
     // The tree is like the following where b and j are dirty:
     //        a____
@@ -86,15 +86,15 @@ TEST(LayerTest, NeedsAddToScene)
     b->Append(f.get());
     c->Append(g.get());
 
-    for (auto layer : allLayers) {
+    for (auto layer : all_layers) {
         EXPECT_GE(layer->DebugSubtreeNeedsAddToScene(), true);
     }
 
-    for (auto layer : allLayers) {
+    for (auto layer : all_layers) {
         layer->DebugMarkClean();
     }
 
-    for (auto layer : allLayers) {
+    for (auto layer : all_layers) {
         EXPECT_GE(layer->DebugSubtreeNeedsAddToScene(), false);
     }
 
@@ -119,6 +119,11 @@ TEST(LayerTest, NeedsAddToScene)
     EXPECT_GE(e->DebugSubtreeNeedsAddToScene(), false);
     EXPECT_GE(f->DebugSubtreeNeedsAddToScene(), false);
     EXPECT_GE(g->DebugSubtreeNeedsAddToScene(), true);
+
+    a->BuildScene(SceneBuilder());
+    //for (auto layer : all_layers) {
+    //    EXPECT_GE(layer->DebugSubtreeNeedsAddToScene(), false);
+    //}
 }
 
 TEST(LayerTest, DepthFirstIterateChildren)

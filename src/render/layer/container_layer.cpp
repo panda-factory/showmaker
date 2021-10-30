@@ -27,6 +27,17 @@ void ContainerLayer::Append(Layer* child)
     FML_CHECK(child->Attached() == Attached());
 }
 
+std::unique_ptr<Scene> ContainerLayer::BuildScene(SceneBuilder builder)
+{
+    UpdateSubtreeNeedsAddToScene();
+    AddToScene(&builder);
+
+    needs_add2scene_ = false;
+
+    auto scene = builder.Build();
+    return std::move(scene);
+}
+
 void ContainerLayer::Paint(SkCanvas *canvas) const
 {
     PaintChildren(canvas);
