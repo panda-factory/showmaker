@@ -4,7 +4,11 @@
 
 #include "gtest/gtest.h"
 #include "render/layer/container_layer.h"
+#include "render/layer/layer_link.h"
+#include "render/layer/leader_layer.h"
+#include "render/layer/follower_layer.h"
 #include "render/layer/picture_layer.h"
+#include "graphics/offset.h"
 
 using namespace sm;
 
@@ -121,9 +125,23 @@ TEST(LayerTest, NeedsAddToScene)
     EXPECT_GE(g->DebugSubtreeNeedsAddToScene(), true);
 
     a->BuildScene(SceneBuilder());
-    //for (auto layer : all_layers) {
-    //    EXPECT_GE(layer->DebugSubtreeNeedsAddToScene(), false);
-    //}
+    for (auto layer : all_layers) {
+        EXPECT_GE(layer->DebugSubtreeNeedsAddToScene(), false);
+    }
+}
+
+// leader and follower layers are always dirty
+TEST(LayerTest, AlwaysDirty)
+{
+    LayerLink link = LayerLink();
+    LeaderLayer leader = LeaderLayer(&link);
+    FollowerLayer follower = FollowerLayer(&link);
+    leader.DebugMarkClean();
+    follower.DebugMarkClean();
+    leader.UpdateSubtreeNeedsAddToScene();
+    follower.UpdateSubtreeNeedsAddToScene();
+    EXPECT_GE(leader.DebugSubtreeNeedsAddToScene(), true);
+    EXPECT_GE(follower.DebugSubtreeNeedsAddToScene(), true);
 }
 
 TEST(LayerTest, DepthFirstIterateChildren)

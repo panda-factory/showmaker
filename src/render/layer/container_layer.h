@@ -40,9 +40,9 @@ protected:
 private:
     std::vector<std::shared_ptr<Layer>> layers_;
 
-    Layer* last_child_;
+    Layer* last_child_ = nullptr;
 
-    Layer* first_child_;
+    Layer* first_child_ = nullptr;
 
 #if TESTING
 public:

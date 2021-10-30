@@ -13,7 +13,10 @@ SET(WINDOW_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/render/elements/label.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/elements/view.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/layer/container_layer.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/render/layer/follower_layer.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/layer/layer.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/render/layer/layer_link.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/render/layer/leader_layer.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/layer/offset_layer.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/layer/picture_layer.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/layer/transform_layer.cpp

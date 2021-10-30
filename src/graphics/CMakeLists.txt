@@ -2,6 +2,7 @@ SET(TARGET_NAME graphics)
 SET(GRAPHICS_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 SET(GRAPHICS_SRC
+    ${GRAPHICS_SRC_DIR}/offset.cpp
     ${GRAPHICS_SRC_DIR}/position.cpp
     ${GRAPHICS_SRC_DIR}/size.cpp)
 
