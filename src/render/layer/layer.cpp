@@ -4,6 +4,8 @@
 
 #include "layer.h"
 
+#include "wtf/diagnostics/diagnostics_property.h"
+
 #include <third_party/flutter/fml/logging.h>
 
 namespace sm {
@@ -28,6 +30,17 @@ void Layer::DropChild(AbstractNode *child)
         MarkNeedsAddToScene();
     }
     AbstractNode::DropChild(child);
+}
+
+/// | DiagnosticableTree |
+void Layer::DebugFillProperties(DiagnosticPropertiesBuilder* properties) {
+    DiagnosticableTree::DebugFillProperties(properties);
+    properties->Add(DiagnosticsProperty<decltype(owner_)>("owner", owner_, "", parent_ != nullptr ? DiagnosticLevel::HIDDEN : DiagnosticLevel::INFO));
+    properties->Add(DiagnosticsProperty<decltype(owner_)>("creator", nullptr, "", DiagnosticLevel::DEBUG));
+    //if (_engineLayer != null) {
+    //    properties.add(DiagnosticsProperty<String>('engine layer', describeIdentity(_engineLayer)));
+    //}
+    //properties->Add(DiagnosticsProperty<int>('handles', debugHandleCount));
 }
 
 void Layer::Remove()

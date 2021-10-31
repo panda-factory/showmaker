@@ -30,10 +30,10 @@ protected:
 
     AbstractNode *parent_ = nullptr;
 
+    void* owner_ = nullptr;
+
 private:
     int depth_ = 0;
-
-    void* owner_ = nullptr;
 };
 } // namespace sm
 

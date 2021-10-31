@@ -3,12 +3,14 @@
 //
 
 #include "gtest/gtest.h"
+#include "render/layer/clip_rect_layer.h"
 #include "render/layer/container_layer.h"
 #include "render/layer/layer_link.h"
 #include "render/layer/leader_layer.h"
 #include "render/layer/follower_layer.h"
 #include "render/layer/picture_layer.h"
 #include "graphics/offset.h"
+#include "wtf/diagnostics/diagnostic_properties_builder.h"
 
 using namespace sm;
 
@@ -187,4 +189,28 @@ TEST(LayerTest, DepthFirstIterateChildren)
     //              |
     //              j
     EXPECT_GE(a.DepthFirstIterateChildren(), std::list<Layer*>({&b, &e, &f, &c, &g, &j}));
+}
+
+
+void CheckNeedsAddToScene(Layer* layer, std::function<void ()> mutateCallback) {
+    layer->DebugMarkClean();
+    layer->UpdateSubtreeNeedsAddToScene();
+    EXPECT_GE(layer->DebugSubtreeNeedsAddToScene(), false);
+    mutateCallback();
+    layer->UpdateSubtreeNeedsAddToScene();
+    EXPECT_GE(layer->DebugSubtreeNeedsAddToScene(), true);
+}
+
+std::list<std::string> GetDebugInfo(Layer* layer) {
+    DiagnosticPropertiesBuilder builder = DiagnosticPropertiesBuilder();
+    layer->DebugFillProperties(&builder);
+    auto test = builder.properties().front().ToString();
+    return {};
+}
+
+TEST(LayerTest, ClipRectLayerPrints)
+{
+    auto clip = ClipRectLayer();
+    auto test = GetDebugInfo(&clip);
+    EXPECT_GE(1, 1);
 }

@@ -3,6 +3,7 @@ ADD_SUBDIRECTORY(css)
 ADD_SUBDIRECTORY(engine)
 ADD_SUBDIRECTORY(graphics)
 ADD_SUBDIRECTORY(render)
+ADD_SUBDIRECTORY(wtf/diagnostics)
 
 SET(WINDOW_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/node/abstract_node.cpp
@@ -12,6 +13,7 @@ SET(WINDOW_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/render/elements/editable_text.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/elements/label.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/elements/view.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/render/layer/clip_rect_layer.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/layer/container_layer.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/layer/follower_layer.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render/layer/layer.cpp
@@ -69,4 +71,4 @@ TARGET_INCLUDE_DIRECTORIES(window PUBLIC
 
 TARGET_LINK_DIRECTORIES(window PUBLIC ${PROJECT_ROOT_PATH}/third_party/angle/libs)
 TARGET_LINK_DIRECTORIES(window PUBLIC ${PROJECT_ROOT_PATH}/third_party/skia/libs)
-TARGET_LINK_LIBRARIES(window PUBLIC libEGL.dll.lib libGLESv2.dll.lib skia.dll.lib skshaper.dll.lib ext_convertUTF engine lib_txt shape graphics)
+TARGET_LINK_LIBRARIES(window PUBLIC libEGL.dll.lib libGLESv2.dll.lib skia.dll.lib skshaper.dll.lib ext_convertUTF engine lib_txt shape graphics diagnostic)

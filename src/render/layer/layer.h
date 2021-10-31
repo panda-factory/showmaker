@@ -7,6 +7,7 @@
 
 #include "graphics/position.h"
 #include "node/abstract_node.h"
+#include "wtf/diagnostics/diagnosticable_tree.h"
 
 #include <third_party/skia/include/core/SkPicture.h>
 #include <third_party/skia/include/core/SkCanvas.h>
@@ -14,7 +15,7 @@
 namespace sm {
 class SceneBuilder;
 
-class Layer : public AbstractNode {
+class Layer : public AbstractNode, public DiagnosticableTree {
 public:
     virtual void Paint(SkCanvas *canvas) const = 0;
 
@@ -25,6 +26,9 @@ public:
 
     /// | AbstractNode |
     void DropChild(AbstractNode *child) override;
+
+    /// | DiagnosticableTree |
+    void DebugFillProperties(DiagnosticPropertiesBuilder* properties) override;
 
     void Remove();
 
