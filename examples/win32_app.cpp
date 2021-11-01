@@ -33,7 +33,7 @@ int main_win32(int argc, char **argv, HINSTANCE hInstance, int show)
     column->AddElement(std::make_unique<sm::Label>("guozhenxiong!"));
 
     auto view = std::make_unique<sm::View>();
-    view->Adopt(column.get());
+    view->AdoptChild(column.get());
     view->AddElement(std::move(column));
     window->element_ = std::move(view);
 

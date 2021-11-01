@@ -18,6 +18,10 @@ Picture::Picture(sk_sp<SkPicture> picture)
 
 Picture::~Picture() = default;
 
+void Picture::Dispose() {
+    picture_.reset();
+}
+
 void Picture::OnPaint(SkCanvas *canvas)
 {
     picture()->playback(canvas);

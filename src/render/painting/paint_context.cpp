@@ -12,7 +12,7 @@ void PaintContext::RepaintCompositedChild(RenderObject* child)
 {
     auto& layer = child->layer();
     if (layer == nullptr) {
-        child->layer() = std::make_shared<OffsetLayer>(0, 0);
+        child->layer() = std::make_shared<OffsetLayer>(0.0f, 0.0f);
     }
     auto paint_context = std::make_unique<PaintContext>(SkRect::MakeXYWH(0, 0, 10, 10), layer.get());
     child->PaintWithContext(paint_context.get(), {0, 0});
@@ -40,7 +40,7 @@ SkCanvas *PaintContext::canvas()
 {
     if (canvas_ == nullptr) {
         canvas_ = recorder_.BeginRecording(bounds_);
-        auto layer = std::make_shared<PictureLayer>(SkPoint({0, 0}), nullptr);
+        auto layer = std::make_shared<PictureLayer>(Offset(0.0f, 0.0f), nullptr);
         picture_layer_ = layer.get();
         container_->Add(layer);
     }

@@ -14,6 +14,8 @@ class Picture {
 public:
     static std::unique_ptr<Picture> Create(sk_sp<SkPicture> picture);
 
+    void Dispose();
+
     void OnPaint(SkCanvas *canvas);
 
     inline sk_sp<SkPicture> picture() const

@@ -34,7 +34,7 @@ void SceneBuilder::AddPicture(double dx,
                               double dy,
                               std::unique_ptr<Picture> picture)
 {
-    auto layer = std::make_unique<PictureLayer>(SkPoint::Make(dx, dy), std::move(picture));
+    auto layer = std::make_unique<PictureLayer>(Offset(dx, dy), std::move(picture));
     AddLayer(std::move(layer));
 }
 

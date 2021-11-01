@@ -9,6 +9,8 @@
 #include "render/layer/leader_layer.h"
 #include "render/layer/follower_layer.h"
 #include "render/layer/picture_layer.h"
+#include "render/painting/canvas.h"
+#include "render/painting/picture_recorder.h"
 #include "graphics/offset.h"
 #include "wtf/diagnostics/diagnostic_properties_builder.h"
 
@@ -156,9 +158,9 @@ TEST(LayerTest, DepthFirstIterateChildren)
     ContainerLayer f = ContainerLayer();
     ContainerLayer g = ContainerLayer();
 
-    PictureLayer h = PictureLayer({0, 0});
-    PictureLayer i = PictureLayer({0, 0});
-    PictureLayer j = PictureLayer({0, 0});
+    PictureLayer h = PictureLayer(Offset(0, 0));
+    PictureLayer i = PictureLayer(Offset(0, 0));
+    PictureLayer j = PictureLayer(Offset(0, 0));
 
     // The tree is like the following:
     //        a____
@@ -192,11 +194,11 @@ TEST(LayerTest, DepthFirstIterateChildren)
 }
 
 
-void CheckNeedsAddToScene(Layer* layer, std::function<void ()> mutateCallback) {
+void CheckNeedsAddToScene(Layer* layer, std::function<void ()> mutate_callback) {
     layer->DebugMarkClean();
     layer->UpdateSubtreeNeedsAddToScene();
     EXPECT_GE(layer->DebugSubtreeNeedsAddToScene(), false);
-    mutateCallback();
+    mutate_callback();
     layer->UpdateSubtreeNeedsAddToScene();
     EXPECT_GE(layer->DebugSubtreeNeedsAddToScene(), true);
 }
@@ -211,6 +213,18 @@ std::list<std::string> GetDebugInfo(Layer* layer) {
 TEST(LayerTest, ClipRectLayerPrints)
 {
     auto clip = ClipRectLayer();
-    auto test = GetDebugInfo(&clip);
-    EXPECT_GE(1, 1);
+    //auto test = GetDebugInfo(&clip);
+    //EXPECT_GE(1, 1);
+}
+
+// mutating PictureLayer fields triggers needsAddToScene
+TEST(LayerTest, PictureLayerneedsAddToScene)
+{
+    PictureLayer pictureLayer = PictureLayer(Rect::ZERO);
+
+    CheckNeedsAddToScene(&pictureLayer, [&] () {
+        PictureRecorder recorder = PictureRecorder();
+        auto canvas = Canvas(&recorder);
+        pictureLayer.SetPicture(recorder.FinishRecording());
+    });
 }

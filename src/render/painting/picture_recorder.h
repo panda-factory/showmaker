@@ -9,13 +9,19 @@
 
 #include <third_party/skia/include/core/SkPictureRecorder.h>
 namespace sm {
+
+class Canvas;
+
 class PictureRecorder {
 public:
     SkCanvas *BeginRecording(SkRect bounds);
 
     std::unique_ptr<Picture> FinishRecording();
 
+    void SetCanvas(Canvas* canvas) { canvas_ = canvas; }
 private:
+    Canvas* canvas_;
+
     SkPictureRecorder picture_recorder_;
 };
 } // namespace sm
