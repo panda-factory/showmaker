@@ -10,7 +10,9 @@
 #include "render/layer/follower_layer.h"
 #include "render/layer/picture_layer.h"
 #include "render/painting/canvas.h"
+#include "render/layer/offset_layer.h"
 #include "render/painting/picture_recorder.h"
+#include "render/layer/performance_overlay_layer.h"
 #include "graphics/offset.h"
 #include "wtf/diagnostics/diagnostic_properties_builder.h"
 
@@ -218,7 +220,7 @@ TEST(LayerTest, ClipRectLayerPrints)
 }
 
 // mutating PictureLayer fields triggers needsAddToScene
-TEST(LayerTest, PictureLayerneedsAddToScene)
+TEST(LayerTest, PictureLayerNeedsAddToScene)
 {
     PictureLayer pictureLayer = PictureLayer(Rect::ZERO);
 
@@ -226,5 +228,51 @@ TEST(LayerTest, PictureLayerneedsAddToScene)
         PictureRecorder recorder = PictureRecorder();
         auto canvas = Canvas(&recorder);
         pictureLayer.SetPicture(recorder.FinishRecording());
+    });
+
+    pictureLayer.SetComplexHint(false);
+    CheckNeedsAddToScene(&pictureLayer, [&] () {
+        pictureLayer.SetComplexHint(true);
+    });
+
+    pictureLayer.SetChangeHint(false);
+    CheckNeedsAddToScene(&pictureLayer, [&] () {
+        pictureLayer.SetChangeHint(true);
+    });
+}
+
+const Rect unitRect = Rect::FromLTRB(0, 0, 1, 1);
+
+// mutating PerformanceOverlayLayer fields triggers needsAddToScene
+TEST(LayerTest, PerformanceOverlayLayerNeedsAddToScene)
+{
+    PerformanceOverlayLayer layer = PerformanceOverlayLayer(Rect::ZERO,
+                                                            0,
+                                                            0,
+                                                            false,
+                                                            false);
+    CheckNeedsAddToScene(&layer, [&] () {
+        layer.SetOverlayRect(unitRect);
+    });
+}
+
+// mutating OffsetLayer fields triggers needsAddToScene
+TEST(LayerTest, OffsetLayerNeedsAddToScene)
+{
+    OffsetLayer layer = OffsetLayer();
+    CheckNeedsAddToScene(&layer, [&] () {
+        layer.SetOffset(Offset(1, 1));
+    });
+}
+
+// mutating ClipRectLayer fields triggers needsAddToScene
+TEST(LayerTest, ClipRectLayerNeedsAddToScene)
+{
+    ClipRectLayer layer = ClipRectLayer(Rect::ZERO);
+    CheckNeedsAddToScene(&layer, [&] () {
+        layer.SetClipRect(unitRect);
+    });
+    CheckNeedsAddToScene(&layer, [&] () {
+        layer.SetClipBehavior(Clip::ANTI_ALIAS_WITH_SAVE_LAYER);
     });
 }

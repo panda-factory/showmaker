@@ -18,6 +18,12 @@ public:
 
     void AddToScene(SceneBuilder *builder, Position offset) override;
 
+    inline bool IsComplexHint() { return is_complex_hint_; }
+
+    void SetComplexHint(bool value);
+
+    void SetChangeHint(bool value);
+
     void SetPicture(std::unique_ptr<Picture> picture);
 
     inline Picture *picture() const
@@ -34,6 +40,10 @@ public:
     ~PictureLayer();
 
 private:
+    bool is_complex_hint_ = false;
+
+    bool will_change_hint_ = false;
+
     Offset offset_;
 
     Rect canvas_bounds_;

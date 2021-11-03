@@ -7,7 +7,10 @@
 
 namespace sm {
 struct Offset {
-    Offset(float x, float y);
+    friend bool operator!= (const Offset& offset1, const Offset& offset2);
+
+    Offset(float x, float y)
+    : x(x), y(y) {}
 
     float x;
     float y;

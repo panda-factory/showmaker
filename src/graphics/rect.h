@@ -21,6 +21,9 @@ struct Rect {
     /// The offset of the bottom edge of this rectangle from the y axis.
     float bottom;
 
+    friend bool operator!= (const Rect& rect1, const Rect& rect2);
+
+    /// const
     static const Rect ZERO;
 
     static const Rect LARGEST;

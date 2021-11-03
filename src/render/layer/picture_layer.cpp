@@ -45,6 +45,22 @@ void PictureLayer::ResetPicture(std::unique_ptr<Picture> picture)
     picture_ = std::move(picture);
 }
 
+void PictureLayer::SetComplexHint(bool value)
+{
+    if (value != is_complex_hint_) {
+        is_complex_hint_ = value;
+        MarkNeedsAddToScene();
+    }
+}
+
+void PictureLayer::SetChangeHint(bool value)
+{
+    if (value != will_change_hint_) {
+        will_change_hint_ = value;
+        MarkNeedsAddToScene();
+    }
+}
+
 void PictureLayer::SetPicture(std::unique_ptr<Picture> picture)
 {
     MarkNeedsAddToScene();
