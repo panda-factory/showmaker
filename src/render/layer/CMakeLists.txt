@@ -2,7 +2,9 @@ SET(TARGET_NAME layer)
 SET(LAYER_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 SET(LAYER_SRC
+    ${LAYER_SRC_DIR}/clip_path_layer.cpp
     ${LAYER_SRC_DIR}/clip_rect_layer.cpp
+    ${LAYER_SRC_DIR}/clip_rrect_layer.cpp
     ${LAYER_SRC_DIR}/container_layer.cpp
     ${LAYER_SRC_DIR}/follower_layer.cpp
     ${LAYER_SRC_DIR}/layer.cpp

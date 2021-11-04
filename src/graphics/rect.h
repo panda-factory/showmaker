@@ -7,7 +7,14 @@
 
 namespace sm {
 struct Rect {
+
     static Rect FromLTRB(float left, float top, float right, float bottom);
+
+    bool HasNaN() const;
+
+    bool IsValid() const;
+
+    friend bool operator!= (const Rect& rect1, const Rect& rect2);
 
     /// The offset of the left edge of this rectangle from the x axis.
     float left;
@@ -20,8 +27,6 @@ struct Rect {
 
     /// The offset of the bottom edge of this rectangle from the y axis.
     float bottom;
-
-    friend bool operator!= (const Rect& rect1, const Rect& rect2);
 
     /// const
     static const Rect ZERO;

@@ -4,6 +4,8 @@
 
 #include "rect.h"
 
+#include <limits>
+
 #include <third_party/flutter/fml/logging.h>
 
 namespace sm {
@@ -20,6 +22,21 @@ Rect Rect::FromLTRB(float left, float top, float right, float bottom)
             .top = top,
             .right = right,
             .bottom = bottom};
+}
+
+
+bool Rect::HasNaN() const
+{
+    return std::numeric_limits<decltype(left)>::quiet_NaN() == left ||
+           std::numeric_limits<decltype(top)>::quiet_NaN() == top ||
+           std::numeric_limits<decltype(right)>::quiet_NaN() == right ||
+           std::numeric_limits<decltype(bottom)>::quiet_NaN() == bottom;
+}
+
+bool Rect::IsValid() const
+{
+    FML_CHECK(!HasNaN()) << "Rect argument contained a NaN value.";
+    return true;
 }
 
 /// Rect::operator!=

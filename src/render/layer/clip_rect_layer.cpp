@@ -3,6 +3,7 @@
 //
 
 #include "clip_rect_layer.h"
+
 #include <third_party/flutter/fml/logging.h>
 
 namespace sm {

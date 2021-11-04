@@ -3,7 +3,9 @@
 //
 
 #include "gtest/gtest.h"
+#include "render/layer/clip_path_layer.h"
 #include "render/layer/clip_rect_layer.h"
+#include "render/layer/clip_rrect_layer.h"
 #include "render/layer/container_layer.h"
 #include "render/layer/layer_link.h"
 #include "render/layer/leader_layer.h"
@@ -275,4 +277,27 @@ TEST(LayerTest, ClipRectLayerNeedsAddToScene)
     CheckNeedsAddToScene(&layer, [&] () {
         layer.SetClipBehavior(Clip::ANTI_ALIAS_WITH_SAVE_LAYER);
     });
+}
+
+// mutating ClipRRectLayer fields triggers needsAddToScene
+TEST(LayerTest, ClipRRectLayerNeedsAddToScene)
+{
+    ClipRRectLayer layer = ClipRRectLayer(RRect::ZERO);
+    CheckNeedsAddToScene(&layer, [&] () {
+        layer.SetClipRRect(RRect::FromRectAndRadius(unitRect, Radius::ZERO));
+    });
+    CheckNeedsAddToScene(&layer, [&] () {
+        layer.SetClipBehavior(Clip::ANTI_ALIAS_WITH_SAVE_LAYER);
+    });
+}
+
+// mutating ClipPathLayer fields triggers needsAddToScene
+TEST(LayerTest, ClipPathLayerNeedsAddToScene)
+{
+    ClipPathLayer layer = ClipPathLayer(Path());/*
+    CheckNeedsAddToScene(&layer, [&] () {
+        Path newPath = Path();
+        //newPath.addRect(unitRect);
+        //layer.clipPath = newPath;
+    });*/
 }
