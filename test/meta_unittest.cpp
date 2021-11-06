@@ -5,6 +5,7 @@
 #include "gtest/gtest.h"
 
 #include "wtf/meta/type_decriptor.h"
+#include "wtf/meta/meta.h"
 
 using namespace sm::meta;
 
@@ -128,4 +129,19 @@ TEST(TYPE_META, BOOL_TYPE)
     EXPECT_EQ("bool&", descriptor);
     descriptor = TypeDescriptor<const bool&>::Descriptor();
     EXPECT_EQ("const bool&", descriptor);
+}
+
+class ObjectMeta : public Meta<ObjectMeta> {
+
+};
+
+TYPE_DESCRIPTOR(ObjectMeta);
+
+TEST(TYPE_META, VariadicTypeDescriptor)
+{
+    ObjectMeta object;
+
+    ObjectMeta* ptr = MetaCase<ObjectMeta *>(&object);
+    //std::string descriptor = VariadicTypeDescriptor<typename T>::Descriptor();
+    //EXPECT_EQ("bool", descriptor);
 }

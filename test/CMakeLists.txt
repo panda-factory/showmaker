@@ -22,7 +22,7 @@ IF(GTESTSRC_FOUND)
     ADD_EXECUTABLE(${TARGET_NAME}
         layer_unittest.cpp
         object_unittest.cpp
-        type_meta.cpp)
+        meta_unittest.cpp)
 
     TARGET_LINK_LIBRARIES(${TARGET_NAME} PRIVATE ${GTEST_LIBRARIES} window)
 

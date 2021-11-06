@@ -41,37 +41,27 @@ public:
         static std::string Descriptor() { static std::string str = std::string(#type) + VariadicTypeDescriptor<__VA_ARGS__>::Descriptor(); return str; } \
     }
 
-#define TYPE_DESCRIBE_CLASS(type) \
-    namespace sm::meta { \
-        template<> void DescribeClass<type>(Class<type>&); \
-    }
+#define TYPE_DESCRIPTOR_MACROIS_VOID(type)
 
-#define TYPE_DESCRIPTOR_MACRO_IS_VOID(type)
+#define TYPE_DESCRIBE_CLASSIS_VOID(type)
 
-#define TYPE_DESCRIBE_CLASS_IS_VOID(type)
+#define TYPE_DESCRIPTOR_MACROIS_PLAIN(type) TYPE_DESCRIPTOR_MACRO(type)
 
-#define TYPE_DESCRIPTOR_MACRO_IS_PLAIN(type) TYPE_DESCRIPTOR_MACRO(type)
-
-#define TYPE_DESCRIBE_CLASS_IS_PLAIN(type)
+#define TYPE_DESCRIBE_CLASSIS_PLAIN(type)
 
 #define TYPE_DESCRIPTOR(type, ...) \
     TYPE_DESCRIPTOR_MACRO(type); \
     TYPE_DESCRIPTOR_MACRO(type*); \
     TYPE_DESCRIPTOR_MACRO(const type*); \
-    TYPE_DESCRIPTOR_MACRO_##__VA_ARGS__(type&); \
-    TYPE_DESCRIPTOR_MACRO_##__VA_ARGS__(const type&); \
-    TYPE_DESCRIBE_CLASS_##__VA_ARGS__(type)
+    TYPE_DESCRIPTOR_MACRO##__VA_ARGS__(type&); \
+    TYPE_DESCRIPTOR_MACRO##__VA_ARGS__(const type&)
 
 #define TYPE_DESCRIPTOR_T(type, ...) \
     TYPE_DESCRIPTOR_MACRO_T(type, __VA_ARGS__);
 
 template<typename>
-class Class;
+class Meta;
 
-template<typename T>
-void DescribeClass(Class<T>&)
-{
-}
 
 } // namespace meta
 } // namespace sm

@@ -60,4 +60,4 @@ TARGET_LINK_DIRECTORIES(window PUBLIC ${PROJECT_ROOT_PATH}/third_party/angle/lib
 TARGET_LINK_DIRECTORIES(window PUBLIC ${PROJECT_ROOT_PATH}/third_party/skia/libs)
 TARGET_LINK_LIBRARIES(window PUBLIC libEGL.dll.lib libGLESv2.dll.lib skia.dll.lib skshaper.dll.lib
     ext_convertUTF engine lib_txt shape graphics diagnostic layer painting pipeline render_object
-    semantics foundation)
+    semantics foundation meta)
