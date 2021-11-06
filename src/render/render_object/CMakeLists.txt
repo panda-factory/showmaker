@@ -1,0 +1,19 @@
+SET(TARGET_NAME render_object)
+SET(RENDER_OBJECT_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+
+SET(RENDER_OBJECT_SRC
+    ${RENDER_OBJECT_SRC_DIR}/render_aligning_shifted_box.cpp
+    ${RENDER_OBJECT_SRC_DIR}/render_box.cpp
+    ${RENDER_OBJECT_SRC_DIR}/render_object.cpp
+    ${RENDER_OBJECT_SRC_DIR}/render_positioned_box.cpp
+    ${RENDER_OBJECT_SRC_DIR}/render_shifted_box.cpp)
+
+ADD_LIBRARY(${TARGET_NAME} STATIC ${RENDER_OBJECT_SRC})
+
+TARGET_INCLUDE_DIRECTORIES(${TARGET_NAME} PUBLIC
+    ${PROJECT_ROOT_PATH}
+    ${PROJECT_ROOT_PATH}/src
+    ${PROJECT_ROOT_PATH}/third_party
+    ${PROJECT_ROOT_PATH}/third_party/skia)
+
+TARGET_LINK_LIBRARIES(${TARGET_NAME} PUBLIC)

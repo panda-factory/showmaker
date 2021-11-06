@@ -9,6 +9,7 @@ namespace sm {
 struct Rect {
 
     static Rect FromLTRB(float left, float top, float right, float bottom);
+    static Rect FromLTWH(float left, float top, float width, float height);
 
     bool HasNaN() const;
 

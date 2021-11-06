@@ -24,6 +24,11 @@ Rect Rect::FromLTRB(float left, float top, float right, float bottom)
             .bottom = bottom};
 }
 
+/// | static |
+Rect Rect::FromLTWH(float left, float top, float width, float height)
+{
+    return Rect::FromLTRB(left, top, left + width, top + height);
+}
 
 bool Rect::HasNaN() const
 {

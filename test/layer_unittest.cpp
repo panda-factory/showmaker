@@ -291,11 +291,11 @@ TEST(LayerTest, ClipRRectLayerNeedsAddToScene)
     });
 }
 
-// mutating ClipPathLayer fields triggers needsAddToScene
+// mutating ClipPath fields triggers needsAddToScene
 TEST(LayerTest, ClipPathLayerNeedsAddToScene)
 {
-    ClipPathLayer layer = ClipPathLayer(Path());/*
-    CheckNeedsAddToScene(&layer, [&] () {
+    ClipPathLayer layer = ClipPathLayer(Path());
+    /*CheckNeedsAddToScene(&layer, [&] () {
         Path newPath = Path();
         //newPath.addRect(unitRect);
         //layer.clipPath = newPath;
