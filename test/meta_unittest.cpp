@@ -132,16 +132,26 @@ TEST(TYPE_META, BOOL_TYPE)
 }
 
 class ObjectMeta : public Meta<ObjectMeta> {
-
 };
-
 TYPE_DESCRIPTOR(ObjectMeta);
+
+class SubObjectMeta : public ObjectMeta {
+protected:
+    bool HitTest(int64_t type_id) const override {
+        return GetTypeId() == type_id ? true : ObjectMeta::HitTest(type_id);
+    }
+
+    int64_t GetTypeId() const override {
+        return GetMeta<SubObjectMeta>().GetTypeId();
+    }
+};
+TYPE_DESCRIPTOR(SubObjectMeta);
 
 TEST(TYPE_META, VariadicTypeDescriptor)
 {
-    ObjectMeta object;
+    std::unique_ptr<ObjectMeta> object = std::make_unique<SubObjectMeta>();
 
-    ObjectMeta* ptr = MetaCase<ObjectMeta *>(&object);
-    //std::string descriptor = VariadicTypeDescriptor<typename T>::Descriptor();
-    //EXPECT_EQ("bool", descriptor);
+    ObjectMeta* ptr1 = Traits<ObjectMeta *>::Cast(object.get());
+    SubObjectMeta* ptr2 = Traits<SubObjectMeta *>::Cast(object.get());
+    EXPECT_EQ(true, false);
 }

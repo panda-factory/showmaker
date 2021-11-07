@@ -32,7 +32,7 @@ public:
     virtual std::string GetMetaName() const = 0;
 
     bool IsAssignableFrom(const MetaUnknown& other) const {
-        if (GetTypeId() == other.GetTypeId())
+        if (other.HitTest(GetTypeId()))
             return true;
         return false;
     }
@@ -43,6 +43,8 @@ public:
 
 protected:
     static MetaData& GetMetaData(const std::string& name);
+
+    virtual bool HitTest(int64_t type_id) const = 0;
 
     virtual int64_t GetTypeId() const = 0;
 };
@@ -55,12 +57,15 @@ protected:
         if (!MetaBase::shared_data)
             MetaBase::shared_data = &MetaUnknown::GetMetaData(TypeDescriptor<T>::Descriptor());
     }
-private:
-    static MetaData* shared_data;
+    bool HitTest(int64_t type_id) const override {
+        return GetTypeId() == type_id;
+    }
 
     int64_t GetTypeId() const override {
         return shared_data->type_id_;
     }
+private:
+    static MetaData* shared_data;
 };
 
 template<typename T>
@@ -106,13 +111,28 @@ public:
 /// ||
 
 template<class T>
-T MetaCase(MetaUnknown* meta) {
-    if (!meta::GetMeta<T>().IsAssignableFrom(*meta)) {
-        assert(false);
-    }
+struct Traits {
+    static T Cast(MetaUnknown* meta) {
+        if (!meta::GetMeta<T>().IsAssignableFrom(*meta)) {
+            //assert(false);
+            return nullptr;
+        }
 
-    return reinterpret_cast<T>(meta->SafeCast());
-}
+        return reinterpret_cast<T>(meta->SafeCast());
+    }
+};
+
+template<class T>
+struct Traits<T *> {
+    static T* Cast(MetaUnknown* meta) {
+        if (!meta::GetMeta<T>().IsAssignableFrom(*meta)) {
+            //assert(false);
+            return nullptr;
+        }
+
+        return reinterpret_cast<T*>(meta->SafeCast());
+    }
+};
 
 } // namespace meta
 } // namespace sm
