@@ -17,6 +17,12 @@ Label::Label(const std::string &text)
 
 }
 
+/// | RenderObject |
+void Label::Paint(const PaintContext* context, Position offset)
+{
+    Paint(const_cast<PaintContext*>(context));
+}
+
 void Label::Paint(PaintContext *context)
 {
     auto canvas = context->canvas();

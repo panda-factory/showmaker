@@ -11,6 +11,9 @@
 namespace sm {
 class Label : public Element {
 public:
+    /// | RenderObject |
+    void Paint(const PaintContext* context, Position offset) override;
+
     void Paint(PaintContext *context) override;
 
     Size MeasureSize() override;

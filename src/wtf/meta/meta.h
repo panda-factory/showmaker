@@ -31,6 +31,8 @@ struct Traits {
     static T Cast(Meta* meta) {
         if (meta->HitMeta(T::GetMetaId()))
             return reinterpret_cast<T>(meta->SafeCast());
+
+        //assert(false);
         return nullptr;
     }
 };
@@ -40,6 +42,8 @@ struct Traits<T*> {
     static T* Cast(Meta* meta) {
         if (meta->HitMeta(T::GetMetaId()))
             return reinterpret_cast<T*>(meta->SafeCast());
+
+        //assert(false);
         return nullptr;
     }
 };
@@ -51,17 +55,18 @@ public:                                                                         
     {                                                                               \
         return #__sub_class;                                                        \
     }                                                                               \
-    static MetaIdType GetMetaId()                                                   \
+    static meta::MetaIdType GetMetaId()                                             \
     {                                                                               \
-        static MetaIdType meta_id =                                                 \
+        static meta::MetaIdType meta_id =                                           \
         std::hash<std::string> {}(GetMetaName());                                   \
         return meta_id;                                                             \
     }                                                                               \
-    bool HitMeta(MetaIdType meta_id) const override                                 \
+    bool HitMeta(meta::MetaIdType meta_id) const override                           \
     {                                                                               \
         return __sub_class::GetMetaId() == meta_id ?                                \
                     true : __base_class::HitMeta(meta_id);                          \
     }
+
 } // namespace meta
 } // namespace sm
 #endif //SHOWMAKER_META_H
