@@ -12,128 +12,56 @@
 namespace sm {
 namespace meta {
 
-template<class>
-class Meta;
+using MetaIdType = decltype(std::hash<std::string>{}(""));
 
-/// | MetaData |
-class MetaData {
-    template<typename> friend class MetaBase;
+class Meta {
 public:
-    MetaData() : type_id_(next_type_id++) { }
-
-private:
-    static int64_t next_type_id;
-    int64_t type_id_;
-};
-
-/// | MetaUnknown |
-class MetaUnknown {
-public:
-    virtual std::string GetMetaName() const = 0;
-
-    bool IsAssignableFrom(const MetaUnknown& other) const {
-        if (other.HitTest(GetTypeId()))
-            return true;
+    virtual bool HitMeta(MetaIdType meta_id) const {
         return false;
     }
-
-    uintptr_t SafeCast() {
-        return reinterpret_cast<uintptr_t>(this);
+    void* SafeCast() {
+        return reinterpret_cast<void*>(this);
     }
-
-protected:
-    static MetaData& GetMetaData(const std::string& name);
-
-    virtual bool HitTest(int64_t type_id) const = 0;
-
-    virtual int64_t GetTypeId() const = 0;
-};
-
-/// | MetaBase |
-template<typename T>
-class MetaBase : public MetaUnknown {
-protected:
-    MetaBase() {
-        if (!MetaBase::shared_data)
-            MetaBase::shared_data = &MetaUnknown::GetMetaData(TypeDescriptor<T>::Descriptor());
-    }
-    bool HitTest(int64_t type_id) const override {
-        return GetTypeId() == type_id;
-    }
-
-    int64_t GetTypeId() const override {
-        return shared_data->type_id_;
-    }
-private:
-    static MetaData* shared_data;
-};
-
-template<typename T>
-MetaData* MetaBase<T>::shared_data;
-
-/// | Meta |
-template<typename T, bool is_pointer, bool is_reference>
-struct remove_const_if_helper {
-    typedef T type;
-};
-
-template<typename T>
-struct remove_const_if_helper<T, false, false> {
-    typedef typename std::remove_cv<T>::type type;
-};
-
-template<typename T>
-struct remove_const_if : public remove_const_if_helper<T, std::is_pointer<T>::value, std::is_reference<T>::value> { };
-
-template<typename T>
-Meta<T>& GetMeta()
-{
-    static bool initialized = false;
-    static std::unique_ptr<Meta<T>> singleton;
-    if (!initialized) {
-        initialized = true;
-        singleton = std::make_unique<Meta<T>>();
-    }
-    return *singleton;
-}
-
-template<class T>
-class Meta : public MetaBase<typename TypeValueTraits<T>::base_type> {
-    friend T;
-public:
-    Meta() {
-        meta::GetMeta<T>();
-    }
-
-    std::string GetMetaName() const override { return TypeDescriptor<typename remove_const_if<T>::type>::Descriptor(); }
 };
 
 /// ||
 
 template<class T>
 struct Traits {
-    static T Cast(MetaUnknown* meta) {
-        if (!meta::GetMeta<T>().IsAssignableFrom(*meta)) {
-            //assert(false);
-            return nullptr;
-        }
-
-        return reinterpret_cast<T>(meta->SafeCast());
+    static T Cast(Meta* meta) {
+        if (meta->HitMeta(T::GetMetaId()))
+            return reinterpret_cast<T>(meta->SafeCast());
+        return nullptr;
     }
 };
 
 template<class T>
-struct Traits<T *> {
-    static T* Cast(MetaUnknown* meta) {
-        if (!meta::GetMeta<T>().IsAssignableFrom(*meta)) {
-            //assert(false);
-            return nullptr;
-        }
-
-        return reinterpret_cast<T*>(meta->SafeCast());
+struct Traits<T*> {
+    static T* Cast(Meta* meta) {
+        if (meta->HitMeta(T::GetMetaId()))
+            return reinterpret_cast<T*>(meta->SafeCast());
+        return nullptr;
     }
 };
 
+
+#define DECLARE_META_INFO(__sub_class, __base_class)                                \
+public:                                                                             \
+    static const std::string GetMetaName()                                          \
+    {                                                                               \
+        return #__sub_class;                                                        \
+    }                                                                               \
+    static MetaIdType GetMetaId()                                                   \
+    {                                                                               \
+        static MetaIdType meta_id =                                                 \
+        std::hash<std::string> {}(GetMetaName());                                   \
+        return meta_id;                                                             \
+    }                                                                               \
+    bool HitMeta(MetaIdType meta_id) const override                                 \
+    {                                                                               \
+        return __sub_class::GetMetaId() == meta_id ?                                \
+                    true : __base_class::HitMeta(meta_id);                          \
+    }
 } // namespace meta
 } // namespace sm
 #endif //SHOWMAKER_META_H
