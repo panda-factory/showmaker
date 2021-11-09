@@ -37,9 +37,19 @@ struct Traits {
     }
 };
 
+template<bool>
+struct MetaCertificate {
+};
+
+template<>
+struct MetaCertificate<true> {
+    static constexpr bool Registered() { return true; }
+};
+
 template<class T>
 struct Traits<T*> {
     static T* Cast(Meta* meta) {
+        MetaCertificate<std::is_same_v<T, typename T::Certificate>>::Registered();
         if (meta->HitMeta(T::GetMetaId()))
             return reinterpret_cast<T*>(meta->SafeCast());
 
@@ -65,7 +75,9 @@ public:                                                                         
     {                                                                               \
         return __sub_class::GetMetaId() == meta_id ?                                \
                     true : __base_class::HitMeta(meta_id);                          \
-    }
+    }                                                                               \
+    typedef __sub_class Certificate;
+
 
 } // namespace meta
 } // namespace sm

@@ -16,6 +16,11 @@ class Sub : public Base {
     DECLARE_META_INFO(Sub, Base);
 };
 
+class SubSub : public Sub {
+    DECLARE_META_INFO(SubSub, Sub);
+
+};
+
 TEST(TYPE_META, CastFromBaseToBase)
 {
     std::unique_ptr<Base> object = std::make_unique<Base>();
@@ -48,6 +53,14 @@ TEST(TYPE_META, CastFromSubToBase)
     EXPECT_EQ(ptr, object.get());
 }
 
+TEST(TYPE_META, CastFromBaseToSubSub)
+{
+    std::unique_ptr<Base> object = std::make_unique<SubSub>();
+
+    SubSub* ptr = meta::Traits<SubSub*>::Cast(object.get());
+    EXPECT_EQ(ptr, object.get());
+}
+
 class Other : public meta::Meta {
     DECLARE_META_INFO(Other, meta::Meta);
 };
@@ -74,4 +87,27 @@ TEST(TYPE_META, CastFromOtherToSub)
 
     Sub* ptr = meta::Traits<Sub*>::Cast(object.get());
     EXPECT_EQ(ptr, nullptr);
+}
+
+class Base1 : virtual public meta::Meta {
+    DECLARE_META_INFO(Base1, meta::Meta);
+};
+
+class Base2 : virtual public meta::Meta {
+    DECLARE_META_INFO(Base2, meta::Meta);
+};
+
+class Derived : public Base1, public Base2 {
+    DECLARE_META_INFO(Derived , Base2);
+};
+
+TEST(TYPE_META, TEST)
+{
+    Derived* derived = new Derived();
+
+    Base1* b1 = derived;
+    Base2* b2 = derived;
+
+    Base2* meta_b2 = meta::Traits<Base2*>::Cast(derived);
+    EXPECT_EQ(nullptr, nullptr);
 }
