@@ -14,6 +14,7 @@
 
 namespace sm {
 class ContainerLayer : public Layer {
+    DECLARE_META_INFO(ContainerLayer, Layer);
 public:
     virtual void Add(std::shared_ptr<Layer> layer);
 

@@ -58,6 +58,8 @@ void PaintContext::CompositeChild(RenderObject* child, Position offset) const
     RepaintCompositedChild(child);
 
     auto layer = child->layer();
+    OffsetLayer* offset_layer = meta::Traits<OffsetLayer*>::Cast(layer.get());
+    offset_layer->SetOffset({offset.x, offset.y});
     AppendLayer(layer);
 }
 } // namespace sm

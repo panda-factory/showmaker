@@ -9,6 +9,7 @@
 #include "graphics/offset.h"
 namespace sm {
 class OffsetLayer : public ContainerLayer {
+    DECLARE_META_INFO(OffsetLayer, ContainerLayer);
 public:
     /// | Layer |
     void Paint(SkCanvas *canvas) const override;

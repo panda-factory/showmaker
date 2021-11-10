@@ -49,6 +49,8 @@ public:
     inline void SetPosition(const Position &position)
     { position_ = position; }
 
+    inline Position& position() { return position_; }
+
     virtual Size MeasureSize() = 0;
 
     Element();
