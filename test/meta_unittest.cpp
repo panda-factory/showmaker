@@ -97,17 +97,38 @@ class Base2 : virtual public meta::Meta {
     DECLARE_META_INFO(Base2, meta::Meta);
 };
 
-class Derived : public Base1, public Base2 {
-    DECLARE_META_INFO(Derived , Base2);
+class Derived1 : public Base1 {
+    DECLARE_META_INFO(Derived1 , Base1);
 };
 
-TEST(TYPE_META, TEST)
+class Derived2 : public Base2 {
+    DECLARE_META_INFO(Derived2 , Base2);
+};
+
+class Derived12 : public Derived1, public Derived2 {
+    DECLARE_META_INFO(Derived12 ,Derived1, Derived2);
+};
+
+TEST(TYPE_META, MultiDerived)
 {
-    Derived* derived = new Derived();
+    Derived12* derived12 = new Derived12();
 
-    Base1* b1 = derived;
-    Base2* b2 = derived;
+    Base1* b1 = derived12;
+    Base2* b2 = derived12;
+    Derived1* d1 = derived12;
+    Derived2* d2 = derived12;
+    EXPECT_EQ(b1, meta::Traits<Base1*>::Cast(derived12));
+    EXPECT_EQ(b2, meta::Traits<Base2*>::Cast(derived12));
+    EXPECT_EQ(d1, meta::Traits<Derived1*>::Cast(derived12));
+    EXPECT_EQ(d2, meta::Traits<Derived2*>::Cast(derived12));
+    delete derived12;
 
-    Base2* meta_b2 = meta::Traits<Base2*>::Cast(derived);
-    EXPECT_EQ(nullptr, nullptr);
+    d1 = new Derived1();
+    EXPECT_EQ(nullptr, meta::Traits<Derived12*>::Cast(d1));
+    delete d1;
+
+    d2 = new Derived2();
+    EXPECT_EQ(nullptr, meta::Traits<Derived12*>::Cast(d2));
+    delete d2;
+
 }
