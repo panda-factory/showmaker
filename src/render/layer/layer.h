@@ -16,7 +16,7 @@
 namespace sm {
 class SceneBuilder;
 
-class Layer : public AbstractNode, public DiagnosticableTree, public meta::Meta {
+class Layer : public AbstractNode, public DiagnosticableTree, virtual public meta::Meta {
     DECLARE_META_INFO(Layer, meta::Meta)
 public:
     virtual void Paint(SkCanvas *canvas) const = 0;

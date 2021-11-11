@@ -9,7 +9,7 @@
 namespace sm {
 void ContainerLayer::Add(std::shared_ptr<Layer> layer)
 {
-    layers_.push_back(std::move(layer));
+    layers_.emplace_back(std::move(layer));
 }
 
 void ContainerLayer::Append(Layer* child)
