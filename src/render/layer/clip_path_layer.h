@@ -12,6 +12,7 @@
 namespace sm {
 class ClipPathLayer : public ContainerLayer {
 public:
+    void SetClipPath(const Path& path);
 
     ClipPathLayer(const Path& clip_path, const Clip& clip_behavior = Clip::ANTI_ALIAS);
 

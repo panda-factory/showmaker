@@ -6,8 +6,11 @@
 #define SHOWMAKER_ABSTRACT_NODE_H
 
 #include <vector>
+#include "wtf/meta/meta.h"
+
 namespace sm {
-class AbstractNode {
+class AbstractNode : virtual public meta::Meta {
+    DECLARE_META_INFO(AbstractNode, meta::Meta)
 public:
     virtual void Attach(void *owner);
 

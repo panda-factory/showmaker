@@ -295,9 +295,9 @@ TEST(LayerTest, ClipRRectLayerNeedsAddToScene)
 TEST(LayerTest, ClipPathLayerNeedsAddToScene)
 {
     ClipPathLayer layer = ClipPathLayer(Path());
-    /*CheckNeedsAddToScene(&layer, [&] () {
+    CheckNeedsAddToScene(&layer, [&] () {
         Path newPath = Path();
-        //newPath.addRect(unitRect);
-        //layer.clipPath = newPath;
-    });*/
+        newPath.AddRect(unitRect);
+        layer.SetClipPath(newPath);
+    });
 }

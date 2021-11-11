@@ -8,7 +8,6 @@
 #include "graphics/position.h"
 #include "node/abstract_node.h"
 #include "wtf/diagnostics/diagnosticable_tree.h"
-#include "wtf/meta/meta.h"
 
 #include <third_party/skia/include/core/SkPicture.h>
 #include <third_party/skia/include/core/SkCanvas.h>
@@ -16,8 +15,8 @@
 namespace sm {
 class SceneBuilder;
 
-class Layer : public AbstractNode, public DiagnosticableTree, virtual public meta::Meta {
-    DECLARE_META_INFO(Layer, meta::Meta)
+class Layer : public AbstractNode, public DiagnosticableTree {
+    DECLARE_META_INFO(Layer, AbstractNode);
 public:
     virtual void Paint(SkCanvas *canvas) const = 0;
 

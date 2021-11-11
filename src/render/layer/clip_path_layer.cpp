@@ -12,4 +12,12 @@ ClipPathLayer::ClipPathLayer(const Path& clip_path, const Clip& clip_behavior)
 {
     FML_CHECK(clip_behavior_ != Clip::NONE);
 }
+
+void ClipPathLayer::SetClipPath(const Path& path)
+{
+    if (path != clip_path_) {
+        clip_path_ = path;
+        MarkNeedsAddToScene();
+    }
+}
 } // namespace sm

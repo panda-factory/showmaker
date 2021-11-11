@@ -13,6 +13,8 @@ class CanvasPath {
 public:
     void AddRect(const Rect& rect);
 
+    friend bool operator!= (const CanvasPath& path1, const CanvasPath& path2);
+
     CanvasPath() = default;
 
 private:

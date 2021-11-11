@@ -81,7 +81,7 @@ TEST(RenderObject, CASE01)
         onNeedVisualUpdateCallCount +=1;
     });
     //owner.EnsureSemantics();
-//    renderObject.Attach(owner);
+    //renderObject.Attach(owner);
 
     EXPECT_GE(true, false);
 }
