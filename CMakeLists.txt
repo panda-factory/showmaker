@@ -8,7 +8,7 @@ PROJECT(showmaker VERSION 0.0.0
 OPTION(BUILDING_SHARED "compile for shared library" OFF)
 OPTION(USING_ANGLE "using angle library" ON)
 OPTION(ENABLE_BENCHMARK "enable benchmark test for taskrunner" OFF)
-OPTION(ENABLE_UNITTESTS "enable UT for showmaker" ON)
+OPTION(ENABLE_UNITTESTS "enable UT for showmaker" OFF)
 OPTION(ENABLE_EXAMPLES "enable examples for taskrunner" ON)
 
 SET(PROJECT_ROOT_PATH "${CMAKE_CURRENT_SOURCE_DIR}")

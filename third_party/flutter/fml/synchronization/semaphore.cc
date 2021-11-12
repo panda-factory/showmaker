@@ -94,7 +94,8 @@ class PlatformSemaphore {
 }  // namespace fml
 
 #else
-#include <third-party/flutter/fml/synchronization/semaphore.h>
+#include <flutter/fml/synchronization/semaphore.h>
+#include <semaphore.h>
 #include "flutter/fml/eintr_wrapper.h"
 
 namespace fml {

@@ -5,7 +5,8 @@
 #ifndef SHOWMAKER_CHANGE_NOTIFIER_H
 #define SHOWMAKER_CHANGE_NOTIFIER_H
 #include <list>
-
+#include <functional>
+#include <vector>
 #include "listenable.h"
 
 namespace sm {

@@ -59,6 +59,12 @@ public:
     bool DebugSubtreeNeedsAddToScene();
     virtual void UpdateSubtreeNeedsAddToScene();
     void MarkNeedsAddToScene();
+#else
+public:
+    void DebugMarkClean() {}
+    bool DebugSubtreeNeedsAddToScene() {return false;}
+    virtual void UpdateSubtreeNeedsAddToScene() {}
+    void MarkNeedsAddToScene() {}
 #endif // TESTING
 };
 } // namespace sm

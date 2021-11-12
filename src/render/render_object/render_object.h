@@ -13,7 +13,7 @@
 namespace sm {
 class RenderObject : public AbstractNode {
 public:
-    virtual constexpr bool IsRepaintBoundary() const { return false; }
+    virtual bool IsRepaintBoundary() const { return false; }
 
     virtual Rect GetPaintBounds() = 0;
 

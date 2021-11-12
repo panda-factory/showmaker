@@ -8,10 +8,11 @@
 #include <memory>
 
 #include "render/compositing/scene.h"
-#include "render/layer/container_layer.h"
 #include "render/painting/picture.h"
 
 namespace sm {
+class ContainerLayer;
+
 class SceneBuilder {
 public:
     static std::unique_ptr<SceneBuilder> Create();
