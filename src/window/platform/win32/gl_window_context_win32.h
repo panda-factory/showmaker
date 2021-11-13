@@ -5,19 +5,27 @@
 #ifndef SHOWMAKER_GL_WINDOW_CONTEXT_WIN32_H
 #define SHOWMAKER_GL_WINDOW_CONTEXT_WIN32_H
 
-#include "gl_window_context.h"
+#include "window/gl_window_context.h"
 
-#include <windows.h>
+#include <Windows.h>
 namespace sm {
 class GLWindowContextWin32 : public GLWindowContext {
 public:
     GLWindowContextWin32(HWND, const DisplayParams&);
+
     ~GLWindowContextWin32() override;
 
 protected:
+    sk_sp<const GrGLInterface> CreateGLInterface() override { return nullptr; }
+
+    int CreateSurface() override { return 0; }
+
+    int MakeCurrent() override { return 0; }
+
     void OnSwapBuffers() override;
 
-    sk_sp<const GrGLInterface> OnInitializeContext() override;
+    void OnInitializeContext() override;
+
     void OnDestroyContext() override;
 
 private:

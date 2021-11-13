@@ -5,7 +5,7 @@
 #ifndef SHOWMAKER_ANGLE_GL_WINDOW_CONTEXT_H
 #define SHOWMAKER_ANGLE_GL_WINDOW_CONTEXT_H
 
-#include "gl_window_context.h"
+#include "window/gl_window_context.h"
 // OpenGL ES and EGL includes
 #include <EGL/egl.h>
 #include <EGL/eglext.h>
@@ -13,7 +13,7 @@
 #include <GLES2/gl2.h>
 #include <GLES2/gl2ext.h>
 
-#include <windows.h>
+#include <Windows.h>
 
 namespace sm {
 std::unique_ptr<WindowContext> MakeAngleContextForWin(HWND wnd, const DisplayParams &params);

@@ -3,7 +3,7 @@
 //
 
 #include "rasterizer.h"
-#include "window_context.h"
+#include "src/window/window_context.h"
 #include "render/compositing/scene.h"
 
 #include <third_party/skia/include/core/SkSurface.h>

@@ -97,9 +97,45 @@ WindowWin32::WindowWin32()
 {
 }
 
-bool WindowWin32::Attach()
+bool WindowWin32::Attach(BackendType attach_type)
 {
-    window_context_ = MakeAngleContextForWin(hWnd_, {});
+
+
+    switch (attach_type) {
+#ifdef SK_GL
+        case kNativeGL_BackendType:
+//            fWindowContext = window_context_factory::MakeGLForWin(fHWnd, fRequestedDisplayParams);
+            //break;
+#endif
+#if SK_ANGLE
+        case kANGLE_BackendType:
+            window_context_ = MakeAngleContextForWin(hWnd_, {});
+            //fWindowContext =
+                    //window_context_factory::MakeANGLEForWin(fHWnd, fRequestedDisplayParams);
+            break;
+#endif
+#ifdef SK_DAWN
+            case kDawn_BackendType:
+            fWindowContext =
+                    window_context_factory::MakeDawnD3D12ForWin(fHWnd, fRequestedDisplayParams);
+            break;
+#endif
+        case kRaster_BackendType:
+
+            break;
+#ifdef SK_VULKAN
+            case kVulkan_BackendType:
+            fWindowContext =
+                    window_context_factory::MakeVulkanForWin(fHWnd, fRequestedDisplayParams);
+            break;
+#endif
+#ifdef SK_DIRECT3D
+            case kDirect3D_BackendType:
+            fWindowContext =
+                window_context_factory::MakeD3D12ForWin(fHWnd, fRequestedDisplayParams);
+            break;
+#endif
+    }
     engine_->SetRasterizer(std::make_unique<Rasterizer>(window_context_.get()));
     return 0;
 }

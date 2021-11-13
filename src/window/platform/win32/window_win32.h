@@ -5,15 +5,15 @@
 #ifndef WTF_WINDOW_WIN32_H
 #define WTF_WINDOW_WIN32_H
 
-#include "window.h"
+#include "window/window.h"
 
-#include <windows.h>
+#include <Windows.h>
 
 namespace sm {
 class WindowWin32 : public Window {
 public:
 
-    bool Attach() override;
+    bool Attach(BackendType attach_type) override;
 
     void Show() override;
 

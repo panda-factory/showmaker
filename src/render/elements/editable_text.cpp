@@ -5,7 +5,7 @@
 #include "editable_text.h"
 
 #include "render/shape/rectangle.h"
-#include "window.h"
+#include "window/window.h"
 namespace sm {
 EditableText::EditableText(const std::string &text)
   : text_(text), blink_(false)

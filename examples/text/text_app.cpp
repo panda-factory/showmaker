@@ -5,7 +5,7 @@
 
 #include <memory>
 
-#include "window.h"
+#include "window/window.h"
 #include "engine/engine.h"
 #include "render/elements/label.h"
 #include "render/elements/view.h"

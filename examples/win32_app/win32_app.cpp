@@ -4,14 +4,24 @@
 
 #include <memory>
 
-#include "window.h"
+#include "window/window.h"
 #include "engine/engine.h"
 #include "render/elements/label.h"
 #include "render/elements/view.h"
 #include "render/layout/column.h"
-#include <windows.h>
+#include <Windows.h>
 namespace {
-
+#ifdef SK_VULKAN
+static constexpr sm::Window::BackendType kBackendType = sm::Window::kVulkan_BackendType;
+#elif SK_METAL
+static constexpr sm::Window::BackendType kBackendType = sm::Window::kMetal_BackendType;
+#elif SK_GL
+static constexpr sm::Window::BackendType kBackendType = sm::Window::kNativeGL_BackendType;
+#elif SK_DAWN
+static constexpr sm::Window::BackendType kBackendType = sm::Window::kDawn_BackendType;
+#else
+static constexpr sm::Window::BackendType kBackendType = sm::Window::kRaster_BackendType;
+#endif
 double fNextTime = -DBL_MAX;
 std::unique_ptr<sm::Window> window;
 
@@ -24,7 +34,7 @@ int main_win32(int argc, char **argv, HINSTANCE hInstance, int show)
     bool idled = false;
 
     window.reset(sm::Window::CreateNativeWindow(hInstance));
-    window->Attach();
+    window->Attach(kBackendType);
 
     auto column = std::make_unique<sm::Column>();
     column->AddElement(std::make_unique<sm::Label>("HelloWorld!"));

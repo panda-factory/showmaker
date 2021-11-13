@@ -4,7 +4,7 @@
 
 #include <memory>
 
-#include "window.h"
+#include "window/window.h"
 #include "engine/engine.h"
 #include "render/elements/editable_text.h"
 #include "render/elements/view.h"

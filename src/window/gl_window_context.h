@@ -5,7 +5,7 @@
 #ifndef SHOWMAKER_GL_WINDOW_CONTEXT_H
 #define SHOWMAKER_GL_WINDOW_CONTEXT_H
 
-#include "window_context.h"
+#include "window/window_context.h"
 
 #include "include/gpu/gl/GrGLInterface.h"
 #include "include/core/SkRefCnt.h"
@@ -30,6 +30,7 @@ protected:
     virtual void OnInitializeContext() = 0;
 
     void DestroyContext();
+
     virtual void OnDestroyContext() = 0;
 
     virtual void OnSwapBuffers() = 0;

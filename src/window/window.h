@@ -6,15 +6,42 @@
 #define WTF_WINDOW_H
 
 #include <vector>
-#include "window_context.h"
+#include "window/window_context.h"
 #include "engine/engine.h"
 #include "render/shape/text/text_input_client.h"
 
 namespace sm {
 class Element;
 
-class Window : public Engine::Delegate{
+class Window : public Engine::Delegate {
 public:
+    enum BackendType {
+#ifdef SK_GL
+        kNativeGL_BackendType,
+#endif
+#if SK_ANGLE && defined(SK_BUILD_FOR_WIN)
+        kANGLE_BackendType,
+#endif
+#ifdef SK_DAWN
+        kDawn_BackendType,
+#endif
+#ifdef SK_VULKAN
+        kVulkan_BackendType,
+#endif
+#ifdef SK_METAL
+        kMetal_BackendType,
+#endif
+#ifdef SK_DIRECT3D
+        kDirect3D_BackendType,
+#endif
+        kRaster_BackendType,
+
+        kLast_BackendType = kRaster_BackendType
+    };
+    enum {
+        kBackendTypeCount = kLast_BackendType + 1
+    };
+
     using OnBeginFrame = std::function<void()>;
 
     static Window* CreateNativeWindow(void* platformData);
@@ -26,7 +53,7 @@ public:
     /// | Engine::Delegate |
     void OnEngineBeginFrame(fml::TimePoint frame_target_time) override;
 
-    virtual bool Attach() = 0;
+    virtual bool Attach(BackendType attach_type) = 0;
 
     virtual bool HitTest(double x, double y);
 
