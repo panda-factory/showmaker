@@ -18,7 +18,17 @@
 #include <third_party/ConvertUTF/UTF8.h>
 
 namespace {
-
+#ifdef SK_VULKAN
+static constexpr sm::Window::BackendType kBackendType = sm::Window::kVulkan_BackendType;
+#elif SK_METAL
+static constexpr sm::Window::BackendType kBackendType = sm::Window::kMetal_BackendType;
+#elif SK_GL
+static constexpr sm::Window::BackendType kBackendType = sm::Window::kNativeGL_BackendType;
+#elif SK_DAWN
+static constexpr sm::Window::BackendType kBackendType = sm::Window::kDawn_BackendType;
+#else
+static constexpr sm::Window::BackendType kBackendType = sm::Window::kRaster_BackendType;
+#endif
 double fNextTime = -DBL_MAX;
 std::unique_ptr<sm::Window> window;
 
@@ -52,7 +62,7 @@ std::unique_ptr<sm::Scene> Composite(std::unique_ptr<sm::Picture> picture)
 int main_win32(int argc, char **argv, HINSTANCE hInstance, int show)
 {
     window.reset(sm::Window::CreateNativeWindow(hInstance));
-    window->Attach();
+    window->Attach(kBackendType);
 
     window->Show();
 

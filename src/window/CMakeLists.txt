@@ -16,6 +16,9 @@ IF(WIN32)
         SET(WINDOW_SRC ${WINDOW_SRC}
             platform/win32/angle_gl_window_context.cpp)
     ENDIF()
+ELSEIF(ANDROID)
+    SET(WINDOW_SRC ${WINDOW_SRC}
+        platform/android/gl_window_context_android.cpp)
 ENDIF()
 
 ADD_LIBRARY(${TARGET_NAME} STATIC ${WINDOW_SRC})

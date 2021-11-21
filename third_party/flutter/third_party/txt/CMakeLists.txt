@@ -90,11 +90,13 @@ SET(TXT_SRC
     ${TXT_SRC_DIR}/src/utils/WindowsUtils.h
     )
 
-if (WIN32)
+IF (WIN32)
     SET(TXT_SRC ${TXT_SRC}
-        ${TXT_SRC_DIR}/src/txt/platform_windows.cc
-        )
-endif()
+        ${TXT_SRC_DIR}/src/txt/platform_windows.cc)
+ELSEIF(ANDROID)
+    SET(TXT_SRC ${TXT_SRC}
+        ${TXT_SRC_DIR}/src/txt/platform_android.cc)
+ENDIF()
 
 ADD_LIBRARY(${TARGET_NAME} STATIC ${TXT_SRC})
 
@@ -109,4 +111,8 @@ TARGET_COMPILE_DEFINITIONS(${TARGET_NAME} PUBLIC NOMINMAX)
 
 TARGET_LINK_DIRECTORIES(${TARGET_NAME} PUBLIC ${PROJECT_ROOT_PATH}/third_party/icu/lib64)
 
-TARGET_LINK_LIBRARIES(${TARGET_NAME} PUBLIC harfbuzz icudt icuin icuuc harfbuzz-icu)
+if (WIN32)
+    TARGET_LINK_LIBRARIES(${TARGET_NAME} PUBLIC harfbuzz icudt icuin icuuc harfbuzz-icu)
+ELSEIF(ANDROID)
+
+endif()

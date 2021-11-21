@@ -5,7 +5,7 @@ PROJECT(showmaker VERSION 0.0.0
     HOMEPAGE_URL ""
     LANGUAGES CXX)
 
-OPTION(BUILDING_SHARED "compile for shared library" OFF)
+OPTION(BUILDING_SHARED "compile for shared library" ON)
 OPTION(USING_ANGLE "using angle library" ON)
 OPTION(ENABLE_BENCHMARK "enable benchmark test for taskrunner" OFF)
 OPTION(ENABLE_UNITTESTS "enable UT for showmaker" OFF)

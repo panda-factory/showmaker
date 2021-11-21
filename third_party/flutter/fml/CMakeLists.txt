@@ -98,3 +98,14 @@ ADD_LIBRARY(${TARGET_NAME} STATIC ${FLUTTER_FML_SRC})
 TARGET_INCLUDE_DIRECTORIES(${TARGET_NAME} PUBLIC ${PROJECT_ROOT_PATH}/third_party)
 
 TARGET_COMPILE_DEFINITIONS(${TARGET_NAME} PUBLIC NOMINMAX)
+
+if (ANDROID)
+find_library( # Sets the name of the path variable.
+    log-lib
+
+    # Specifies the name of the NDK library that
+    # you want CMake to locate.
+    log )
+
+TARGET_LINK_LIBRARIES(${TARGET_NAME} PUBLIC ${log-lib})
+ENDIF()
